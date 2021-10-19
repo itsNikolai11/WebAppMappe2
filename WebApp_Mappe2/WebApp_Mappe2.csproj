@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\destinasjon\" />
+    <Folder Include="ClientApp\src\app\avgang\" />
+    <Folder Include="ClientApp\src\app\login\" />
+    <Folder Include="ClientApp\src\app\rute\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
 
