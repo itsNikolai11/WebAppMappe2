@@ -46,6 +46,7 @@ namespace WebApp_Mappe2
         {
             if (env.IsDevelopment())
             {
+                DBInit.InitDB(app);
                 app.UseDeveloperExceptionPage();
             }
             else
