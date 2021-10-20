@@ -31,7 +31,6 @@
     <Folder Include="ClientApp\src\app\avgang\" />
     <Folder Include="ClientApp\src\app\login\" />
     <Folder Include="ClientApp\src\app\rute\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
