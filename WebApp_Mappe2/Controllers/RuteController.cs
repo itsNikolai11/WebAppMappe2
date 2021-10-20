@@ -1,64 +1,62 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp_Mappe2.DAL;
 using WebApp_Mappe2.Models;
 
-namespace WebApp_Mappe2.DAL
+namespace WebApp_Mappe2.Controllers
 {
-    public class RuteRepository : IRuteRepository
+    [Route("api/[controller]")]
+    public class RuteController
     {
-        private readonly DBContext _db;
-        public RuteRepository(DBContext db)
-        {
-            _db = db;
-        }
-        public async Task<List<Destinasjon>> HentAlleDestinasjoner()
+        public async Task<ActionResult> HentAlleDestinasjoner()
         {
             throw new NotImplementedException();
         }
-        public async Task<Destinasjon> HentDestinasjon()
+        public async Task<ActionResult> HentDestinasjon()
         {
             throw new NotImplementedException();
         }
-        public async Task<List<Rute>> HentRuter(int id)
+        public async Task<ActionResult> HentRuter(int id)
         {
             //ID er id til fra-destinasjon
             throw new NotImplementedException();
         }
-        public async Task<Rute> HentRute(int id)
+        public async Task<ActionResult> HentRute(int id)
         {
             throw new NotImplementedException();
         }
-        public async Task<List<Avganger>> HentAvganger(int RuteId, DateTime Tid)
+        public async Task<ActionResult> HentAvganger(int RuteId, DateTime Tid)
         {
             throw new NotImplementedException();
         }
-        public async Task<Avganger> HentAvgang(int id)
+        public async Task<ActionResult> HentAvgang(int id)
         {
             throw new NotImplementedException();
         }
-        public async Task<bool> LagreDestinasjon(Destinasjon d)
+        public async Task<ActionResult> LagreDestinasjon(Destinasjon d)
         {
             throw new NotImplementedException();
         }
-        public async Task<bool> LagreRute(Rute r)
+        public async Task<ActionResult> LagreRute(Rute r)
         {
             throw new NotImplementedException();
         }
-        public async Task<bool> LagreAvgang(Avgang r)
+        public async Task<ActionResult> LagreAvgang(Avgang r)
         {
             throw new NotImplementedException();
         }
-        public async Task<bool> SlettDestinasjon(int id)
+        public async Task<ActionResult> SlettDestinasjon(int id)
         {
             throw new NotImplementedException();
         }
-        public async Task<bool> SlettRute(int id)
+        public async Task<ActionResult> SlettRute(int id)
         {
             throw new NotImplementedException();
         }
-        public async Task<bool> SlettAvgang(int id)
+        public async Task<ActionResult> SlettAvgang(int id)
         {
             throw new NotImplementedException();
         }
