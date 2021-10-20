@@ -3,39 +3,37 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApp_Mappe2.DAL;
 using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.Controllers
 {
     [Route("api/[controller]")]
-    public class RuteController
+    public class AvgangController
     {
-        
         [HttpGet]
-        public async Task<ActionResult> HentRuter(int id)
+        public async Task<ActionResult> HentAvganger(int RuteId, DateTime Tid)
         {
-            //ID er id til fra-destinasjon
             throw new NotImplementedException();
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult> HentRute(int id)
+        public async Task<ActionResult> HentAvgang(int id)
         {
             throw new NotImplementedException();
         }
- 
-       
         [HttpPost]
-        public async Task<ActionResult> LagreRute(Rute r)
+        public async Task<ActionResult> LagreAvgang(Avgang r)
         {
             throw new NotImplementedException();
         }
-        
         [HttpDelete("{id}")]
-        public async Task<ActionResult> SlettRute(int id)
+        public async Task<ActionResult> SlettAvgang(int id)
         {
             throw new NotImplementedException();
         }
-     
+        [HttpPut]
+        public async Task<ActionResult> EndreAvgang(Avgang r)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

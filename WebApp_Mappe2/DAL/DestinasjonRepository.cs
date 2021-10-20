@@ -6,39 +6,32 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.DAL
 {
-    public class RuteRepository : IRuteRepository
+    public class DestinasjonRepository : IDestinasjonRepository
     {
         private readonly DBContext _db;
-        public RuteRepository(DBContext db)
+        public DestinasjonRepository(DBContext db)
         {
             _db = db;
         }
-       
-        public async Task<List<Rute>> HentRuter(int id)
-        {
-            //ID er id til fra-destinasjon
-            throw new NotImplementedException();
-        }
-        public async Task<Rute> HentRute(int id)
+        public async Task<List<Destinasjon>> HentAlleDestinasjoner()
         {
             throw new NotImplementedException();
         }
- 
-        
-        public async Task<bool> LagreRute(Rute r)
+        public async Task<Destinasjon> HentDestinasjon()
         {
             throw new NotImplementedException();
         }
-     
-       
-        public async Task<bool> SlettRute(int id)
+        public async Task<bool> LagreDestinasjon(Destinasjon d)
         {
             throw new NotImplementedException();
         }
-        public async Task<bool> EndreRute(Rute r)
+        public async Task<bool> SlettDestinasjon(int id)
         {
             throw new NotImplementedException();
         }
-
+        public async Task<bool> EndreDestinasjon(Destinasjon d)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
