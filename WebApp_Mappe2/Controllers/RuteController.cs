@@ -11,7 +11,9 @@ namespace WebApp_Mappe2.Controllers
     [Route("api/[controller]")]
     public class RuteController : ControllerBase
     {
-        
+        private const string _loggetInn = "loggetInn";
+
+
         [HttpGet]
         public async Task<ActionResult> HentRuter(int id)
         {

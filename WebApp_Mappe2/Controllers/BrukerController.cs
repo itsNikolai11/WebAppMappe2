@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace WebApp_Mappe2.Controllers
     public class BrukerController : ControllerBase
     {
         private readonly IBrukerRepository _db;
+        private const string _loggetInn = "loggetInn";
         public BrukerController(IBrukerRepository db)
         {
             _db = db;
         }
+        [HttpGet]
         public async Task<ActionResult> LoggInn(Bruker bruker)
         {
             //TODO legg inn logg
@@ -22,10 +25,12 @@ namespace WebApp_Mappe2.Controllers
             bool loginOk = await _db.LoggInn(bruker);
             if (!loginOk)
             {
+                HttpContext.Session.SetString(_loggetInn, "");
                 return Ok(false);
             }
+            HttpContext.Session.SetString(_loggetInn, "OK");
             return Ok(true);
-            
+
         }
 
     }

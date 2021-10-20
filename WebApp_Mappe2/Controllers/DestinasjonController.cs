@@ -10,6 +10,8 @@ namespace WebApp_Mappe2.Controllers
     [Route("api/[controller]")]
     public class DestinasjonController : ControllerBase
     {
+        private const string _loggetInn = "loggetInn";
+
         [HttpGet]
         public async Task<ActionResult> HentAlleDestinasjoner()
         {
