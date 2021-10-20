@@ -30,6 +30,13 @@ namespace WebApp_Mappe2.DAL
         public string Sted { get; set; }
         public string Land { get; set; }
     }
+    public class Brukere
+    {
+        public int Id { get; set; }
+        public string Brukernavn { get; set; }
+        public byte[] Passord { get; set; }
+        public byte[] Salt { get; set; }
+    }
     public class DBContext : DbContext
     {
         public DBContext(DbContextOptions<DBContext> options)
@@ -40,6 +47,7 @@ namespace WebApp_Mappe2.DAL
         public DbSet<Ruter> Ruter { get; set; }
         public DbSet<Avganger> Avganger { get; set; }
         public DbSet<Destinasjoner> Destinasjoner { get; set; }
+        public DbSet<Brukere> Brukere { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();

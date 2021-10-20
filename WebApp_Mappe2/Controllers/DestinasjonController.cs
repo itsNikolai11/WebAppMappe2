@@ -8,7 +8,7 @@ using WebApp_Mappe2.Models;
 namespace WebApp_Mappe2.Controllers
 {
     [Route("api/[controller]")]
-    public class DestinasjonController
+    public class DestinasjonController : ControllerBase
     {
         [HttpGet]
         public async Task<ActionResult> HentAlleDestinasjoner()

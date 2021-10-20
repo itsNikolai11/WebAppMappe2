@@ -9,7 +9,7 @@ using WebApp_Mappe2.Models;
 namespace WebApp_Mappe2.Controllers
 {
     [Route("api/[controller]")]
-    public class RuteController
+    public class RuteController : ControllerBase
     {
         
         [HttpGet]
@@ -23,8 +23,6 @@ namespace WebApp_Mappe2.Controllers
         {
             throw new NotImplementedException();
         }
- 
-       
         [HttpPost]
         public async Task<ActionResult> LagreRute(Rute r)
         {
