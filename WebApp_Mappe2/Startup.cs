@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using WebApp_Mappe2.DAL;
 
 namespace WebApp_Mappe2
@@ -29,6 +30,15 @@ namespace WebApp_Mappe2
                 configuration.RootPath = "ClientApp/dist";
             });
             services.AddDbContext<DBContext>(options => options.UseSqlite("Data source=Rute.db"));
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".AdventureWorks.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(1800); // 30 minutter Idle tid
+                options.Cookie.IsEssential = true;
+            });
+
+            services.AddDistributedMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +54,9 @@ namespace WebApp_Mappe2
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            //UseSession!
+            app.UseSession();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
