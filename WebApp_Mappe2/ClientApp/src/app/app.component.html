@@ -1,2 +1,9 @@
-<body>
-</body>
+<div>
+  <h1>Destinasjoner</h1>
+  <button (click)="hentAlleDestinasjoner()">Hent Destinasjoner</button> {{laster}}
+  <ul>
+    <li *ngFor="let destinasjon of alleDestinasjoner">
+      {{destinasjon.id}} : {{destinasjon.sted}} {{destinasjon.land}}
+    </li>
+  </ul>
+</div>

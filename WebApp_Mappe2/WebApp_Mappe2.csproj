@@ -27,10 +27,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\destinasjon.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ClientApp\src\app\destinasjon\" />
     <Folder Include="ClientApp\src\app\avgang\" />
     <Folder Include="ClientApp\src\app\login\" />
     <Folder Include="ClientApp\src\app\rute\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\destinasjon.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
