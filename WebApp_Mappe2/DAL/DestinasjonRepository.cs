@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,8 +16,22 @@ namespace WebApp_Mappe2.DAL
         }
         public async Task<List<Destinasjon>> HentAlleDestinasjoner()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Destinasjon> destinasjoner = await _db.Destinasjoner.Select(d => new Destinasjon
+                {
+                    Id = d.Id,
+                    Sted = d.Sted,
+                    Land = d.Land
+                }).ToListAsync();
+                return destinasjoner;
+            }
+            catch
+            {
+                return null;
+            }
         }
+
         public async Task<Destinasjon> HentDestinasjon()
         {
             throw new NotImplementedException();

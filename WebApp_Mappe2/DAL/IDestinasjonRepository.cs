@@ -6,7 +6,7 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.DAL
 {
-    interface IDestinasjonRepository
+    public interface IDestinasjonRepository
     {
         Task<List<Destinasjon>> HentAlleDestinasjoner();
         Task<Destinasjon> HentDestinasjon();
