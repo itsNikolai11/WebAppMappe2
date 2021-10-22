@@ -11,13 +11,6 @@ namespace WebApp_Mappe2.Controllers
     [Route("api/[controller]")]
     public class DestinasjonController : ControllerBase
     {
-        private readonly IDestinasjonRepository _db;
-
-        public DestinasjonController(IDestinasjonRepository db)
-        {
-            _db = db;
-        }
-
         [HttpGet]
         public async Task<ActionResult> HentAlleDestinasjoner()
         {
