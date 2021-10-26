@@ -32,7 +32,7 @@ namespace WebApp_Mappe2.DAL
             }
         }
 
-        public async Task<Destinasjon> HentDestinasjon()
+        public async Task<Destinasjon> HentDestinasjon(int id)
         {
             throw new NotImplementedException();
         }

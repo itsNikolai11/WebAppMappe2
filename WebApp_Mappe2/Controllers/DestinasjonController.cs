@@ -32,13 +32,22 @@ namespace WebApp_Mappe2.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> HentDestinasjon()
-        {
-            throw new NotImplementedException();
+        public async Task<ActionResult> HentDestinasjon(int id)
+        {       
+            Destinasjon destinasjon = await _db.HentDestinasjon(id);
+            if(destinasjon == null)
+            {
+                _log.LogInformation("Fant ikke destinasjon med id " + id);
+                return NotFound("Fant ikke avgang med id " + id);
+            }
+            return Ok(destinasjon);
         }
+
+
         [HttpPost]
         public async Task<ActionResult> LagreDestinasjon(Destinasjon d)
         {
+
             throw new NotImplementedException();
         }
         [HttpDelete("{id}")]
