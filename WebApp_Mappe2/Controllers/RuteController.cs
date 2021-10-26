@@ -35,8 +35,11 @@ namespace WebApp_Mappe2.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> HentRute(int id)
         {
-            throw new NotImplementedException();
+            //mangler log
+            Rute ruten = await _db.HentRute(id);
+            return Ok(ruten);
         }
+
         [HttpPost]
         public async Task<ActionResult> LagreRute(Rute r)
         {

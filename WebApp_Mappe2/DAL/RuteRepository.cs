@@ -23,7 +23,8 @@ namespace WebApp_Mappe2.DAL
                 List<Rute> ruter = await _db.Ruter.Select(r => new Rute
                 {
                     Id = r.Id,
-                    FraDestinasjon = r.FraDestinasjon.Sted,
+                    //sjekke at fra-til ikke finnes fra før
+                    FraDestinasjon = r.FraDestinasjon.Sted, //dropdown liste med destinasjoner
                     TilDestinasjon = r.TilDestinasjon.Sted,
                     PrisBarn = r.PrisBarn,
                     PrisVoksen = r.PrisVoksen
@@ -106,6 +107,7 @@ namespace WebApp_Mappe2.DAL
 
         public async Task<bool> EndreRute(Rute r)
         {
+            
             throw new NotImplementedException();
         }
 
