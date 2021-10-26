@@ -23,7 +23,8 @@ namespace WebApp_Mappe2.DAL
         }
         public async Task<bool> LagreAvgang(Avgang r)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return true;
         }
         public async Task<bool> SlettAvgang(int id)
         {
