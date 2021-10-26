@@ -24,6 +24,7 @@ namespace WebApp_Mappe2.DAL
                     Sted = d.Sted,
                     Land = d.Land
                 }).ToListAsync();
+
                 return destinasjoner;
             }
             catch
