@@ -22,6 +22,7 @@ export class LoginComponent{
     bruker.brukernavn = this.Skjema.value.brukernavn;
     bruker.passord = this.Skjema.value.passord;
     this._http.post("api/bruker", bruker).subscribe(data => {
+      console.log(data);
       if (data) {
         console.log("Suksess!");
       }

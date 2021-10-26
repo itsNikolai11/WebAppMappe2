@@ -29,10 +29,10 @@ namespace WebApp_Mappe2.Controllers
             if (!loginOk)
             {
                 HttpContext.Session.SetString(_loggetInn, "");
-                return Ok(false);
+                return Unauthorized();
             }
             HttpContext.Session.SetString(_loggetInn, "OK");
-            return Ok(true);
+            return Ok();
 
         }
 
