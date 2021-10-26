@@ -39,6 +39,7 @@ namespace WebApp_Mappe2
             });
 
             services.AddDistributedMemoryCache();
+            services.AddScoped<IBrukerRepository, BrukerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
