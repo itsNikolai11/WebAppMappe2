@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,24 @@ namespace WebApp_Mappe2.Controllers
     {
         private const string _loggetInn = "loggetInn";
 
+        private IRuteRepository _db;
+
+        private ILogger<RuteController> _log;
+
+        public RuteController(IRuteRepository db, ILogger<RuteController> log)
+        {
+            _db = db;
+            _log = log;
+        }
 
         [HttpGet]
-        public async Task<ActionResult> HentRuter(int id)
+        public async Task<ActionResult> HentRuter()
         {
             //ID er id til fra-destinasjon
-            throw new NotImplementedException();
+            List<Rute> alleRuter = await _db.HentRuter();
+            return Ok(alleRuter);
         }
+
         [HttpGet("{id}")]
         public async Task<ActionResult> HentRute(int id)
         {

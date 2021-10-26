@@ -6,9 +6,9 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.DAL
 {
-    interface IRuteRepository
+    public interface IRuteRepository
     {
-        Task<List<Rute>> HentRuter(int id); //ID er id til fra-destinasjon
+        Task<List<Rute>> HentRuter(); //ID er id til fra-destinasjon
         Task<Rute> HentRute(int id);
         Task<bool> LagreRute(Rute r);
         Task<bool> SlettRute(int id);
