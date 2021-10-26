@@ -34,19 +34,73 @@ namespace WebApp_Mappe2.DAL
 
         public async Task<Destinasjon> HentDestinasjon(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Destinasjoner enDestinasjon = await _db.Destinasjoner.FindAsync(id);
+                Destinasjon destinasjon = new Destinasjon()
+                {
+                    Id = enDestinasjon.Id,
+                    Sted = enDestinasjon.Sted,
+                    Land = enDestinasjon.Land
+                };
+                return destinasjon;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
         public async Task<bool> LagreDestinasjon(Destinasjon d)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var nyDestinasjonRad = new Destinasjoner();
+
+                //sjekke om destinasjonen allerede finnes
+
+                nyDestinasjonRad.Sted = d.Sted;
+                nyDestinasjonRad.Land = d.Land;
+
+                _db.Destinasjoner.Add(nyDestinasjonRad);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
         public async Task<bool> SlettDestinasjon(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Destinasjoner enDestinasjon = await _db.Destinasjoner.FindAsync(id);
+                _db.Destinasjoner.Remove(enDestinasjon);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public async Task<bool> EndreDestinasjon(Destinasjon d)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var endreObjekt = await _db.Destinasjoner.FindAsync(d.Id);
+
+                endreObjekt.Sted = d.Sted;
+                endreObjekt.Land = d.Land;
+                await _db.SaveChangesAsync();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
