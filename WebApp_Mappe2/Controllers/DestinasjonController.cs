@@ -27,6 +27,11 @@ namespace WebApp_Mappe2.Controllers
         public async Task<ActionResult> HentAlleDestinasjoner()
         {
             List<Destinasjon> alleDestinasjoner = await _db.HentAlleDestinasjoner();
+            if(alleDestinasjoner == null)
+            {
+                _log.LogInformation("Fant ingen destinasjoner");
+                return NotFound("Fant ingen destinasjoner");
+            }
             return Ok(alleDestinasjoner);
         }
 
@@ -53,6 +58,11 @@ namespace WebApp_Mappe2.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettDestinasjon(int id)
         {
+            //Destinasjon destinasjon = await _db.SlettDestinasjon
+
+           // if()
+           // return Ok();
+
             throw new NotImplementedException();
         }
         [HttpPut]
