@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,18 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.Controllers
 {
-    //[Route("api/[controller]")]
-    public class DestinasjonController : ControllerBase
+    [Route("api/[controller]")]
+    public class DestinasjonController : ControllerBase  
     {
-        private readonly IDestinasjonRepository _db;
-        public DestinasjonController(IDestinasjonRepository db)
+        private const string _loggetInn = "loggetInn";
+
+        private IDestinasjonRepository _db;
+
+        private ILogger<DestinasjonController> _log;
+        public DestinasjonController(IDestinasjonRepository db, ILogger<DestinasjonController> log)
         {
             _db = db;
+            _log = log;
         }
 
         [HttpGet]
@@ -23,8 +29,6 @@ namespace WebApp_Mappe2.Controllers
             List<Destinasjon> alleDestinasjoner = await _db.HentAlleDestinasjoner();
             return Ok(alleDestinasjoner);
         }
-
-
 
 
         [HttpGet("{id}")]

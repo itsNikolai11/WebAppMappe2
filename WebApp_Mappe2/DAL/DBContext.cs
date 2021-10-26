@@ -19,9 +19,6 @@ namespace WebApp_Mappe2.DAL
         public int Id { get; set; }
         public DateTime AvgangTid { get; set; }
         virtual public Ruter RuteNr { get; set; }
-
-
-
     }
 
     public class Destinasjoner
