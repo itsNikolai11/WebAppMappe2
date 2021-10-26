@@ -31,10 +31,8 @@ namespace WebApp_Mappe2.DAL
             }
             catch (Exception e)
             {
-
+                return false;
             }
-
-            throw new NotImplementedException();
         }
         public static byte[] LagHash(string passord, byte[] salt)
         {

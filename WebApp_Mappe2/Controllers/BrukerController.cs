@@ -9,6 +9,9 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
+
     public class BrukerController : ControllerBase
     {
         private readonly IBrukerRepository _db;
@@ -17,7 +20,7 @@ namespace WebApp_Mappe2.Controllers
         {
             _db = db;
         }
-        [HttpGet]
+        [HttpPost]
         public async Task<ActionResult> LoggInn(Bruker bruker)
         {
             //TODO legg inn logg
