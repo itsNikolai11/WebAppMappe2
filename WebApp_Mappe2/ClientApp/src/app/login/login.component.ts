@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Bruker } from '../bruker';
 @Component({
   selector: 'admin-login',
@@ -8,9 +9,10 @@ import { Bruker } from '../bruker';
 })
 export class LoginComponent{
   Skjema: FormGroup;
+
   public status: string;
   public gyldig: boolean;
-  constructor(private _http: HttpClient, private fb: FormBuilder) {
+  constructor(private _http: HttpClient, private fb: FormBuilder, private router:Router) {
     this.Skjema = fb.group({
       brukernavn: ["", Validators.required],
       passord: ["", Validators.required]
@@ -23,6 +25,7 @@ export class LoginComponent{
     bruker.passord = this.Skjema.value.passord;
     this._http.post("api/bruker", bruker, { observe: 'response' }).subscribe(data => {
       console.log(data.status);
+      this.router.navigate(['/adminpage']);
       //TODO redirect til admin-side
     }, error => {
       if (error.status == 401) {
