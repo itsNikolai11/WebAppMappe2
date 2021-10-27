@@ -32,15 +32,15 @@ export class ListeRute {
       );
   };
 
-  //funker ikke!!
+ 
 
-/*slettRute(id: number) {
+slettRute(id: number) {
   this._http.delete("api/Rute/" + id)
     .subscribe(retur => {
       this.hentAlleRuter();
     },
       error => console.log(error)
     );
-};*/
+};
 
 }
