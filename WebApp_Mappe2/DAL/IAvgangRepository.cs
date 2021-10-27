@@ -6,10 +6,10 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.DAL
 {
-    interface IAvgangRepository
+    public interface IAvgangRepository
     {
-        Task<List<Avganger>> HentAvganger(int RuteId, DateTime Tid);
-        Task<Avganger> HentAvgang(int id);
+        Task<List<Avgang>> HentAvganger(/*int RuteId, DateTime Tid*/);
+        Task<Avgang> HentAvgang(int id);
         Task<bool> LagreAvgang(Avgang r);
         Task<bool> SlettAvgang(int id);
         Task<bool> EndreAvgang(Avgang a);
