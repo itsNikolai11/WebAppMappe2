@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'admin-mainpage',
   templateUrl: './adminpage.component.html'
 })
 export class AdminpageComponent {
-  constructor() {
+  constructor(private router: Router) {
 
   }
   editRuter() {
@@ -18,6 +19,7 @@ export class AdminpageComponent {
 
   }
   loggUt() {
-
+    this.router.navigate(['/']);
+    //TODO set session-attributt
   }
 }
