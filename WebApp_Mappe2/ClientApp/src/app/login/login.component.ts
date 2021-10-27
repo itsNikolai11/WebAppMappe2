@@ -23,6 +23,7 @@ export class LoginComponent{
     bruker.passord = this.Skjema.value.passord;
     this._http.post("api/bruker", bruker, { observe: 'response' }).subscribe(data => {
       console.log(data.status);
+      //TODO redirect til admin-side
     }, error => {
       if (error.status == 401) {
         this.Skjema.value.brukernavn = "";
