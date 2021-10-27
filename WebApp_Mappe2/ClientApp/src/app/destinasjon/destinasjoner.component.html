@@ -1,10 +1,26 @@
-<div>
-  <h1>Destinasjoner</h1>
-  <button (click)="hentAlleDestinasjoner()">Hent Destinasjoner</button> {{laster}}
-  <ul>
-    <li *ngFor="let destinasjon of alleDestinasjoner">
-      {{destinasjon.id}} : {{destinasjon.sted}} {{destinasjon.land}}
-    </li>
-    <admin-login></admin-login>
-  </ul>
+<div class="container">
+  <h2>Destinasjoner</h2>
+  <div class="col-md-12">
+    {{laster}}
+    <table class="table table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Sted</th>
+          <th>Land</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let destinasjon of alleDestinasjoner">
+        <tr>
+          <td>{{destinasjon.id}}</td>
+          <td>{{destinasjon.sted}}</td>
+          <td>{{destinasjon.land}}</td>
+          <td><button class="btn-danger" (click)="slettDestinasjon(destinasjon.id)">Slett</button></td>
+          <td><button class="btn-success" [routerLink]="['/endreDest',destinasjon.id]">Endre</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
