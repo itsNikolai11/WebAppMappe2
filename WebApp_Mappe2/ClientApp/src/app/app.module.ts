@@ -14,8 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     LoginComponent,
     Meny,
-    ListeRute
-    LoginComponent,
+    ListeRute,
     AdminpageComponent
   ],
   imports: [
