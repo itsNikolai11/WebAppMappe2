@@ -28,6 +28,7 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+    <None Remove="ClientApp\src\app\meny\meny.ts" />
     <None Remove="ClientApp\src\app\rute\lagre\" />
     <None Remove="ClientApp\src\app\rute\liste\" />
   </ItemGroup>
