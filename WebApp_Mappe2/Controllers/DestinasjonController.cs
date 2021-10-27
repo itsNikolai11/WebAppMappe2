@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,11 @@ namespace WebApp_Mappe2.Controllers
         [HttpGet]
         public async Task<ActionResult> HentAlleDestinasjoner()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             List<Destinasjon> alleDestinasjoner = await _db.HentAlleDestinasjoner();
             if(alleDestinasjoner == null)
             {
@@ -38,7 +44,12 @@ namespace WebApp_Mappe2.Controllers
 
         [HttpGet("{id}")]
         public async Task<ActionResult> HentDestinasjon(int id)
-        {       
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             Destinasjon destinasjon = await _db.HentDestinasjon(id);
             if(destinasjon == null)
             {
@@ -52,6 +63,11 @@ namespace WebApp_Mappe2.Controllers
         [HttpPost]
         public async Task<ActionResult> LagreDestinasjon(Destinasjon d)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             //TODO Sjekk for om den ikke får lagret
 
             return Ok();
@@ -60,6 +76,11 @@ namespace WebApp_Mappe2.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettDestinasjon(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
 
             //TODO Sjekk for om den ikke får lagret
 
@@ -72,6 +93,11 @@ namespace WebApp_Mappe2.Controllers
         [HttpPut]
         public async Task<ActionResult> EndreDestinasjon(Destinasjon d)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
 
             //TODO Sjekk for om den ikke får lagret
 
