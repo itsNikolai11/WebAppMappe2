@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { destinasjon } from "../destinasjon";
+import { destinasjon } from "../../destinasjon";
 
 @Component({
   selector: 'app-root',
@@ -25,7 +25,7 @@ export class DestinasjonComponent {
         this.laster = "";
       },
       error => alert(error),
-      () => console.log("ferdig get-/destinajon")
+      () => console.log("Get-kall gjennomført.")
     );
   }
 }
