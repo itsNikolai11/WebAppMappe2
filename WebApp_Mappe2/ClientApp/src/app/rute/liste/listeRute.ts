@@ -31,4 +31,16 @@ export class ListeRute {
         error => console.log(error)
       );
   };
+
+  //funker ikke!!
+
+/*slettRute(id: number) {
+  this._http.delete("api/Rute/" + id)
+    .subscribe(retur => {
+      this.hentAlleRuter();
+    },
+      error => console.log(error)
+    );
+};*/
+
 }

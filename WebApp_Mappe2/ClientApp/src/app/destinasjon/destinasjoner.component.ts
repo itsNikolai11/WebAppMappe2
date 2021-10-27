@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { destinasjon } from "../destinasjon";
+
 @Component({
   selector: 'app-root',
   templateUrl: './destinasjoner.component.html'
@@ -11,6 +12,10 @@ export class DestinasjonComponent {
   public laster: string;
 
   constructor(private _http: HttpClient) { }
+
+  ngOnInit() {
+    this.hentAlleDestinasjoner();
+  }
 
   hentAlleDestinasjoner() {
     this.laster = "Vennligst vent";
