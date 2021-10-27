@@ -28,6 +28,8 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+    <None Remove="ClientApp\src\app\rute\lagre\" />
+    <None Remove="ClientApp\src\app\rute\liste\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +41,8 @@
     <Folder Include="ClientApp\src\app\destinasjon\" />
     <Folder Include="ClientApp\src\app\avgang\" />
     <Folder Include="ClientApp\src\app\rute\" />
+    <Folder Include="ClientApp\src\app\rute\lagre\" />
+    <Folder Include="ClientApp\src\app\rute\liste\" />
   </ItemGroup>
 
   <ItemGroup>
