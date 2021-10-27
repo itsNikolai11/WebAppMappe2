@@ -10,7 +10,7 @@ export class AdminpageComponent {
 
   }
   editRuter() {
-
+    this.router.navigate(['/rute']);
   }
   editDestinasjoner() {
     this.router.navigate(['/destinasjon']);
