@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { rute } from "../../rute";
 
 @Component({
-  selector: 'liste-rute',
   templateUrl: "listeRute.html"
 })
 export class ListeRute {
