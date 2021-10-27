@@ -1,10 +1,31 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿<div class="container">
+    <h2>   Ruter: </h2>
+    <div>
+        <div class="col-md-12">
+            <div *ngIf="laster">Laster ruter.....</div>
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>FraDestinasjon</th>
+                        <th>TilDestinasjon</th>
+                        <th>PrisBarn</th>
+                        <th>PrisVoksen</th>
+                        <th></th>
 
-</body>
-</html>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let rute of alleRuter">
+                    <tr>
+                        <td>{{rute.fraDestinasjon}}</td>
+                        <td>{{rute.tilDestinasjon}}</td>
+                        <td>{{rute.prisBarn}}</td>
+                        <td>{{rute.prisVoksen}}</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
