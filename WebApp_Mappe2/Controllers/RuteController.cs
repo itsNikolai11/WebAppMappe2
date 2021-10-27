@@ -71,6 +71,7 @@ namespace WebApp_Mappe2.Controllers
                 return Unauthorized();
             }
             throw new NotImplementedException();
+            //skrive denne for å  kunne slette
         }
      
     }
