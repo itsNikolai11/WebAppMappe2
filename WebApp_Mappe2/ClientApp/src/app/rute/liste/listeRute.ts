@@ -32,7 +32,7 @@ export class ListeRute {
       );
   };
 
-  //funker ikke!!
+ 
 
 /*slettRute(id: number) {
   this._http.delete("api/Rute/" + id)

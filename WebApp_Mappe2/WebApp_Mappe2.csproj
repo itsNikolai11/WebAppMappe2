@@ -30,6 +30,7 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
     <None Remove="ClientApp\src\app\adminpage\adminpage.component.ts" />
     <None Remove="ClientApp\src\app\app-routing.module.ts" />
+    <None Remove="ClientApp\src\app\avgang\avgang.component.ts" />
     <None Remove="ClientApp\src\app\meny\meny.ts" />
     <None Remove="ClientApp\src\app\rute\lagre\" />
     <None Remove="ClientApp\src\app\rute\liste\" />
@@ -41,7 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\avgang\" />
     <Folder Include="ClientApp\src\app\rute\lagre\" />
   </ItemGroup>
 
