@@ -34,13 +34,13 @@ export class ListeRute {
 
  
 
-slettRute(id: number) {
+/*slettRute(id: number) {
   this._http.delete("api/Rute/" + id)
     .subscribe(retur => {
       this.hentAlleRuter();
     },
       error => console.log(error)
     );
-};
+};*/
 
 }
