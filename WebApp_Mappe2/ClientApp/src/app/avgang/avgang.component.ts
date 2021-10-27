@@ -24,9 +24,10 @@ export class AvgangComponent {
       .subscribe(data => {
         this.alleAvganger = data;
         this.laster = "";
+        console.log(data);
       },
         error => alert(error),
         () => console.log("ferdig get-/avganger")
-      );
+    );
   }
 }

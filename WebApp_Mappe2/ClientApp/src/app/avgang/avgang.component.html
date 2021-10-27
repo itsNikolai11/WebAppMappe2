@@ -15,8 +15,8 @@
         </thead>
         <tbody *ngFor="let avgang of alleAvganger">
           <tr>
-            <td>{{avgang.ruteNr.fraDestinasjon}}</td>
-            <td>{{avgang.rute.Nr.tilDestinasjon}}</td>
+            <td>{{avgang.ruteNr}}</td>
+            <td>{{avgang.ruteNr}}</td>
             <td>{{avgang.avgangTid}}</td>
             <td><button class="btn btn-danger" (click)="slettAvgang(avgang.id)">Slett</button></td>
 
