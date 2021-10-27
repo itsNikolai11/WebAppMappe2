@@ -41,6 +41,7 @@ namespace WebApp_Mappe2
             services.AddDistributedMemoryCache();
             services.AddScoped<IBrukerRepository, BrukerRepository>();
             services.AddScoped<IRuteRepository, RuteRepository>();
+            services.AddScoped<IDestinasjonRepository, DestinasjonRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -52,22 +52,31 @@ namespace WebApp_Mappe2.Controllers
         [HttpPost]
         public async Task<ActionResult> LagreDestinasjon(Destinasjon d)
         {
+            //TODO Sjekk for om den ikke får lagret
 
+            return Ok();
             throw new NotImplementedException();
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettDestinasjon(int id)
         {
+
+            //TODO Sjekk for om den ikke får lagret
+
             //Destinasjon destinasjon = await _db.SlettDestinasjon
 
-           // if()
-           // return Ok();
+            return Ok();
 
             throw new NotImplementedException();
         }
         [HttpPut]
         public async Task<ActionResult> EndreDestinasjon(Destinasjon d)
         {
+
+            //TODO Sjekk for om den ikke får lagret
+
+            return Ok();
+
             throw new NotImplementedException();
         }
     }
