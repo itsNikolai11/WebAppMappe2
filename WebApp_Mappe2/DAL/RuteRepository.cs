@@ -20,7 +20,7 @@ namespace WebApp_Mappe2.DAL
             //ID er id til fra-destinasjon
             try
             {
-                List<Rute> ruter = await _db.Ruter.Select(r => new Rute
+                List<Rute> alleRuter = await _db.Ruter.Select(r => new Rute
                 {
                     Id = r.Id,
                     //sjekke at fra-til ikke finnes fra før
@@ -31,7 +31,7 @@ namespace WebApp_Mappe2.DAL
 
                 }).ToListAsync();
 
-                return ruter;
+                return alleRuter;
             }
             catch
             {
