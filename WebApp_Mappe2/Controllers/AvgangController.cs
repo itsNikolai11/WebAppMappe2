@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp_Mappe2.DAL;
 using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.Controllers
@@ -13,15 +15,29 @@ namespace WebApp_Mappe2.Controllers
     {
         private const string _loggetInn = "loggetInn";
 
+        private IAvgangRepository _db;
+
+        private ILogger<AvgangController> _log;
+        public AvgangController(IAvgangRepository db, ILogger<AvgangController> log)
+        {
+            _db = db;
+            _log = log;
+        }
+
         [HttpGet]
-        public async Task<ActionResult> HentAvganger(int RuteId, DateTime Tid)
+        public async Task<ActionResult> HentAvganger(/*int RuteId, DateTime Tid*/)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-
                 return Unauthorized();
             }
-            throw new NotImplementedException();
+            List<Avgang> alleAvganger = await _db.HentAvganger();
+            if (alleAvganger == null)
+            {
+                _log.LogInformation("Fant ingen avganger");
+                return NotFound("Fant ingen avganger");
+            }
+            return Ok(alleAvganger);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult> HentAvgang(int id)
