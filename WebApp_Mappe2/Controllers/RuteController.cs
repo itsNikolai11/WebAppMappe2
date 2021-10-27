@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,11 @@ namespace WebApp_Mappe2.Controllers
         [HttpGet]
         public async Task<ActionResult> HentRuter()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             //ID er id til fra-destinasjon
             List<Rute> alleRuter = await _db.HentRuter();
             return Ok(alleRuter);
@@ -35,6 +41,11 @@ namespace WebApp_Mappe2.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> HentRute(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             //mangler log
             Rute ruten = await _db.HentRute(id);
             return Ok(ruten);
@@ -43,12 +54,22 @@ namespace WebApp_Mappe2.Controllers
         [HttpPost]
         public async Task<ActionResult> LagreRute(Rute r)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             throw new NotImplementedException();
         }
         
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettRute(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             throw new NotImplementedException();
         }
      

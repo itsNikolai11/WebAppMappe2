@@ -16,6 +16,7 @@ namespace WebApp_Mappe2.Controllers
     {
         private readonly IBrukerRepository _db;
         private const string _loggetInn = "loggetInn";
+
         public BrukerController(IBrukerRepository db)
         {
             _db = db;
@@ -23,6 +24,7 @@ namespace WebApp_Mappe2.Controllers
         [HttpPost]
         public async Task<ActionResult> LoggInn(Bruker bruker)
         {
+            
             //TODO legg inn logg
             //TODO legg inn validering
             bool loginOk = await _db.LoggInn(bruker);

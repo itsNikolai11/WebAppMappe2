@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,26 +16,51 @@ namespace WebApp_Mappe2.Controllers
         [HttpGet]
         public async Task<ActionResult> HentAvganger(int RuteId, DateTime Tid)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             throw new NotImplementedException();
         }
         [HttpGet("{id}")]
         public async Task<ActionResult> HentAvgang(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             throw new NotImplementedException();
         }
         [HttpPost]
         public async Task<ActionResult> LagreAvgang(Avgang r)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             throw new NotImplementedException();
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettAvgang(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             throw new NotImplementedException();
         }
         [HttpPut]
         public async Task<ActionResult> EndreAvgang(Avgang r)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+
+                return Unauthorized();
+            }
             throw new NotImplementedException();
         }
     }
