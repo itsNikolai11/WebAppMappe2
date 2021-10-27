@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
+body{
+    background-color: lightgray;
+}
 a {
   color: #0366d6;
 }
@@ -12,5 +15,35 @@ code {
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
-  border-color: #1861ac;
+  margin-top: 10px;
+  border: 0;
+  padding: 5px 15px 5px 15px;
+  border-radius: 6px;
 }
+.btn-danger {
+  color: #fff;
+  background-color: #ff0000;
+  margin-top: 10px;
+  border: 0;
+  padding: 5px 15px 5px 15px;
+  border-radius: 6px;
+}
+.contentTable {
+    width: 100%;
+    text-align: center;
+}
+.mainContainer {
+    margin-top: 5em;
+    background-color: white;
+    padding: 25px;
+    width: 30%;
+    border-radius: 5px;
+    margin-left: 35%;
+}
+  .mainContainer .btn-danger {
+    min-width: 80%;
+  }
+  .mainContainer .btn-primary {
+    min-width: 80%;
+    min-height: 3em;
+  }

@@ -26,7 +26,6 @@ export class LoginComponent{
     this._http.post("api/bruker", bruker, { observe: 'response' }).subscribe(data => {
       console.log(data.status);
       this.router.navigate(['/adminpage']);
-      //TODO redirect til admin-side
     }, error => {
       if (error.status == 401) {
         this.Skjema.value.brukernavn = "";
