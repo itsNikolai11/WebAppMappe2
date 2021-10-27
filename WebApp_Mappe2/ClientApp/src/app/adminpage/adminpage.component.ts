@@ -16,7 +16,7 @@ export class AdminpageComponent {
     this.router.navigate(['/destinasjon']);
   }
   editAvganger() {
-
+    this.router.navigate(['/avgang'])
   }
   loggUt() {
     this.router.navigate(['/']);

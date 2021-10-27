@@ -1,10 +1,31 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+<div class="container">
+  <h2>   Avganger: </h2>
+  <div>
+    <div class="col-md-12">
+      <div *ngIf="laster">Laster avganger.....</div>
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Fra Destinasjon</th>
+            <th>Til Destinasjon</th>
+            <th>Tid</th>
+            <th></th>
 
-</body>
-</html>
+          </tr>
+        </thead>
+        <tbody *ngFor="let avgang of alleAvganger">
+          <tr>
+            <td>{{avgang.ruteNr.fraDestinasjon}}</td>
+            <td>{{avgang.rute.Nr.tilDestinasjon}}</td>
+            <td>{{avgang.avgangTid}}</td>
+            <td><button class="btn btn-danger" (click)="slettAvgang(avgang.id)">Slett</button></td>
+
+
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
