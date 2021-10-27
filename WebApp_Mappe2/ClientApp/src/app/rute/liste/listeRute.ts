@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { rute } from "../../rute";
 
 @Component({
+  selector: 'liste-rute',
   templateUrl: "listeRute.html"
 })
 export class ListeRute {
@@ -22,7 +23,7 @@ export class ListeRute {
   }
 
   hentAlleRuter() {
-    this.http.get<rute[]>("api/rute/")
+    this.http.get<rute[]>("api/Rute/")
       .subscribe(rutene => {
         this.alleRuter = rutene;
         this.laster = false;
@@ -30,3 +31,4 @@ export class ListeRute {
         error => console.log(error)
       );
   };
+}
