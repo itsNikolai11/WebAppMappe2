@@ -21,6 +21,10 @@ namespace WebApp_Mappe2.DAL
             try
             {
                 Brukere funnetBruker = await _db.Brukere.FirstOrDefaultAsync(b => b.Brukernavn == bruker.Brukernavn);
+                if(funnetBruker == null)
+                {
+                    return false;
+                }
                 byte[] hash = LagHash(bruker.Passord, funnetBruker.Salt);
                 bool ok = hash.SequenceEqual(funnetBruker.Passord);
                 if (ok)

@@ -39,9 +39,7 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\avgang\" />
-    <Folder Include="ClientApp\src\app\rute\" />
     <Folder Include="ClientApp\src\app\rute\lagre\" />
-    <Folder Include="ClientApp\src\app\rute\liste\" />
   </ItemGroup>
 
   <ItemGroup>

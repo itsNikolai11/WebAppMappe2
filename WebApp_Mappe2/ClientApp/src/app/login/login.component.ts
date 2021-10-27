@@ -21,11 +21,19 @@ export class LoginComponent{
     const bruker = new Bruker();
     bruker.brukernavn = this.Skjema.value.brukernavn;
     bruker.passord = this.Skjema.value.passord;
-    this._http.post("api/bruker", bruker).subscribe(data => {
-      console.log(data);
-      if (data) {
-        console.log("Suksess!");
+    this._http.post("api/bruker", bruker, { observe: 'response' }).subscribe(data => {
+      console.log(data.status);
+    }, error => {
+      if (error.status == 401) {
+        this.Skjema.value.brukernavn = "";
+        this.Skjema.value.passord = "";
+        this.status = "Ugyldig brukernavn eller passord!"
+      } else {
+        this.Skjema.value.brukernavn = "";
+        this.Skjema.value.passord = "";
+        this.status = "Feil på server! Prøv igjen senere"
       }
-    }, error => console.log(error));
+    });
   };
 }
+
