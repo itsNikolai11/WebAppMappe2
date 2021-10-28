@@ -18,7 +18,7 @@ import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjon
     Meny,
     ListeRute,
     AdminpageComponent,
-    AvgangComponent
+    AvgangComponent,
     DestinasjonComponent
   ],
   imports: [
