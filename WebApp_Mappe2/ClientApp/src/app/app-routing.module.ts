@@ -12,7 +12,6 @@ const appRoots: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'rute', component: ListeRute },
   { path: 'avgang', component: AvgangComponent }
-  { path: 'rute', component: ListeRute },
   { path: 'destinasjonListe', component: DestinasjonComponent }
 
 ]
