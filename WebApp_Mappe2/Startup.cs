@@ -42,6 +42,7 @@ namespace WebApp_Mappe2
             services.AddScoped<IBrukerRepository, BrukerRepository>();
             services.AddScoped<IRuteRepository, RuteRepository>();
             services.AddScoped<IDestinasjonRepository, DestinasjonRepository>();
+            services.AddScoped<IAvgangRepository, AvgangRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

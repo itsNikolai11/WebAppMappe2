@@ -1,12 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-//import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 //import { Modal } from './sletteModal';
+
 import { rute } from "../../rute";
 
 @Component({
-  selector: 'liste-rute',
   templateUrl: "listeRute.html"
 })
 export class ListeRute {
@@ -34,13 +33,14 @@ export class ListeRute {
 
  
 
-/*slettRute(id: number) {
-  this._http.delete("api/Rute/" + id)
-    .subscribe(retur => {
-      this.hentAlleRuter();
-    },
-      error => console.log(error)
-    );
-};*/
+  slettRute(id: number) {
+    this.http.delete("api/Rute/" + id)
+      .subscribe(retur => {
+       this.hentAlleRuter();
+        this.router.navigate(['/rute']);
+      },
+        error => console.log(error)
+      );
+  };
 
 }
