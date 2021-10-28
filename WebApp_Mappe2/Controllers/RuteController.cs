@@ -46,9 +46,13 @@ namespace WebApp_Mappe2.Controllers
 
                 return Unauthorized();
             }
-            //mangler log
-            Rute ruten = await _db.HentRute(id);
-            return Ok(ruten);
+            Rute rute = await _db.HentRute(id);
+            if (rute== null)
+            {
+                _log.LogInformation("Fant ikke rute med id " + id);
+                return NotFound();
+            }
+            return Ok(rute);
         }
 
         [HttpPost]
@@ -59,7 +63,13 @@ namespace WebApp_Mappe2.Controllers
 
                 return Unauthorized();
             }
-            throw new NotImplementedException();
+            bool returOK = await _db.LagreRute(r);
+            if (!returOK)
+            {
+                _log.LogInformation("Ruten kunne ikke lagres!");
+                return BadRequest();
+            }
+            return Ok();
         }
         
         [HttpDelete("{id}")]
@@ -70,8 +80,14 @@ namespace WebApp_Mappe2.Controllers
 
                 return Unauthorized();
             }
-            throw new NotImplementedException();
-            //skrive denne for å  kunne slette
+
+            bool returOK = await _db.SlettRute(id);
+            if (!returOK)
+            {
+                _log.LogInformation("Sletting av ruten ble ikke utført");
+                return NotFound();
+            }
+            return Ok();
         }
      
     }
