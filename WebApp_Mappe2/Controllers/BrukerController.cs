@@ -30,12 +30,16 @@ namespace WebApp_Mappe2.Controllers
             bool loginOk = await _db.LoggInn(bruker);
             if (!loginOk)
             {
-                HttpContext.Session.SetString(_loggetInn, "");
                 return Unauthorized();
             }
             HttpContext.Session.SetString(_loggetInn, "OK");
-            return Ok();
+            return Ok(true);
 
+        }
+        [HttpGet]
+        public void LoggUt()
+        {
+            HttpContext.Session.SetString(_loggetInn, "");
         }
 
     }

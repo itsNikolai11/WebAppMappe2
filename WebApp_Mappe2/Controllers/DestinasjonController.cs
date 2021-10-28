@@ -83,12 +83,7 @@ namespace WebApp_Mappe2.Controllers
             }
 
             //TODO Sjekk for om den ikke får lagret
-
-            //Destinasjon destinasjon = await _db.SlettDestinasjon
-
             return Ok();
-
-            throw new NotImplementedException();
         }
         [HttpPut]
         public async Task<ActionResult> EndreDestinasjon(Destinasjon d)

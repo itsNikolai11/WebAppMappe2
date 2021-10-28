@@ -19,12 +19,14 @@ export class LoginComponent{
     });
 
   }
+  resetSkjema() {
+    this.status = "";
+  }
   login() {
     const bruker = new Bruker();
     bruker.brukernavn = this.Skjema.value.brukernavn;
     bruker.passord = this.Skjema.value.passord;
-    this._http.post("api/bruker", bruker, { observe: 'response' }).subscribe(data => {
-      console.log(data.status);
+    this._http.post("api/bruker", bruker, { observe: 'response' }).subscribe(ok => {
       this.router.navigate(['/adminpage']);
     }, error => {
       if (error.status == 401) {

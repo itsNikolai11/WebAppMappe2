@@ -2,14 +2,20 @@
 
 /* Provide sufficient contrast against white background */
 body{
-    background-color: lightgray;
+    background-image: url(resources/bat3.png);
 }
 a {
   color: #0366d6;
 }
 input {
-    border-radius: 5px;
-    border: 1px solid gray;
+  border-radius: 5px;
+  border: 1px solid gray;
+  min-width: 50%;
+}
+label {
+  margin-bottom: 0;
+  margin-top: 0.5em;
+  min-width: 50%;
 }
 
 code {
@@ -21,7 +27,7 @@ code {
   background-color: #1b6ec2;
   margin-top: 10px;
   border: 0;
-  padding: 5px 15px 5px 15px;
+  padding: 5px;
   border-radius: 6px;
 }
 .btn-danger {
@@ -29,7 +35,7 @@ code {
   background-color: #ff0000;
   margin-top: 10px;
   border: 0;
-  padding: 5px 15px 5px 15px;
+  padding: 5px;
   border-radius: 6px;
 }
 .contentTable {
@@ -41,13 +47,12 @@ code {
     background-color: white;
     padding: 25px;
     width: 30%;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-left: 35%;
 }
   .mainContainer .btn-danger {
-    min-width: 80%;
+    min-width: 50%;
   }
   .mainContainer .btn-primary {
-    min-width: 80%;
-    min-height: 3em;
+    min-width: 50%;
   }

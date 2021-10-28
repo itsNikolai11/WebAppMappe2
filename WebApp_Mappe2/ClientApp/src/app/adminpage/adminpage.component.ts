@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './adminpage.component.html'
 })
 export class AdminpageComponent {
-  constructor(private router: Router) {
+  constructor(private router: Router, private _http: HttpClient) {
 
   }
   editRuter() {
@@ -19,7 +19,8 @@ export class AdminpageComponent {
 
   }
   loggUt() {
-    this.router.navigate(['/']);
-    //TODO set session-attributt
+    //this._http.get<any>('api/bruker/loggUt').subscribe(data => {
+      this.router.navigate(['/']);
+    //});
   }
 }
