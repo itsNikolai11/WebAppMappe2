@@ -76,19 +76,22 @@ namespace WebApp_Mappe2.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettDestinasjon(int id)
         {
+            /*
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
 
                 return Unauthorized();
             }
+            */
 
-            //TODO Sjekk for om den ikke får lagret
-
-            //Destinasjon destinasjon = await _db.SlettDestinasjon
-
+            bool returOK = await _db.SlettDestinasjon(id);
+            if (!returOK)
+            {
+                return NotFound();
+            }
             return Ok();
 
-            throw new NotImplementedException();
+            
         }
         [HttpPut]
         public async Task<ActionResult> EndreDestinasjon(Destinasjon d)
