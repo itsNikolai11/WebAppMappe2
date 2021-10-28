@@ -8,6 +8,7 @@ import { Meny } from './meny/meny';
 import { ListeRute } from './rute/liste/listeRute';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AvgangComponent } from './avgang/avgangListe/avgang.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
     Meny,
     ListeRute,
     AdminpageComponent,
+    AvgangComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
