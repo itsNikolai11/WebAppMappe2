@@ -12,6 +12,12 @@ var core_1 = require("@angular/core");
 var app_component_1 = require("./app.component");
 var http_1 = require("@angular/common/http");
 var login_component_1 = require("./login/login.component");
+var forms_1 = require("@angular/forms");
+var meny_1 = require("./meny/meny");
+var listeRute_1 = require("./rute/liste/listeRute");
+var adminpage_component_1 = require("./adminpage/adminpage.component");
+var app_routing_module_1 = require("./app-routing.module");
+var destinasjoner_component_1 = require("./destinasjon/destinasjonListe/destinasjoner.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -19,11 +25,17 @@ var AppModule = /** @class */ (function () {
         (0, core_1.NgModule)({
             declarations: [
                 app_component_1.AppComponent,
-                login_component_1.LoginComponent
+                login_component_1.LoginComponent,
+                meny_1.Meny,
+                listeRute_1.ListeRute,
+                adminpage_component_1.AdminpageComponent,
+                destinasjoner_component_1.DestinasjonComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-                http_1.HttpClientModule
+                http_1.HttpClientModule,
+                forms_1.ReactiveFormsModule,
+                app_routing_module_1.AppRoutingModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
