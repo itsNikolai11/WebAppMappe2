@@ -33,16 +33,13 @@
     <None Remove="ClientApp\src\app\avgang\avgang.component.ts" />
     <None Remove="ClientApp\src\app\meny\meny.ts" />
     <None Remove="ClientApp\src\app\rute\lagre\" />
+    <None Remove="ClientApp\src\app\rute\lagre\lagreRute.ts" />
     <None Remove="ClientApp\src\app\rute\liste\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\bruker.ts" />
     <None Remove="ClientApp\src\app\login\login.component.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\app\rute\lagre\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -69,7 +66,7 @@
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
       <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
-      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
