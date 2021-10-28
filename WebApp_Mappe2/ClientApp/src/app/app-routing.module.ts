@@ -4,6 +4,7 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
 import { LoginComponent } from './login/login.component';
 import { ListeRute } from './rute/liste/listeRute';
 import { AvgangComponent } from './avgang/avgangListe/avgang.component';
+import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjoner.component'
 
 const appRoots: Routes = [
   { path: 'adminpage', component: AdminpageComponent },
@@ -11,6 +12,8 @@ const appRoots: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'rute', component: ListeRute },
   { path: 'avgang', component: AvgangComponent }
+  { path: 'rute', component: ListeRute },
+  { path: 'destinasjonListe', component: DestinasjonComponent }
 
 ]
 @NgModule({

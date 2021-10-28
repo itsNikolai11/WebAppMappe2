@@ -9,6 +9,7 @@ import { ListeRute } from './rute/liste/listeRute';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AvgangComponent } from './avgang/avgangListe/avgang.component';
+import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjoner.component'
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AvgangComponent } from './avgang/avgangListe/avgang.component';
     ListeRute,
     AdminpageComponent,
     AvgangComponent
+    DestinasjonComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
