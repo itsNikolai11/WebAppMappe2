@@ -18,7 +18,7 @@
           <td>{{destinasjon.sted}}</td>
           <td>{{destinasjon.land}}</td>
           <td><button class="btn-danger" (click)="slettDestinasjon(destinasjon.id)">Slett</button></td>
-          <td><button class="btn-success" [routerLink]="['/endreDest',destinasjon.id]">Endre</button></td>
+          <td><button class="btn-success" [routerLink]="['/destinasjonRediger', destinasjon.id]">Rediger</button></td>
         </tr>
       </tbody>
     </table>
