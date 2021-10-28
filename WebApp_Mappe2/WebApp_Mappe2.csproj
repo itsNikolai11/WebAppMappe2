@@ -27,8 +27,6 @@
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-    <None Remove="ClientApp\src\app\adminpage\adminpage.component.ts" />
-    <None Remove="ClientApp\src\app\app-routing.module.ts" />
     <None Remove="ClientApp\src\app\avgang.ts" />
     <None Remove="ClientApp\src\app\avgang\avgang.component.ts" />
     <None Remove="ClientApp\src\app\destinasjon\destinasjonRediger\destinasjonerRediger.component.ts" />
@@ -40,10 +38,6 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\bruker.ts" />
     <None Remove="ClientApp\src\app\login\login.component.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\app\rute\lagre\" />
   </ItemGroup>
 
   <ItemGroup>

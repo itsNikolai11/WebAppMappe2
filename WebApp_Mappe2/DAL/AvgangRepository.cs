@@ -23,7 +23,9 @@ namespace WebApp_Mappe2.DAL
                 {
                     Id = a.Id,
                     AvgangTid = a.AvgangTid,
-                    RuteNr = a.RuteNr.Id
+                    RuteNr = a.RuteNr.Id, 
+                    FraDestinasjon = a.RuteNr.FraDestinasjon.Sted,
+                    TilDestinasjon = a.RuteNr.TilDestinasjon.Sted
                 }).ToListAsync();
                 return alleAvganger;
             }
