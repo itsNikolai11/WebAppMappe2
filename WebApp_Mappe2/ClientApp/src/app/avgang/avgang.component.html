@@ -6,8 +6,7 @@
       <table class="table table-bordered table-condensed">
         <thead>
           <tr>
-            <th>Fra Destinasjon</th>
-            <th>Til Destinasjon</th>
+            <th>Rute</th>
             <th>Tid</th>
             <th></th>
 
@@ -15,8 +14,7 @@
         </thead>
         <tbody *ngFor="let avgang of alleAvganger">
           <tr>
-            <td>{{avgang.ruteNr}}</td>
-            <td>{{avgang.ruteNr}}</td>
+            <td>{{avgang.fraDestinasjon}} - {{avgang.tilDestinasjon}}</td>
             <td>{{avgang.avgangTid}}</td>
             <td><button class="btn btn-danger" (click)="slettAvgang(avgang.id)">Slett</button></td>
 
