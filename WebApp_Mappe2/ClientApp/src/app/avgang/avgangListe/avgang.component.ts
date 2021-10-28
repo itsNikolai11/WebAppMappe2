@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { avgang } from "../avgang";
+import { avgang } from "../../avgang";
 
 @Component({
   selector: 'app-root',

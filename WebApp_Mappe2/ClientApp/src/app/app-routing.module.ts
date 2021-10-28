@@ -4,7 +4,7 @@ import { AdminpageComponent } from './adminpage/adminpage.component';
 import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjoner.component';
 import { LoginComponent } from './login/login.component';
 import { ListeRute } from './rute/liste/listeRute';
-import { AvgangComponent } from './avgang/avgang.component';
+import { AvgangComponent } from './avgang/avgangListe/avgang.component';
 import { LagreRute } from './rute/lagre/lagreRute'; 
 const appRoots: Routes = [
   { path: 'adminpage', component: AdminpageComponent },
