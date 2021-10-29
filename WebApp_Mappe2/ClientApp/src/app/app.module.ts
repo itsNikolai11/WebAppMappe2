@@ -8,7 +8,8 @@ import { Meny } from './meny/meny';
 import { ListeRute } from './rute/liste/listeRute';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjoner.component'
+import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjoner.component';
+import { DestinasjonLagre } from './destinasjon/destinasjonLagre/destinasjonLagre';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjon
     Meny,
     ListeRute,
     AdminpageComponent,
-    DestinasjonComponent
+    DestinasjonComponent,
+    DestinasjonLagre
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

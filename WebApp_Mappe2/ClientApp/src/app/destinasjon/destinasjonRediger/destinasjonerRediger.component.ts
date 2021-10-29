@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
-  templateUrl: "destinasjonRediger.html"
+  templateUrl: "./destinasjonRediger.html"
 })
 
 export class destinasjonRediger {

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="col-md-4">
+    <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+
+      <div class="form-group">
+        <label>Sted</label>
+        <input class="form-control" formControlName="sted" />
+      </div>
+      
+        <p class="alert alert-warning" [hidden]="skjema.controls.sted.valid || skjema.controls.sted.pristine && !submitted">
+          Sted må fylles inn.
+        </p>
+        
+      <div class="form-group">
+        <label>Land</label>
+        <input class="form-control" formControlName="land" />
+      </div>
+      
+      <p class="alert alert-warning" [hidden]="skjema.controls.land.valid || skjema.controls.land.pristine && !submitted">
+        Land må fylles inn.
+      </p>
+      
+      <div class="form-group">
+        <button type="submit" [disabled]="!skjema.valid" class="btn btn-primary">Lagre</button>
+        
+      </div>
+    </form>
+    <button class="btn btn-primary" routerLink="/destinasjonListe">Tilbake</button>
+</div>
+</div>
