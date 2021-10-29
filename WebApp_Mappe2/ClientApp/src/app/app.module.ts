@@ -9,7 +9,6 @@ import { ListeRute } from './rute/liste/listeRute';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AvgangComponent } from './avgang/avgangListe/avgang.component';
-import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjoner.component'
 import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjoner.component';
 import { DestinasjonLagre } from './destinasjon/destinasjonLagre/destinasjonLagre';
 
@@ -21,7 +20,6 @@ import { DestinasjonLagre } from './destinasjon/destinasjonLagre/destinasjonLagr
     ListeRute,
     AdminpageComponent,
     AvgangComponent,
-    DestinasjonComponent
     DestinasjonComponent,
     DestinasjonLagre
   ],
