@@ -10,6 +10,7 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.Controllers
 {
+    //[ApiController]
     [Route("api/[controller]")]
     public class DestinasjonController : ControllerBase  
     {
@@ -68,10 +69,13 @@ namespace WebApp_Mappe2.Controllers
 
                 return Unauthorized();
             }
-            //TODO Sjekk for om den ikke får lagret
-
+            bool returOK = await _db.LagreDestinasjon(d);
+            if (!returOK)
+            {
+                _log.LogInformation("Destinasjonen kunne ikke lagres!");
+                return BadRequest();
+            }
             return Ok();
-            throw new NotImplementedException();
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettDestinasjon(int id)

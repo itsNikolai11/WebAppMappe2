@@ -56,14 +56,12 @@ namespace WebApp_Mappe2.DAL
         {
             try
             {
-                var nyDestinasjonRad = new Destinasjoner();
+                var nyDestinasjon = new Destinasjoner();
 
-                //sjekke om destinasjonen allerede finnes
+                nyDestinasjon.Sted = d.Sted;
+                nyDestinasjon.Land = d.Land;
 
-                nyDestinasjonRad.Sted = d.Sted;
-                nyDestinasjonRad.Land = d.Land;
-
-                _db.Destinasjoner.Add(nyDestinasjonRad);
+                _db.Destinasjoner.Add(nyDestinasjon);
                 await _db.SaveChangesAsync();
                 return true;
             }
