@@ -17,7 +17,11 @@ var meny_1 = require("./meny/meny");
 var listeRute_1 = require("./rute/liste/listeRute");
 var adminpage_component_1 = require("./adminpage/adminpage.component");
 var app_routing_module_1 = require("./app-routing.module");
+var avgang_component_1 = require("./avgang/avgangListe/avgang.component");
 var destinasjoner_component_1 = require("./destinasjon/destinasjonListe/destinasjoner.component");
+var destinasjonLagre_1 = require("./destinasjon/destinasjonLagre/destinasjonLagre");
+var destinasjonerRediger_component_1 = require("./destinasjon/destinasjonRediger/destinasjonerRediger.component");
+var lagreRute_1 = require("./rute/lagre/lagreRute");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -29,7 +33,11 @@ var AppModule = /** @class */ (function () {
                 meny_1.Meny,
                 listeRute_1.ListeRute,
                 adminpage_component_1.AdminpageComponent,
-                destinasjoner_component_1.DestinasjonComponent
+                avgang_component_1.AvgangComponent,
+                destinasjoner_component_1.DestinasjonComponent,
+                destinasjonLagre_1.DestinasjonLagre,
+                destinasjonerRediger_component_1.DestinasjonRediger,
+                lagreRute_1.LagreRute
             ],
             imports: [
                 platform_browser_1.BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

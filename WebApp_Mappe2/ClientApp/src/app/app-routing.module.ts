@@ -7,6 +7,7 @@ import { AvgangComponent } from './avgang/avgangListe/avgang.component';
 import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjoner.component';
 import { DestinasjonLagre } from './destinasjon/destinasjonLagre/destinasjonLagre';
 import { LagreRute } from './rute/lagre/lagreRute';
+import { DestinasjonRediger } from './destinasjon/destinasjonRediger/destinasjonerRediger.component';
 
 const appRoots: Routes = [
   { path: 'adminpage', component: AdminpageComponent },
@@ -16,7 +17,8 @@ const appRoots: Routes = [
   { path: 'avgang', component: AvgangComponent },
   { path: 'destinasjonListe', component: DestinasjonComponent },
   { path: 'destinasjonLagre', component: DestinasjonLagre },
-  { path: 'lagreRute', component: LagreRute }
+  { path: 'lagreRute', component: LagreRute },
+  { path: 'destinasjonRediger/:id', component: DestinasjonRediger }
   //Husk eks 'rediger/:id' send med f.eks id i rediger, slett kall.
 ]
 @NgModule({
