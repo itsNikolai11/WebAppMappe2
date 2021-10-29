@@ -41,7 +41,9 @@ export class DestinasjonLagre {
       .subscribe(retur => {
         this.router.navigate(['/destinasjonListe']);
       },
-        error => console.log(error)
+        error => console.log(error),
+        () => console.log("Lagring av " + " " + lagretDestinasjon.sted
+          + " " + lagretDestinasjon.land + " gjennomført")
       );
   };
 }
