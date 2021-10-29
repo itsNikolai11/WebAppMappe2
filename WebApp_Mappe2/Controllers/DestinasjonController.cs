@@ -80,13 +80,13 @@ namespace WebApp_Mappe2.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettDestinasjon(int id)
         {
-            
+            /*
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
 
                 return Unauthorized();
             }
-            
+            */
 
             bool returOK = await _db.SlettDestinasjon(id);
             if (!returOK)
@@ -106,13 +106,11 @@ namespace WebApp_Mappe2.Controllers
                 return Unauthorized();
             }
 
-            bool returOK = await _db.EndreDestinasjon(d);
-            if (!returOK)
-            {
-                return NotFound();
-            }
-            
+            //TODO Sjekk for om den ikke får lagret
+
             return Ok();
+
+            throw new NotImplementedException();
         }
     }
 }

@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   templateUrl: "./destinasjonRediger.html"
 })
 
-export class DestinasjonRediger {
+export class destinasjonRediger {
   skjema: FormGroup;
 
   //TODO Validering av input med RegEx
@@ -64,7 +64,7 @@ export class DestinasjonRediger {
     redigertDest.land = this.skjema.value.land;
 
 
-    this.http.put("api/Destinasjon/", redigertDest)
+    this.http.put<destinasjon[]>("api/Destinasjon/", redigertDest)
       .subscribe(retur => {
         this.router.navigate(['/destinasjonListe'])
       },

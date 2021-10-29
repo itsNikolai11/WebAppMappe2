@@ -12,22 +12,13 @@ var router_1 = require("@angular/router");
 var adminpage_component_1 = require("./adminpage/adminpage.component");
 var login_component_1 = require("./login/login.component");
 var listeRute_1 = require("./rute/liste/listeRute");
-var avgang_component_1 = require("./avgang/avgangListe/avgang.component");
 var destinasjoner_component_1 = require("./destinasjon/destinasjonListe/destinasjoner.component");
-var destinasjonLagre_1 = require("./destinasjon/destinasjonLagre/destinasjonLagre");
-var lagreRute_1 = require("./rute/lagre/lagreRute");
-var destinasjonerRediger_component_1 = require("./destinasjon/destinasjonRediger/destinasjonerRediger.component");
 var appRoots = [
     { path: 'adminpage', component: adminpage_component_1.AdminpageComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'rute', component: listeRute_1.ListeRute },
-    { path: 'avgang', component: avgang_component_1.AvgangComponent },
-    { path: 'destinasjonListe', component: destinasjoner_component_1.DestinasjonComponent },
-    { path: 'destinasjonLagre', component: destinasjonLagre_1.DestinasjonLagre },
-    { path: 'lagreRute', component: lagreRute_1.LagreRute },
-    { path: 'destinasjonRediger/:id', component: destinasjonerRediger_component_1.DestinasjonRediger }
-    //Husk eks 'rediger/:id' send med f.eks id i rediger, slett kall.
+    { path: 'destinasjonListe', component: destinasjoner_component_1.DestinasjonComponent }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

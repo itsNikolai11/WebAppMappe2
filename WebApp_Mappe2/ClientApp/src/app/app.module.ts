@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AvgangComponent } from './avgang/avgangListe/avgang.component';
 import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjoner.component';
 import { DestinasjonLagre } from './destinasjon/destinasjonLagre/destinasjonLagre';
-import { DestinasjonRediger } from './destinasjon/destinasjonRediger/destinasjonerRediger.component';
 import { LagreRute } from './rute/lagre/lagreRute';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { LagreRute } from './rute/lagre/lagreRute';
     AvgangComponent,
     DestinasjonComponent,
     DestinasjonLagre,
-    DestinasjonRediger,
     LagreRute
   ],
   imports: [
