@@ -13,8 +13,12 @@ export class LagreRute {
 
     validering = {
         id: [""],
-        fraDestinasjon: [""],
-        tilDestinasjon: [""],
+        fraDestinasjon: [
+          null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
+        ],
+        tilDestinasjon: [
+          null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
+        ],
         prisBarn: [
             null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}")])
         ],
@@ -23,7 +27,7 @@ export class LagreRute {
         ]
         
     }
-        // "[0-9a-zA-ZøæåØÆÅ\\-. ]{2,30}"
+        
 
     constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
         this.skjema = fb.group(this.validering);
@@ -40,7 +44,7 @@ export class LagreRute {
         lagretRute.prisBarn = this.skjema.value.prisBarn;
         lagretRute.prisVoksen = this.skjema.value.prisVoksen;
 
-        this.http.post("api/Rute", lagretRute)
+        this.http.post("api/Rute/", lagretRute)
             .subscribe(retur => {
                 this.router.navigate(['/rute']);
             },

@@ -107,8 +107,27 @@ namespace WebApp_Mappe2.DAL
 
         public async Task<bool> EndreRute(Rute r)
         {
-            
-            throw new NotImplementedException();
+
+            try
+            {
+                var endreRute = await _db.Ruter.FindAsync(r.Id);
+                var sjekkFraDest = _db.Destinasjoner.Find(r.FraDestinasjon);
+                var sjekkTilDest = _db.Destinasjoner.Find(r.TilDestinasjon);
+                endreRute.FraDestinasjon = sjekkFraDest;
+                endreRute.TilDestinasjon = sjekkTilDest;
+                endreRute.PrisBarn = r.PrisBarn;
+                endreRute.PrisVoksen = r.PrisVoksen;
+
+                
+                await _db.SaveChangesAsync();
+              
+
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
 
     }
