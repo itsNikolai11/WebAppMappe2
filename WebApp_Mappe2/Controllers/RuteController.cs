@@ -64,14 +64,14 @@ namespace WebApp_Mappe2.Controllers
 
                 return Unauthorized();
             }
-            /*bool returOK = await _db.LagreRute(r);
+            bool returOK = await _db.LagreRute(r);
             if (!returOK)
             {
                 _log.LogInformation("Ruten kunne ikke lagres!");
                 return BadRequest();
             }
-            return Ok();*/
             return Ok();
+            
         }
         
         [HttpDelete("{id}")]

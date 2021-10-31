@@ -44,7 +44,7 @@ namespace WebApp_Mappe2.DAL
             try
             {
                 Ruter enRute = await _db.Ruter.FindAsync(id);
-                var hentetRute = new Rute()
+                Rute hentetRute = new Rute()
                 {
                     Id = enRute.Id,
                     FraDestinasjon = enRute.FraDestinasjon.Sted,
@@ -69,10 +69,15 @@ namespace WebApp_Mappe2.DAL
             {
                 var nyRute = new Ruter();
 
-                var sjekkFraDest = _db.Destinasjoner.Find(r.FraDestinasjon);
-                var sjekkTilDest = _db.Destinasjoner.Find(r.TilDestinasjon);
-                nyRute.FraDestinasjon = sjekkFraDest;
-                nyRute.TilDestinasjon = sjekkTilDest;
+                
+
+                var frasted = new Destinasjoner();
+                var tilsted = new Destinasjoner();
+                frasted.Sted = r.FraDestinasjon;
+                tilsted.Sted = r.TilDestinasjon;
+                nyRute.FraDestinasjon = frasted;
+                nyRute.TilDestinasjon = tilsted;
+
                 nyRute.PrisBarn = r.PrisBarn;
                 nyRute.PrisVoksen = r.PrisVoksen;
 
@@ -80,15 +85,16 @@ namespace WebApp_Mappe2.DAL
                 await _db.SaveChangesAsync();
                 return true;
 
-               
+
             }
             catch
             {
                 return false;
             }
+
         }
-     
-       
+
+
         public async Task<bool> SlettRute(int id)
         {
             try
