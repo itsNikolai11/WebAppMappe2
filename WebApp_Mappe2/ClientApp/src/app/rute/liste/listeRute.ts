@@ -9,7 +9,7 @@ import { rute } from "../../rute";
   templateUrl: "listeRute.html"
 })
 export class ListeRute {
-  alleRuter: Array<rute>;
+  alleRuter: Array<rute>; 
   laster: boolean;
   //kundeTilSletting: string;
   //slettingOK: boolean;

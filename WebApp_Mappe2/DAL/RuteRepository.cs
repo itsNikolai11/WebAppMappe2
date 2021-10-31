@@ -69,15 +69,22 @@ namespace WebApp_Mappe2.DAL
             {
                 var nyRute = new Ruter();
 
-                
 
-                var frasted = new Destinasjoner();
+                /*var frasted = new Destinasjoner();
                 var tilsted = new Destinasjoner();
                 frasted.Sted = r.FraDestinasjon;
-                tilsted.Sted = r.TilDestinasjon;
+                frasted.Sted = r.TilDestinasjon;
                 nyRute.FraDestinasjon = frasted;
-                nyRute.TilDestinasjon = tilsted;
+                nyRute.TilDestinasjon = frasted;*/
 
+                var sjekkFraDest =  await _db.Destinasjoner.FindAsync(r.FraDestinasjon);
+                var sjekkTilDest = await _db.Destinasjoner.FindAsync(r.TilDestinasjon);
+                
+                nyRute.FraDestinasjon = sjekkFraDest;
+                nyRute.TilDestinasjon = sjekkTilDest;
+
+                //nyRute.FraDestinasjon.Sted = r.FraDestinasjon;
+                //nyRute.TilDestinasjon.Sted = r.TilDestinasjon;
                 nyRute.PrisBarn = r.PrisBarn;
                 nyRute.PrisVoksen = r.PrisVoksen;
 

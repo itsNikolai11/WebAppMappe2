@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { rute } from "../../rute";
+import { destinasjon } from "../../destinasjon";
 
 @Component({
     templateUrl: "lagreRute.html"
@@ -10,6 +11,7 @@ import { rute } from "../../rute";
 
 export class LagreRute {
     skjema: FormGroup;
+    destinasjoner: Array<destinasjon>;
 
     validering = {
         id: [""],
@@ -32,6 +34,19 @@ export class LagreRute {
     constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
         this.skjema = fb.group(this.validering);
     }
+
+    ngOnInit() {
+        this.hentDestinasjoner();
+    }
+    hentDestinasjoner() {
+        this.http.get<destinasjon[]>("api/destinasjon/")
+            .subscribe(dest => {
+                this.destinasjoner = dest;
+                
+            },
+                error => console.log(error)
+            );
+    };
 
     vedSubmit() {
         this.lagreRute();

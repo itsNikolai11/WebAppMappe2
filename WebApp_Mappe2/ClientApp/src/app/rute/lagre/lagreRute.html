@@ -1,20 +1,34 @@
 ﻿<div class="container">
     <div class="col-md-4">
         <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label>FraDestinasjon</label>
                 <input class="form-control" formControlName="fraDestinasjon" />
                 <p class="alert alert-warning" [hidden]="skjema.controls.fraDestinasjon.valid || (skjema.controls.fraDestinasjon.pristine && !submitted)">
                     FraDestinasjon må fylles inn
                 </p>
+            </div>-->
+            <div class="form-group">
+                <label>FraDestinasjon</label>
+                <select class="form-control" formControlName="fraDestinasjon" required id="fraDestinasjon">
+                    <option *ngFor="let dest of destinasjoner" value={{dest.sted}}>{{dest.sted}}</option>
+                   
+                </select>
             </div>
             <div class="form-group">
+                <label>TilDestinasjon</label>
+                <select class="form-control" formControlName="tilDestinasjon" required id="tilDestinasjon">
+                    <option *ngFor="let dest of destinasjoner" value={{dest.sted}}>{{dest.sted}}</option>
+                   
+                </select>
+            </div>
+            <!--<div class="form-group">
                 <label>TilDestinasjon</label>
                 <input class="form-control" formControlName="tilDestinasjon" />
                 <p class="alert alert-warning" [hidden]="skjema.controls.tilDestinasjon.valid || (skjema.controls.tilDestinasjon.pristine && !submitted)">
                     TilDestinasjon må fylles inn
                 </p>
-            </div>
+            </div>-->
             <div class="form-group">
                 <label>PrisBarn</label>
                 <input class="form-control" formControlName="prisBarn" />
