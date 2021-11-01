@@ -37,6 +37,7 @@ export class LagreRute {
 
     ngOnInit() {
         this.hentDestinasjoner();
+        
     }
     hentDestinasjoner() {
         this.http.get<destinasjon[]>("api/destinasjon/")

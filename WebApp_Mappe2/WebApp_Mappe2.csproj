@@ -34,6 +34,7 @@
     <None Remove="ClientApp\src\app\rute\lagre\" />
     <None Remove="ClientApp\src\app\rute\liste\" />
     <None Remove="ClientApp\src\app\rute\endre\" />
+    <None Remove="Rute.db" />
   </ItemGroup>
 
   <ItemGroup>
