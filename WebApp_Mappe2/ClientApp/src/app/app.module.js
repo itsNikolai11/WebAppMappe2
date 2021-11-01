@@ -38,15 +38,18 @@ var AppModule = /** @class */ (function () {
                 destinasjonLagre_1.DestinasjonLagre,
                 destinasjonerRediger_component_1.DestinasjonRediger,
                 lagreRute_1.LagreRute
+                //Modal
             ],
             imports: [
                 platform_browser_1.BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
                 http_1.HttpClientModule,
                 forms_1.ReactiveFormsModule,
-                app_routing_module_1.AppRoutingModule
+                app_routing_module_1.AppRoutingModule,
+                //NgbModule
             ],
             providers: [],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [app_component_1.AppComponent],
+            //entryComponents: [Modal]
         })
     ], AppModule);
     return AppModule;
