@@ -7,10 +7,10 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
-  templateUrl: "./destinasjonRediger.html"
+  templateUrl: "./destinasjonerRediger.component.html"
 })
 
-export class destinasjonRediger {
+export class DestinasjonRediger {
   skjema: FormGroup;
 
   //TODO Validering av input med RegEx
