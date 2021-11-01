@@ -13,5 +13,6 @@ namespace WebApp_Mappe2.DAL
         Task<bool> LagreDestinasjon(Destinasjon d);
         Task<bool> SlettDestinasjon(int id);
         Task<bool> EndreDestinasjon(Destinasjon d);
+        
     }
 }

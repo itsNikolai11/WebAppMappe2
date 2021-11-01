@@ -10,8 +10,9 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.Controllers
 {
-    [ApiController]
+   
     [Route("api/[controller]")]
+    [ApiController]
     public class RuteController : ControllerBase
     {
         private const string _loggetInn = "loggetInn";
@@ -57,7 +58,7 @@ namespace WebApp_Mappe2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> LagreRute(Rute r)
+        public async Task<ActionResult> LagreRute([FromBody] Rute r)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
@@ -70,6 +71,7 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Ruten kunne ikke lagres!");
                 return BadRequest();
             }
+           
             return Ok();
             
         }

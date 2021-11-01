@@ -59,7 +59,7 @@ export class LagreRute {
         lagretRute.prisBarn = this.skjema.value.prisBarn;
         lagretRute.prisVoksen = this.skjema.value.prisVoksen;
 
-        this.http.post("api/Rute/", lagretRute)
+        this.http.post("api/rute/", lagretRute)
             .subscribe(retur => {
                 this.router.navigate(['/rute']);
             },

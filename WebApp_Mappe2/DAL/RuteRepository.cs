@@ -67,24 +67,18 @@ namespace WebApp_Mappe2.DAL
         {
             try
             {
+                //sjekke om rute finnes fra før
+                //sjekke om man velger f.eks. oslo-oslo
                 var nyRute = new Ruter();
-
-
-                /*var frasted = new Destinasjoner();
-                var tilsted = new Destinasjoner();
-                frasted.Sted = r.FraDestinasjon;
-                frasted.Sted = r.TilDestinasjon;
-                nyRute.FraDestinasjon = frasted;
-                nyRute.TilDestinasjon = frasted;*/
 
                 var sjekkFraDest =  await _db.Destinasjoner.FindAsync(r.FraDestinasjon);
                 var sjekkTilDest = await _db.Destinasjoner.FindAsync(r.TilDestinasjon);
-                
+
+
                 nyRute.FraDestinasjon = sjekkFraDest;
                 nyRute.TilDestinasjon = sjekkTilDest;
 
-                //nyRute.FraDestinasjon.Sted = r.FraDestinasjon;
-                //nyRute.TilDestinasjon.Sted = r.TilDestinasjon;
+                
                 nyRute.PrisBarn = r.PrisBarn;
                 nyRute.PrisVoksen = r.PrisVoksen;
 
@@ -102,11 +96,12 @@ namespace WebApp_Mappe2.DAL
         }
 
 
-        public async Task<bool> SlettRute(int id)
+       public async Task<bool> SlettRute(int id)
         {
             try
             {
-                Ruter enRute = await _db.Ruter.FindAsync(id);
+                var enRute =  _db.Ruter.Find(id);
+               
                 _db.Ruter.Remove(enRute);
                 await _db.SaveChangesAsync();
                 return true;
