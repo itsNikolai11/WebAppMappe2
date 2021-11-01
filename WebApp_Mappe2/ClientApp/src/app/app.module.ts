@@ -12,6 +12,8 @@ import { AvgangComponent } from './avgang/avgangListe/avgang.component';
 import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjoner.component';
 import { DestinasjonLagre } from './destinasjon/destinasjonLagre/destinasjonLagre';
 import { LagreRute } from './rute/lagre/lagreRute';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Modal } from './rute/liste/slettModal';
 
 @NgModule({
   declarations: [
@@ -23,15 +25,18 @@ import { LagreRute } from './rute/lagre/lagreRute';
     AvgangComponent,
     DestinasjonComponent,
     DestinasjonLagre,
-    LagreRute
+    LagreRute,
+    Modal
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [Modal]
 })
 export class AppModule { }
