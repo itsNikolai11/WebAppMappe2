@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-//import { Modal } from './sletteModal';
+import { Modal } from './slettModal';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { rute } from "../../rute";
 
@@ -11,10 +12,10 @@ import { rute } from "../../rute";
 export class ListeRute {
   alleRuter: Array<rute>; 
   laster: boolean;
-  //kundeTilSletting: string;
+  ruteTilSletting: string;
   //slettingOK: boolean;
 
-  constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private router: Router, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.laster = true;
@@ -33,14 +34,36 @@ export class ListeRute {
 
  
 
-  slettRute(id: number) {
-    this.http.delete("api/rute/" + id)
-      .subscribe(retur => {
-       this.hentAlleRuter();
-       this.router.navigate(['/rute']);
-      },
-        error => console.log(error)
-      );
-  };
+    slettRute(id: number) {
+
+        
+        this.http.get<rute>("api/rute/" + id)
+            .subscribe(rute => {
+                this.ruteTilSletting = rute.fraDestinasjon + " - " + rute.tilDestinasjon;
+                this.modalSlett(id);
+            },
+                error => console.log(error)
+            );
+    }
+
+    modalSlett(id: number) {
+        const modalRef = this.modalService.open(Modal);
+
+        modalRef.componentInstance.rute = this.ruteTilSletting;
+
+        modalRef.result.then(retur => {
+            console.log('Lukket med:' + retur);
+            if (retur == "Slett") {
+
+                this.http.delete("api/rute/" + id)
+                    .subscribe(retur => {
+                        this.hentAlleRuter();
+                    },
+                        error => console.log(error)
+                    );
+            }
+            this.router.navigate(['/rute']);
+        });
+    } 
 
 }
