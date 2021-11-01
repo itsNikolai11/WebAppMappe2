@@ -33,6 +33,8 @@
     <None Remove="ClientApp\src\app\meny\meny.ts" />
     <None Remove="ClientApp\src\app\rute\lagre\" />
     <None Remove="ClientApp\src\app\rute\liste\" />
+    <None Remove="ClientApp\src\app\rute\endre\" />
+    <None Remove="Rute.db" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +46,9 @@
     <TypeScriptCompile Include="ClientApp\src\app\login\login.component.ts" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\rute\endre\" />
+  </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

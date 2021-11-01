@@ -44,7 +44,7 @@ namespace WebApp_Mappe2.DAL
             try
             {
                 Ruter enRute = await _db.Ruter.FindAsync(id);
-                var hentetRute = new Rute()
+                Rute hentetRute = new Rute()
                 {
                     Id = enRute.Id,
                     FraDestinasjon = enRute.FraDestinasjon.Sted,
@@ -67,12 +67,18 @@ namespace WebApp_Mappe2.DAL
         {
             try
             {
+                //sjekke om rute finnes fra før
+                //sjekke om man velger f.eks. oslo-oslo
                 var nyRute = new Ruter();
 
-                var sjekkFraDest = _db.Destinasjoner.Find(r.FraDestinasjon);
-                var sjekkTilDest = _db.Destinasjoner.Find(r.TilDestinasjon);
+                var sjekkFraDest =  await _db.Destinasjoner.FindAsync(r.FraDestinasjon);
+                var sjekkTilDest = await _db.Destinasjoner.FindAsync(r.TilDestinasjon);
+
+
                 nyRute.FraDestinasjon = sjekkFraDest;
                 nyRute.TilDestinasjon = sjekkTilDest;
+
+                
                 nyRute.PrisBarn = r.PrisBarn;
                 nyRute.PrisVoksen = r.PrisVoksen;
 
@@ -80,20 +86,22 @@ namespace WebApp_Mappe2.DAL
                 await _db.SaveChangesAsync();
                 return true;
 
-               
+
             }
             catch
             {
                 return false;
             }
+
         }
-     
-       
-        public async Task<bool> SlettRute(int id)
+
+
+       public async Task<bool> SlettRute(int id)
         {
             try
             {
-                Ruter enRute = await _db.Ruter.FindAsync(id);
+                var enRute =  _db.Ruter.Find(id);
+               
                 _db.Ruter.Remove(enRute);
                 await _db.SaveChangesAsync();
                 return true;
@@ -107,8 +115,27 @@ namespace WebApp_Mappe2.DAL
 
         public async Task<bool> EndreRute(Rute r)
         {
-            
-            throw new NotImplementedException();
+
+            try
+            {
+                var endreRute = await _db.Ruter.FindAsync(r.Id);
+                var sjekkFraDest = _db.Destinasjoner.Find(r.FraDestinasjon);
+                var sjekkTilDest = _db.Destinasjoner.Find(r.TilDestinasjon);
+                endreRute.FraDestinasjon = sjekkFraDest;
+                endreRute.TilDestinasjon = sjekkTilDest;
+                endreRute.PrisBarn = r.PrisBarn;
+                endreRute.PrisVoksen = r.PrisVoksen;
+
+                
+                await _db.SaveChangesAsync();
+              
+
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
 
     }

@@ -9,7 +9,7 @@ import { rute } from "../../rute";
   templateUrl: "listeRute.html"
 })
 export class ListeRute {
-  alleRuter: Array<rute>;
+  alleRuter: Array<rute>; 
   laster: boolean;
   //kundeTilSletting: string;
   //slettingOK: boolean;
@@ -22,7 +22,7 @@ export class ListeRute {
   }
 
   hentAlleRuter() {
-    this.http.get<rute[]>("api/Rute/")
+    this.http.get<rute[]>("api/rute/")
       .subscribe(rutene => {
         this.alleRuter = rutene;
         this.laster = false;
@@ -34,10 +34,10 @@ export class ListeRute {
  
 
   slettRute(id: number) {
-    this.http.delete("api/Rute/" + id)
+    this.http.delete("api/rute/" + id)
       .subscribe(retur => {
        this.hentAlleRuter();
-        this.router.navigate(['/rute']);
+       this.router.navigate(['/rute']);
       },
         error => console.log(error)
       );
