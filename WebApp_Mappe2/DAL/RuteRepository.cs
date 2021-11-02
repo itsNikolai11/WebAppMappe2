@@ -63,7 +63,7 @@ namespace WebApp_Mappe2.DAL
     
  
         
-        public async Task<bool> LagreRute(Rute r)
+        public async Task<bool> LagreRute(Rute innRute)
         {
             try
             {
@@ -71,16 +71,15 @@ namespace WebApp_Mappe2.DAL
                 //sjekke om man velger f.eks. oslo-oslo
                 var nyRute = new Ruter();
 
-                var sjekkFraDest =  await _db.Destinasjoner.FindAsync(r.FraDestinasjon);
-                var sjekkTilDest = await _db.Destinasjoner.FindAsync(r.TilDestinasjon);
-
+                var sjekkFraDest =  await _db.Destinasjoner.FirstOrDefaultAsync(r => r.Sted == innRute.FraDestinasjon);
+                var sjekkTilDest = await _db.Destinasjoner.FirstOrDefaultAsync(r => r.Sted == innRute.TilDestinasjon);
 
                 nyRute.FraDestinasjon = sjekkFraDest;
                 nyRute.TilDestinasjon = sjekkTilDest;
 
                 
-                nyRute.PrisBarn = r.PrisBarn;
-                nyRute.PrisVoksen = r.PrisVoksen;
+                nyRute.PrisBarn = innRute.PrisBarn;
+                nyRute.PrisVoksen = innRute.PrisVoksen;
 
                 _db.Ruter.Add(nyRute);
                 await _db.SaveChangesAsync();
@@ -113,18 +112,19 @@ namespace WebApp_Mappe2.DAL
         }
 
 
-        public async Task<bool> EndreRute(Rute r)
+        public async Task<bool> EndreRute(Rute endreRute)
         {
 
             try
             {
-                var endreRute = await _db.Ruter.FindAsync(r.Id);
-                var sjekkFraDest = _db.Destinasjoner.Find(r.FraDestinasjon);
-                var sjekkTilDest = _db.Destinasjoner.Find(r.TilDestinasjon);
-                endreRute.FraDestinasjon = sjekkFraDest;
-                endreRute.TilDestinasjon = sjekkTilDest;
-                endreRute.PrisBarn = r.PrisBarn;
-                endreRute.PrisVoksen = r.PrisVoksen;
+                var endre = await _db.Ruter.FindAsync(endreRute.Id);
+                var sjekkFraDest = await _db.Destinasjoner.FirstOrDefaultAsync(r => r.Sted == endreRute.FraDestinasjon);
+                var sjekkTilDest = await _db.Destinasjoner.FirstOrDefaultAsync(r => r.Sted == endreRute.TilDestinasjon);
+                
+                endre.FraDestinasjon = sjekkFraDest;
+                endre.TilDestinasjon = sjekkTilDest;
+                endre.PrisBarn = endreRute.PrisBarn;
+                endre.PrisVoksen = endreRute.PrisVoksen;
 
                 
                 await _db.SaveChangesAsync();

@@ -29,6 +29,8 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
+                _log.LogInformation("Login ikke gyldig!");
+
                 return Unauthorized();
             }
             List<Avgang> alleAvganger = await _db.HentAvganger();
@@ -44,7 +46,7 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
             throw new NotImplementedException();
@@ -54,7 +56,7 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
             bool returOK = await _db.LagreAvgang(r);
@@ -70,7 +72,7 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
             throw new NotImplementedException();
@@ -80,7 +82,7 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
             throw new NotImplementedException();

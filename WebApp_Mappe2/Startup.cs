@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using WebApp_Mappe2.DAL;
 
@@ -43,15 +44,18 @@ namespace WebApp_Mappe2
             services.AddScoped<IRuteRepository, RuteRepository>();
             services.AddScoped<IDestinasjonRepository, DestinasjonRepository>();
             services.AddScoped<IAvgangRepository, AvgangRepository>();
+            services.AddScoped<IOrdreRepository, OrdreRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 DBInit.InitDB(app);
                 app.UseDeveloperExceptionPage();
+                loggerFactory.AddFile("Logs/AdminLog.txt");
             }
             else
             {

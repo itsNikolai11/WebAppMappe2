@@ -17,6 +17,8 @@ var destinasjoner_component_1 = require("./destinasjon/destinasjonListe/destinas
 var destinasjonLagre_1 = require("./destinasjon/destinasjonLagre/destinasjonLagre");
 var destinasjonerRediger_component_1 = require("./destinasjon/destinasjonRediger/destinasjonerRediger.component");
 var lagreRute_1 = require("./rute/lagre/lagreRute");
+var lagreOrdre_1 = require("./ordre/lagre/lagreOrdre");
+var visOrdre_1 = require("./ordre/liste/visOrdre");
 var avgangLagre_1 = require("./avgang/avgangLagre/avgangLagre");
 var appRoots = [
     { path: 'adminpage', component: adminpage_component_1.AdminpageComponent },
@@ -27,6 +29,8 @@ var appRoots = [
     { path: 'destinasjonListe', component: destinasjoner_component_1.DestinasjonComponent },
     { path: 'destinasjonLagre', component: destinasjonLagre_1.DestinasjonLagre },
     { path: 'destinasjonRediger/:id', component: destinasjonerRediger_component_1.DestinasjonRediger },
+    { path: 'nyOrdre', component: lagreOrdre_1.LagreOrdre },
+    { path: 'visOrdre', component: visOrdre_1.VisOrdre },
     { path: 'lagreRute', component: lagreRute_1.LagreRute },
     { path: 'avgangLagre', component: avgangLagre_1.AvgangLagre }
     //Husk eks 'rediger/:id' send med f.eks id i rediger.

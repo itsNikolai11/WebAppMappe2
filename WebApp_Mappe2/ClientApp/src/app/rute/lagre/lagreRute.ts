@@ -16,10 +16,10 @@ export class LagreRute {
     validering = {
         id: [""],
         fraDestinasjon: [
-          null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
+          ""
         ],
         tilDestinasjon: [
-          null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
+          ""
         ],
         prisBarn: [
             null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}")])
@@ -60,11 +60,19 @@ export class LagreRute {
         lagretRute.prisBarn = this.skjema.value.prisBarn;
         lagretRute.prisVoksen = this.skjema.value.prisVoksen;
 
-        this.http.post("api/rute/", lagretRute)
-            .subscribe(retur => {
-                this.router.navigate(['/rute']);
-            },
-                error => console.log(error)
-            );
+        //sjekke om til og fra destinasjon er like
+        //sjekke om rute allerede eksisterer!!
+
+        if (lagretRute.fraDestinasjon != lagretRute.tilDestinasjon) {
+            this.http.post("api/rute/", lagretRute)
+                .subscribe(retur => {
+                    this.router.navigate(['/rute']);
+                },
+                    error => console.log(error)
+                );
+        }
+        return "test"; //må få ut tekst under skjemaet
+
+        
     };
 }

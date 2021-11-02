@@ -13,6 +13,10 @@ import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjon
 import { DestinasjonLagre } from './destinasjon/destinasjonLagre/destinasjonLagre';
 import { DestinasjonRediger } from './destinasjon/destinasjonRediger/destinasjonerRediger.component';
 import { LagreRute } from './rute/lagre/lagreRute';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Modal } from './rute/liste/slettModal';
+import { LagreOrdre } from './ordre/lagre/lagreOrdre';
+import { VisOrdre } from './ordre/liste/visOrdre';
 
 import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -30,6 +34,9 @@ import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
     DestinasjonLagre,
     DestinasjonRediger,
     LagreRute,
+    Modal,
+    LagreOrdre,
+    VisOrdre,
     AvgangLagre
     //Modal
   ],
@@ -38,10 +45,10 @@ import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    //NgbModule
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  //entryComponents: [Modal]
+  entryComponents: [Modal]
 })
 export class AppModule { }

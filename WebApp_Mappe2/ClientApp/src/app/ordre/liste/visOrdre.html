@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="col-md-12">
+    <table class="table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Rute</th>
+          <th>Avgang</th>
+          <th>Antall Barn</th>
+          <th>Antall voksne</th>
+          <th>Referanse Person</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let ordre of alleOrdre">
+        <tr>
+          <td>{{ordre.id}}</td>
+          <td>{{ordre.ruteNr}}</td>
+          <td>{{ordre.avgangNr}}</td>
+          <td>{{ordre.antallBarn}}</td>
+          <td>{{ordre.antallVoksen}}</td>
+          <td>{{ordre.refPers}}</td>
+          <td><button class="btn-danger" (click)="slettOrdre(ordre.id)">Slett</button></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <button class="btn btn-primary" routerLink="/nyOrdre">Ny Ordre</button>
+  </div>
+</div>

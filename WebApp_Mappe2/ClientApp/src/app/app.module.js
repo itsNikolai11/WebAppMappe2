@@ -22,6 +22,10 @@ var destinasjoner_component_1 = require("./destinasjon/destinasjonListe/destinas
 var destinasjonLagre_1 = require("./destinasjon/destinasjonLagre/destinasjonLagre");
 var destinasjonerRediger_component_1 = require("./destinasjon/destinasjonRediger/destinasjonerRediger.component");
 var lagreRute_1 = require("./rute/lagre/lagreRute");
+var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
+var slettModal_1 = require("./rute/liste/slettModal");
+var lagreOrdre_1 = require("./ordre/lagre/lagreOrdre");
+var visOrdre_1 = require("./ordre/liste/visOrdre");
 var avgangLagre_1 = require("./avgang/avgangLagre/avgangLagre");
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { Modal } from './rute/liste/slettModal';
@@ -41,6 +45,9 @@ var AppModule = /** @class */ (function () {
                 destinasjonLagre_1.DestinasjonLagre,
                 destinasjonerRediger_component_1.DestinasjonRediger,
                 lagreRute_1.LagreRute,
+                slettModal_1.Modal,
+                lagreOrdre_1.LagreOrdre,
+                visOrdre_1.VisOrdre,
                 avgangLagre_1.AvgangLagre
                 //Modal
             ],
@@ -49,11 +56,11 @@ var AppModule = /** @class */ (function () {
                 http_1.HttpClientModule,
                 forms_1.ReactiveFormsModule,
                 app_routing_module_1.AppRoutingModule,
-                //NgbModule
+                ng_bootstrap_1.NgbModule
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent],
-            //entryComponents: [Modal]
+            entryComponents: [slettModal_1.Modal]
         })
     ], AppModule);
     return AppModule;
