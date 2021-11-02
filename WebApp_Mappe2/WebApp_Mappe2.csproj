@@ -31,7 +31,9 @@
     <None Remove="ClientApp\src\app\avgang\avgang.component.ts" />
     <None Remove="ClientApp\src\app\destinasjon\destinasjonRediger\destinasjonerRediger.component.ts" />
     <None Remove="ClientApp\src\app\meny\meny.ts" />
+    <None Remove="ClientApp\src\app\ordre.ts" />
     <None Remove="ClientApp\src\app\ordre\lagre\lagreOrdre.ts" />
+    <None Remove="ClientApp\src\app\ordre\liste\visOrdre.ts" />
     <None Remove="ClientApp\src\app\ordre\ordre.component.ts" />
     <None Remove="ClientApp\src\app\rute\lagre\" />
     <None Remove="ClientApp\src\app\rute\liste\" />
@@ -49,7 +51,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\ordre\liste\" />
     <Folder Include="ClientApp\src\app\rute\endre\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

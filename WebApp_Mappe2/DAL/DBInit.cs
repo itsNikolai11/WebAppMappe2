@@ -25,6 +25,7 @@ namespace WebApp_Mappe2.DAL
                 var avgang1 = new Avganger { RuteNr = rute1, AvgangTid = new DateTime(2021, 10, 10, 19, 00, 00) };
                 var avgang2 = new Avganger { RuteNr = rute2, AvgangTid = new DateTime(2021, 11, 10, 18, 30, 00) };
                 var avgang3 = new Avganger { RuteNr = rute2, AvgangTid = new DateTime(2021, 11, 12, 18, 30, 00) };
+                var ordre1 = new Ordrer { RuteNr = rute1, AvgangNr = avgang1, AntallBarn = 1, AntallVoksen = 1, RefPers = "test" };
                 context.Destinasjoner.Add(dest1);
                 context.Destinasjoner.Add(dest2);
                 context.Ruter.Add(rute1);
@@ -32,6 +33,7 @@ namespace WebApp_Mappe2.DAL
                 context.Avganger.Add(avgang1);
                 context.Avganger.Add(avgang2);
                 context.Avganger.Add(avgang3);
+                context.Ordrer.Add(ordre1);
 
                 var bruker = new Brukere();
                 bruker.Brukernavn = "admin";

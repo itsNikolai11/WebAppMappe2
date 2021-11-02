@@ -58,7 +58,6 @@ namespace WebApp_Mappe2.DAL
             public DbSet<Avganger> Avganger { get; set; }
             public DbSet<Destinasjoner> Destinasjoner { get; set; }
             public DbSet<Ordrer> Ordrer { get; set; }
-
             public DbSet<Brukere> Brukere { get; set; }
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
