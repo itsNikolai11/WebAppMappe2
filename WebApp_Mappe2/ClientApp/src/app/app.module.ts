@@ -18,10 +18,9 @@ import { Modal } from './rute/liste/slettModal';
 import { LagreOrdre } from './ordre/lagre/lagreOrdre';
 import { VisOrdre } from './ordre/liste/visOrdre';
 import { EndreRute } from './rute/endre/endreRute';
-
 import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import { Modal } from './rute/liste/slettModal';
+import { AvgangRediger } from './avgang/avgangRediger/avgangRediger';
+
 
 @NgModule({
   declarations: [
@@ -39,8 +38,8 @@ import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
     LagreOrdre,
     VisOrdre,
     AvgangLagre,
-    EndreRute
-    //Modal
+    EndreRute,
+    AvgangRediger
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

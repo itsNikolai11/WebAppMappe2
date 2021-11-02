@@ -24,15 +24,10 @@
           <tr>
 
             <td>{{avgang.ruteNr}}</td>
-            <!--<div *ngFor="let rute of ruter">
-              <div *^ngIf="avgang.ruteNr === rute.id">
-                <td>{{rute.fraDestinasjon}}</td>
-              </div>
-            </div>-->
             <td></td>
             <td>{{avgang.avgangTid}}</td>
             <td><button class="btn btn-danger" (click)="slettAvgang(avgang.id)">Slett</button></td>
-            <td><button class="btn btn-success" [routerLink]="['/endre',avgang.id]">Endre</button></td>
+            <td><button class="btn btn-success" [routerLink]="['/avgangRediger', avgang.id]">Endre</button></td>
 
           </tr>
 
