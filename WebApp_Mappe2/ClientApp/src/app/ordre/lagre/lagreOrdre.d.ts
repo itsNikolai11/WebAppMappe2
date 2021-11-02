@@ -15,6 +15,7 @@ export declare class LagreOrdre {
         avgang: import("@angular/forms").ValidatorFn[];
         antallBarn: import("@angular/forms").ValidatorFn[];
         antallVoksne: import("@angular/forms").ValidatorFn[];
+        refPers: import("@angular/forms").ValidatorFn[];
     };
     constructor(http: HttpClient, fb: FormBuilder, router: Router);
     ngOnInit(): void;

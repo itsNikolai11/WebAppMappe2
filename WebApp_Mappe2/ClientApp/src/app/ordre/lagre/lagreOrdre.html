@@ -6,7 +6,11 @@
         <select class="form-group" formControlName="rute" required id="ruteNr" (change)="hentAvganger($event.target.value)">
           <option *ngFor="let rute of ruter" value={{rute.id}}>{{rute.fraDestinasjon}} til {{rute.tilDestinasjon}}</option>
         </select>
+
       </div>
+      <p class="alert alert-warning" [hidden]="skjema.controls.rute.valid || skjema.controls.rute.pristine && !submitted">
+        Du må velge en rute
+      </p>
       <div class="form-group">
         <label>Avgang</label>
         <select class="form-group" formControlName="avgang" required id="avgangNr">
@@ -15,15 +19,23 @@
       </div>
       <div class="form-group">
         <label>Antall barn</label>
-        <input type="number" formControlName="antallBarn"/>
+        <input type="number" formControlName="antallBarn" />
       </div>
+      <p class="alert alert-warning" [hidden]="skjema.controls.antallBarn.valid || skjema.controls.antallBarn.pristine && !submitted">
+        Du må skrive inn en verdi!
+      </p>
       <div class="form-group">
         <label>Antall voksne</label>
-           <input type="number" formControlName="antallVoksne"/>
+        <input type="number" formControlName="antallVoksne" />
+      </div>
+      <div class="form-group">
+        <label>Referanse-person</label>
+        <input type="text" formControlName="refPers" />
       </div>
       <div class="form-group">
         <button type="submit" class="btn-primary">Lagre</button>
       </div>
+
     </form>
   </div>
 </div>

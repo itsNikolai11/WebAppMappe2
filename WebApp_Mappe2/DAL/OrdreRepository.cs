@@ -95,7 +95,19 @@ namespace WebApp_Mappe2.DAL
 
         public async Task<bool> slettBillett(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+            var enBillett = _db.Ordrer.Find(id);
+            _db.Ordrer.Remove(enBillett);
+            await _db.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+            
         }
     }
 }

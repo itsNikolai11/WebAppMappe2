@@ -9,6 +9,8 @@
           <th>Antall Barn</th>
           <th>Antall voksne</th>
           <th>Referanse Person</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody *ngFor="let ordre of alleOrdre">
@@ -18,6 +20,8 @@
           <td>{{ordre.avgangNr}}</td>
           <td>{{ordre.antallBarn}}</td>
           <td>{{ordre.antallVoksen}}</td>
+          <td>{{ordre.refPers}}</td>
+          <td><button class="btn-danger" (click)="slettOrdre(ordre.id)">Slett</button></td>
         </tr>
 
       </tbody>
