@@ -24,8 +24,8 @@ namespace WebApp_Mappe2.DAL
                     Id = a.Id,
                     AvgangTid = a.AvgangTid,
                     RuteNr = a.RuteNr.Id, 
-                    FraDestinasjon = a.RuteNr.FraDestinasjon.Sted,
-                    TilDestinasjon = a.RuteNr.TilDestinasjon.Sted
+                    //FraDestinasjon = a.RuteNr.FraDestinasjon.Sted,
+                    //TilDestinasjon = a.RuteNr.TilDestinasjon.Sted
                 }).ToListAsync();
                 return alleAvganger;
             }
@@ -51,9 +51,10 @@ namespace WebApp_Mappe2.DAL
             //throw new NotImplementedException();
             try
             {
+                var sjekkId = await _db.Ruter.FindAsync(r.Id);
                 var nyAvgangRad = new Avganger();
                 nyAvgangRad.AvgangTid = r.AvgangTid;
-                nyAvgangRad.RuteNr.Id = r.RuteNr;
+                nyAvgangRad.RuteNr = sjekkId;
 
                 _db.Avganger.Add(nyAvgangRad);
                 await _db.SaveChangesAsync();

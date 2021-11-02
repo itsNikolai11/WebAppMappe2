@@ -4,6 +4,8 @@ exports.avgang = void 0;
 var avgang = /** @class */ (function () {
     function avgang() {
         this.avgangTid = new Date();
+        //fraDestinasjon: string;
+        //tilDestinasjon: string;
     }
     return avgang;
 }());

@@ -22,6 +22,7 @@
           <td>{{ordre.antallVoksen}}</td>
           <td>{{ordre.refPers}}</td>
           <td><button class="btn-danger" (click)="slettOrdre(ordre.id)">Slett</button></td>
+          <td><button class="btn-success" [routerLink]="['/endreOrdre', ordre.id]">Rediger</button></td>
         </tr>
 
       </tbody>

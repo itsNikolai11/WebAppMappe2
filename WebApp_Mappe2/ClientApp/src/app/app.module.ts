@@ -17,6 +17,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Modal } from './rute/liste/slettModal';
 import { LagreOrdre } from './ordre/lagre/lagreOrdre';
 import { VisOrdre } from './ordre/liste/visOrdre';
+import { EndreRute } from './rute/endre/endreRute';
+import { EndreOrdre } from './ordre/endre/endreOrdre';
+
+import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
+import { AvgangRediger } from './avgang/avgangRediger/avgangRediger';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +38,13 @@ import { VisOrdre } from './ordre/liste/visOrdre';
     LagreRute,
     Modal,
     LagreOrdre,
-    VisOrdre
+    VisOrdre,
+    AvgangLagre,
+    EndreRute,
+    //Modal
+    EndreOrdre,
+    AvgangLagre,
+    AvgangRediger
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

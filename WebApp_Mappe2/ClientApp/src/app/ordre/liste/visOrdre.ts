@@ -19,9 +19,13 @@ export class VisOrdre {
       this.alleOrdre = data;
     })
   }
+  filtrerOrdre(ruteId: number) {
+
+  }
   slettOrdre(id: number) {
     this.http.delete('api/ordre/' + id).subscribe(data => {
-      this.router.navigate(["/visOrdre"]);
+      this.lastOrdre();
+      this.router.navigate(['/visOrdre']);
     }, error => {
       alert(error);
     });

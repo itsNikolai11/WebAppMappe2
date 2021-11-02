@@ -27,10 +27,12 @@ var VisOrdre = /** @class */ (function () {
             _this.alleOrdre = data;
         });
     };
+    VisOrdre.prototype.filtrerOrdre = function (ruteId) {
+    };
     VisOrdre.prototype.slettOrdre = function (id) {
         var _this = this;
         this.http.delete('api/ordre/' + id).subscribe(function (data) {
-            _this.router.navigate(["/visOrdre"]);
+            _this.router.navigate(['/visOrdre']);
         }, function (error) {
             alert(error);
         });

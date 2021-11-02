@@ -59,7 +59,13 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
-            throw new NotImplementedException();
+            bool returOK = await _db.LagreAvgang(r);
+            if (!returOK)
+            {
+                _log.LogInformation("Destinasjonen kunne ikke lagres!");
+                return BadRequest();
+            }
+            return Ok();
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettAvgang(int id)
@@ -69,7 +75,14 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
-            throw new NotImplementedException();
+            bool returOK = await _db.SlettAvgang(id);
+            if (!returOK)
+            {
+                _log.LogInformation("Sletting av Avgang ble ikke utført");
+                return NotFound();
+            }
+            _log.LogInformation("Sletting av Avgang ble gjennomført suksessfullt");
+            return Ok();
         }
         [HttpPut]
         public async Task<ActionResult> EndreAvgang(Avgang r)
@@ -79,7 +92,19 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                bool returOK = await _db.EndreAvgang(r);
+                if (!returOK)
+                {
+                    _log.LogInformation("Endringen kunne ikke utføres");
+                    return NotFound();
+                }
+                _log.LogInformation("Endring av Avgang ble gjennomført suksessfullt");
+                return Ok();
+            }
+            _log.LogInformation("Feil i inputvalidering ved endring av Avgang");
+            return BadRequest();
         }
     }
 }

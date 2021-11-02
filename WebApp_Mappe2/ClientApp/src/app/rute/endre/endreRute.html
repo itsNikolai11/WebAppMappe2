@@ -1,0 +1,41 @@
+﻿<div class="container">
+    <div class="col-md-4">
+        <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+
+            <div class="form-group">
+                <label>FraDestinasjon</label>
+                <select class="form-control" formControlName="fraDestinasjon" required id="fraDestinasjon">
+                    <option *ngFor="let dest of destinasjoner" value={{dest.sted}}>{{dest.sted}}</option>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label>TilDestinasjon</label>
+                <select class="form-control" formControlName="tilDestinasjon" required id="tilDestinasjon">
+                    <option *ngFor="let dest of destinasjoner" value={{dest.sted}}>{{dest.sted}}</option>
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>PrisBarn</label>
+                <input class="form-control" formControlName="prisBarn" />
+                <p class="alert alert-warning" [hidden]="skjema.controls.prisBarn.valid || (skjema.controls.prisBarn.pristine && !submitted)">
+                    PrisBarn må fylles inn
+                </p>
+            </div>
+            <div class="form-group">
+                <label>PrisVoksen</label>
+                <input class="form-control" formControlName="prisVoksen" />
+                <p class="alert alert-warning" [hidden]="skjema.controls.prisVoksen.valid || (skjema.controls.prisVoksen.pristine && !submitted)">
+                    PrisVoksen må fylles inn
+                </p>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" [disabled]="!skjema.valid" class="btn btn-primary">Endre</button>
+                <button class="btn btn-default" routerLink="/rute">Tilbake</button>
+            </div>
+        </form>
+    </div>
+</div>

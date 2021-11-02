@@ -37,7 +37,7 @@ export class ListeRute {
     slettRute(id: number) {
 
         
-        this.http.get<rute>("api/rute/" + id)
+        this.http.get<rute>('api/rute/' + id)
             .subscribe(rute => {
                 this.ruteTilSletting = rute.fraDestinasjon + " - " + rute.tilDestinasjon;
                 this.modalSlett(id);
@@ -55,7 +55,7 @@ export class ListeRute {
             console.log('Lukket med:' + retur);
             if (retur == "Slett") {
 
-                this.http.delete("api/rute/" + id)
+                this.http.delete('api/rute/' + id)
                     .subscribe(retur => {
                         this.hentAlleRuter();
                     },
