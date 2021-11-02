@@ -11,6 +11,7 @@ import { LagreRute } from './rute/lagre/lagreRute';
 import { LagreOrdre } from './ordre/lagre/lagreOrdre';
 import { VisOrdre } from './ordre/liste/visOrdre';
 import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
+import { EndreRute } from './rute/endre/endreRute';
 
 
 const appRoots: Routes = [
@@ -25,7 +26,8 @@ const appRoots: Routes = [
   { path: 'lagreRute', component: LagreRute },
   { path: 'nyOrdre', component: LagreOrdre },
   { path: 'visOrdre', component: VisOrdre },
-  { path: 'avgangLagre', component: AvgangLagre }
+  { path: 'avgangLagre', component: AvgangLagre },
+  { path: 'endreRute/:id', component: EndreRute }
   //Husk eks 'rediger/:id' send med f.eks id i rediger.
 ]
 @NgModule({

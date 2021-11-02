@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Modal } from './rute/liste/slettModal';
 import { LagreOrdre } from './ordre/lagre/lagreOrdre';
 import { VisOrdre } from './ordre/liste/visOrdre';
+import { EndreRute } from './rute/endre/endreRute';
 
 import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -37,7 +38,8 @@ import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
     Modal,
     LagreOrdre,
     VisOrdre,
-    AvgangLagre
+    AvgangLagre,
+    EndreRute
     //Modal
   ],
   imports: [
