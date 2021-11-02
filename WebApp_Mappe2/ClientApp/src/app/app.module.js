@@ -22,6 +22,9 @@ var destinasjoner_component_1 = require("./destinasjon/destinasjonListe/destinas
 var destinasjonLagre_1 = require("./destinasjon/destinasjonLagre/destinasjonLagre");
 var destinasjonerRediger_component_1 = require("./destinasjon/destinasjonRediger/destinasjonerRediger.component");
 var lagreRute_1 = require("./rute/lagre/lagreRute");
+var avgangLagre_1 = require("./avgang/avgangLagre/avgangLagre");
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { Modal } from './rute/liste/slettModal';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -37,7 +40,8 @@ var AppModule = /** @class */ (function () {
                 destinasjoner_component_1.DestinasjonComponent,
                 destinasjonLagre_1.DestinasjonLagre,
                 destinasjonerRediger_component_1.DestinasjonRediger,
-                lagreRute_1.LagreRute
+                lagreRute_1.LagreRute,
+                avgangLagre_1.AvgangLagre
                 //Modal
             ],
             imports: [

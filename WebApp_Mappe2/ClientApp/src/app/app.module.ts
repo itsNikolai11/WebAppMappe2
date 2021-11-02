@@ -13,6 +13,8 @@ import { DestinasjonComponent } from './destinasjon/destinasjonListe/destinasjon
 import { DestinasjonLagre } from './destinasjon/destinasjonLagre/destinasjonLagre';
 import { DestinasjonRediger } from './destinasjon/destinasjonRediger/destinasjonerRediger.component';
 import { LagreRute } from './rute/lagre/lagreRute';
+
+import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { Modal } from './rute/liste/slettModal';
 
@@ -27,7 +29,8 @@ import { LagreRute } from './rute/lagre/lagreRute';
     DestinasjonComponent,
     DestinasjonLagre,
     DestinasjonRediger,
-    LagreRute
+    LagreRute,
+    AvgangLagre
     //Modal
   ],
   imports: [

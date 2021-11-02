@@ -57,7 +57,13 @@ namespace WebApp_Mappe2.Controllers
 
                 return Unauthorized();
             }
-            throw new NotImplementedException();
+            bool returOK = await _db.LagreAvgang(r);
+            if (!returOK)
+            {
+                _log.LogInformation("Destinasjonen kunne ikke lagres!");
+                return BadRequest();
+            }
+            return Ok();
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettAvgang(int id)
