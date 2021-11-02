@@ -38,7 +38,8 @@ import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
     Modal,
     LagreOrdre,
     VisOrdre,
-AvgangLagre
+    EndreOrdre,
+    AvgangLagre
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

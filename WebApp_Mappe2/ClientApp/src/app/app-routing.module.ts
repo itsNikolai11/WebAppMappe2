@@ -26,7 +26,7 @@ const appRoots: Routes = [
   { path: 'lagreRute', component: LagreRute },
   { path: 'nyOrdre', component: LagreOrdre },
   { path: 'visOrdre', component: VisOrdre },
-  { path: 'endreOrdre/:id', component: EndreOrdre }
+  { path: 'endreOrdre/:id', component: EndreOrdre },
   { path: 'visOrdre', component: VisOrdre },
   { path: 'avgangLagre', component: AvgangLagre }
   //Husk eks 'rediger/:id' send med f.eks id i rediger.
