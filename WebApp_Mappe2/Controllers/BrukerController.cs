@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,25 +16,29 @@ namespace WebApp_Mappe2.Controllers
     public class BrukerController : ControllerBase
     {
         private readonly IBrukerRepository _db;
+
         private const string _loggetInn = "loggetInn";
 
-        public BrukerController(IBrukerRepository db)
+        private ILogger<BrukerController> _log;
+        public BrukerController(IBrukerRepository db, ILogger<BrukerController> log)
         {
             _db = db;
+            _log = log;
         }
         [HttpPost]
         public async Task<ActionResult> LoggInn(Bruker bruker)
         {
             
-            //TODO legg inn logg
             //TODO legg inn validering
             bool loginOk = await _db.LoggInn(bruker);
             if (!loginOk)
             {
                 HttpContext.Session.SetString(_loggetInn, "");
+                _log.LogInformation("Innlogging av bruker ikke godkjent!");
                 return Unauthorized();
             }
             HttpContext.Session.SetString(_loggetInn, "OK");
+            _log.LogInformation("Innlogging av bruker godkjent");
             return Ok();
 
         }

@@ -34,6 +34,7 @@ export class DestinasjonComponent {
     this.http.delete("api/Destinasjon/" + id)
       .subscribe(retur => {
         this.hentAlleDestinasjoner();
+        this.router.navigate(['/destinasjonListe']);
       },
         error => console.log(error),
           () => console.log("Sletting av id:  " + id + " gjennomført.")
