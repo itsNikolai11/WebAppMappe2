@@ -18,6 +18,8 @@ import { Modal } from './rute/liste/slettModal';
 import { LagreOrdre } from './ordre/lagre/lagreOrdre';
 import { VisOrdre } from './ordre/liste/visOrdre';
 import { EndreRute } from './rute/endre/endreRute';
+import { EndreOrdre } from './ordre/endre/endreOrdre';
+
 import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
 import { AvgangRediger } from './avgang/avgangRediger/avgangRediger';
 
@@ -39,6 +41,9 @@ import { AvgangRediger } from './avgang/avgangRediger/avgangRediger';
     VisOrdre,
     AvgangLagre,
     EndreRute,
+    //Modal
+    EndreOrdre,
+    AvgangLagre,
     AvgangRediger
   ],
   imports: [

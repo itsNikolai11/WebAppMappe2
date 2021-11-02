@@ -29,6 +29,7 @@ var visOrdre_1 = require("./ordre/liste/visOrdre");
 var avgangLagre_1 = require("./avgang/avgangLagre/avgangLagre");
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { Modal } from './rute/liste/slettModal';
+var endreOrdre_1 = require("./ordre/endre/endreOrdre");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -50,6 +51,8 @@ var AppModule = /** @class */ (function () {
                 visOrdre_1.VisOrdre,
                 avgangLagre_1.AvgangLagre
                 //Modal
+                visOrdre_1.VisOrdre,
+                endreOrdre_1.EndreOrdre
             ],
             imports: [
                 platform_browser_1.BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

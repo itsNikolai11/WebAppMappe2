@@ -20,6 +20,7 @@ var lagreRute_1 = require("./rute/lagre/lagreRute");
 var lagreOrdre_1 = require("./ordre/lagre/lagreOrdre");
 var visOrdre_1 = require("./ordre/liste/visOrdre");
 var avgangLagre_1 = require("./avgang/avgangLagre/avgangLagre");
+var endreOrdre_1 = require("./ordre/endre/endreOrdre");
 var appRoots = [
     { path: 'adminpage', component: adminpage_component_1.AdminpageComponent },
     { path: 'login', component: login_component_1.LoginComponent },
@@ -33,6 +34,9 @@ var appRoots = [
     { path: 'visOrdre', component: visOrdre_1.VisOrdre },
     { path: 'lagreRute', component: lagreRute_1.LagreRute },
     { path: 'avgangLagre', component: avgangLagre_1.AvgangLagre }
+    { path: 'nyOrdre', component: lagreOrdre_1.LagreOrdre },
+    { path: 'visOrdre', component: visOrdre_1.VisOrdre },
+    { path: 'endreOrdre/:id', component: endreOrdre_1.EndreOrdre }
     //Husk eks 'rediger/:id' send med f.eks id i rediger.
 ];
 var AppRoutingModule = /** @class */ (function () {

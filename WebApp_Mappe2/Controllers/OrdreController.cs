@@ -38,6 +38,22 @@ namespace WebApp_Mappe2.Controllers
             _log.LogInformation("Henting av alle Ordre ble gjennomført suksessfullt");
             return Ok(billetter);
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult> HentEnOrdre(int id)
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                _log.LogInformation("Login ikke gyldig!");
+                return Unauthorized();
+            }
+            Billett billett = await _db.hentBillett(id);
+            if(billett != null)
+            {
+                return Ok(billett);
+            }
+            return NotFound();
+
+        }
 
         [HttpPost]
         public async Task<ActionResult> LagreOrdre(Billett b)
@@ -71,6 +87,21 @@ namespace WebApp_Mappe2.Controllers
                 return Ok();
             }
             return NotFound();
+        }
+        [HttpPut]
+        public async Task<ActionResult> EndreOrdre(Billett b)
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                _log.LogInformation("Login ikke gyldig!");
+                return Unauthorized();
+            }
+            bool endringOK = await _db.endreBillett(b);
+            if (endringOK)
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
     }
 }

@@ -59,12 +59,25 @@ namespace WebApp_Mappe2.DAL
 
         public async Task<Billett> hentBillett(int id)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                var dbBillett = await _db.Ordrer.FindAsync(id);
+                Billett billett = new Billett
+                {
+                    AntallBarn = dbBillett.AntallBarn,
+                    AntallVoksen = dbBillett.AntallVoksen,
+                    Id = dbBillett.Id,
+                    AvgangNr = dbBillett.AvgangNr.Id,
+                    RuteNr = dbBillett.RuteNr.Id,
+                    RefPers = dbBillett.RefPers
+                };
+                return billett;
+            }
+            catch
+            {
+                return null;
+            }
 
-        public async Task<List<Billett>> hentBilletter(int ruteId)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<bool> lagreBillett(Billett b)

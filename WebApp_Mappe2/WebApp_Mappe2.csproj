@@ -35,6 +35,7 @@
     <None Remove="ClientApp\src\app\destinasjon\destinasjonRediger\destinasjonerRediger.component.ts" />
     <None Remove="ClientApp\src\app\meny\meny.ts" />
     <None Remove="ClientApp\src\app\ordre.ts" />
+    <None Remove="ClientApp\src\app\ordre\endre\endreOrdre.ts" />
     <None Remove="ClientApp\src\app\ordre\lagre\lagreOrdre.ts" />
     <None Remove="ClientApp\src\app\ordre\liste\visOrdre.ts" />
     <None Remove="ClientApp\src\app\ordre\ordre.component.ts" />

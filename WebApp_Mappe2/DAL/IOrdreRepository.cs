@@ -9,7 +9,6 @@ namespace WebApp_Mappe2.DAL
     public interface IOrdreRepository
     {
         Task<List<Billett>> hentAlle();
-        Task<List<Billett>> hentBilletter(int ruteId);
         Task<Billett> hentBillett(int id);
         Task<bool> slettBillett(int id);
         Task<bool> endreBillett(Billett b);
