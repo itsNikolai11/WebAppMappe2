@@ -31,6 +31,7 @@
     <None Remove="ClientApp\src\app\avgang.ts" />
     <None Remove="ClientApp\src\app\avgang\avgang.component.ts" />
     <None Remove="ClientApp\src\app\avgang\avgangLagre\avgangLagre.ts" />
+    <None Remove="ClientApp\src\app\avgang\avgangRediger\avgangRediger.ts" />
     <None Remove="ClientApp\src\app\destinasjon\destinasjonRediger\destinasjonerRediger.component.ts" />
     <None Remove="ClientApp\src\app\meny\meny.ts" />
     <None Remove="ClientApp\src\app\ordre.ts" />

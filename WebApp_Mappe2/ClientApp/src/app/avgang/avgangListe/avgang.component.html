@@ -12,6 +12,7 @@
         <thead>
 
           <tr>
+            <th>Rute Id</th>
             <th>Rute</th>
             <th>Tid</th>
             <th>Slett</th>
@@ -21,12 +22,17 @@
         </thead>
         <tbody *ngFor="let avgang of alleAvganger">
           <tr>
-            <!--<td>{{avgang.fraDestinasjon}} - {{avgang.tilDestinasjon}}</td>-->
+
             <td>{{avgang.ruteNr}}</td>
+            <!--<div *ngFor="let rute of ruter">
+              <div *^ngIf="avgang.ruteNr === rute.id">
+                <td>{{rute.fraDestinasjon}}</td>
+              </div>
+            </div>-->
+            <td></td>
             <td>{{avgang.avgangTid}}</td>
             <td><button class="btn btn-danger" (click)="slettAvgang(avgang.id)">Slett</button></td>
             <td><button class="btn btn-success" [routerLink]="['/endre',avgang.id]">Endre</button></td>
-
 
           </tr>
 
@@ -50,8 +56,5 @@
       </div>
 
     </div>
-    <!--<div class="col" style="padding:3%">
-      <h2>   Rediger: </h2>
-    </div>-->
   </div>
 </div>
