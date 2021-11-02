@@ -19,6 +19,10 @@ import { LagreOrdre } from './ordre/lagre/lagreOrdre';
 import { VisOrdre } from './ordre/liste/visOrdre';
 import { EndreOrdre } from './ordre/endre/endreOrdre';
 
+import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { Modal } from './rute/liste/slettModal';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +38,7 @@ import { EndreOrdre } from './ordre/endre/endreOrdre';
     Modal,
     LagreOrdre,
     VisOrdre,
-    EndreOrdre
+AvgangLagre
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

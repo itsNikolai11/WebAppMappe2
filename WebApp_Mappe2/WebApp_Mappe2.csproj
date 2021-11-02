@@ -30,6 +30,8 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
     <None Remove="ClientApp\src\app\avgang.ts" />
     <None Remove="ClientApp\src\app\avgang\avgang.component.ts" />
+    <None Remove="ClientApp\src\app\avgang\avgangLagre\avgangLagre.ts" />
+    <None Remove="ClientApp\src\app\avgang\avgangRediger\avgangRediger.ts" />
     <None Remove="ClientApp\src\app\destinasjon\destinasjonRediger\destinasjonerRediger.component.ts" />
     <None Remove="ClientApp\src\app\meny\meny.ts" />
     <None Remove="ClientApp\src\app\ordre.ts" />
@@ -37,6 +39,7 @@
     <None Remove="ClientApp\src\app\ordre\lagre\lagreOrdre.ts" />
     <None Remove="ClientApp\src\app\ordre\liste\visOrdre.ts" />
     <None Remove="ClientApp\src\app\ordre\ordre.component.ts" />
+    <None Remove="ClientApp\src\app\rute\endre\endreRute.ts" />
     <None Remove="ClientApp\src\app\rute\lagre\" />
     <None Remove="ClientApp\src\app\rute\liste\" />
     <None Remove="ClientApp\src\app\rute\endre\" />
@@ -50,10 +53,6 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\login\login.component.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\app\rute\endre\" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->

@@ -1,41 +1,60 @@
 <div class="container">
   <div class="row">
-      <div class="col" style="padding:3%">
-        <h2>   Avganger: </h2>
+    <div class="col" style="padding:3%">
+      <h2>   Avganger: </h2>
       <div *ngIf="laster">Laster avganger.....</div>
 
-       <div>
-          <!--<p> For Rute: </p>-->
-          <!--<select [(ngModel)]="rute">
-          <option *ngFor="let avgang of alleAvganger" [value]="avgang.id" [selected]="rute.id == avgang.id">{{avgang.fraDestinasjon}} - {{avgang.tilDestinasjon}}</option>
-          </select>-->
-       </div>
+      <!--<label>For Rute: </label>
+      <select class="form-comtrol" formControlName="rute" required id="rute" [ngModel]="selectedDevice" (ngModelChange)="onChange($event)">
+        <option *ngFor="let rute of ruter" value={{rute.id}}>{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</option>
+      </select>-->
+      <table class="table table-bordered table-condensed">
+        <thead>
 
-        <table class="table table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>Rute</th>
-              <th>Tid</th>
-              <th>Slett</th>
-              <th>Endre</th>
+          <tr>
+            <th>Rute Id</th>
+            <th>Rute</th>
+            <th>Tid</th>
+            <th>Slett</th>
+            <th>Endre</th>
 
-            </tr>
-          </thead>
-          <tbody *ngFor="let avgang of alleAvganger">
-            <tr>
-              <td>{{avgang.fraDestinasjon}} - {{avgang.tilDestinasjon}}</td>
-              <td>{{avgang.avgangTid}}</td>
-              <td><button class="btn btn-danger" (click)="slettAvgang(avgang.id)">Slett</button></td>
-              <td><button class="btn btn-success" [routerLink]="['/endre',avgang.id]">Endre</button></td>
+          </tr>
+        </thead>
+        <tbody *ngFor="let avgang of alleAvganger">
+          <tr>
 
+            <td>{{avgang.ruteNr}}</td>
+            <!--<div *ngFor="let rute of ruter">
+              <div *^ngIf="avgang.ruteNr === rute.id">
+                <td>{{rute.fraDestinasjon}}</td>
+              </div>
+            </div>-->
+            <td></td>
+            <td>{{avgang.avgangTid}}</td>
+            <td><button class="btn btn-danger" (click)="slettAvgang(avgang.id)">Slett</button></td>
+            <td><button class="btn btn-success" [routerLink]="['/endre',avgang.id]">Endre</button></td>
 
-            </tr>
+          </tr>
 
-          </tbody>
-        </table>
+        </tbody>
+
+        <!--<tbody *ngFor="let avgang of alleAvganger">
+          <tr *ngFor="let rute of ruter">
+            <div ng-if="{{avgang.ruteNr}}==={{rute.id}}"></div>
+            <td>{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</td>
+            <td>{{avgang.avgangTid}}</td>
+
+          </tr>
+        </tbody>-->
+      
+      </table>
+      <div>
+        <button class="btn btn-success" [routerLink]="['/avgangLagre']">Lagre ny avgang</button>
       </div>
-      <div class="col" style="padding:3%">
-        <h2>   Rediger: </h2>
+      <div>
+        <button class="btn btn-primary" [routerLink]="['/adminpage']">Tilbake</button>
       </div>
+
+    </div>
   </div>
 </div>

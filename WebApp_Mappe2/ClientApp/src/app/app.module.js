@@ -26,6 +26,9 @@ var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var slettModal_1 = require("./rute/liste/slettModal");
 var lagreOrdre_1 = require("./ordre/lagre/lagreOrdre");
 var visOrdre_1 = require("./ordre/liste/visOrdre");
+var avgangLagre_1 = require("./avgang/avgangLagre/avgangLagre");
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { Modal } from './rute/liste/slettModal';
 var endreOrdre_1 = require("./ordre/endre/endreOrdre");
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -45,6 +48,9 @@ var AppModule = /** @class */ (function () {
                 lagreRute_1.LagreRute,
                 slettModal_1.Modal,
                 lagreOrdre_1.LagreOrdre,
+                visOrdre_1.VisOrdre,
+                avgangLagre_1.AvgangLagre
+                //Modal
                 visOrdre_1.VisOrdre,
                 endreOrdre_1.EndreOrdre
             ],
