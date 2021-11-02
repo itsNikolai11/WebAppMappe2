@@ -27,15 +27,25 @@ export class LagreOrdre {
   ngOnInit() {
     this.hentRuter();
   }
-  hentAvganger(avgang) {
+  hentAvganger(avgangId: number): void {
     this.http.get<avgang[]>("api/avgang")
       .subscribe(data => {
-        this.avganger = data;
+        this.filtrerAvganger(data, avgangId);
       },
         error => {
           alert(error);
         }
       );
+  }
+  filtrerAvganger(avganger: Array<avgang>, id: number) {
+    const filtrerteAvganger = new Array<avgang>();
+    for (let a of avganger) {
+      if (a.id == id) {
+        filtrerteAvganger.push(a);
+      }
+    }
+    this.avganger = filtrerteAvganger;
+
   }
   hentRuter() {
     this.http.get<rute[]>("api/rute")

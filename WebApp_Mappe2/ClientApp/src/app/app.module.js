@@ -24,6 +24,8 @@ var destinasjonerRediger_component_1 = require("./destinasjon/destinasjonRediger
 var lagreRute_1 = require("./rute/lagre/lagreRute");
 var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var slettModal_1 = require("./rute/liste/slettModal");
+var lagreOrdre_1 = require("./ordre/lagre/lagreOrdre");
+var visOrdre_1 = require("./ordre/liste/visOrdre");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -40,7 +42,9 @@ var AppModule = /** @class */ (function () {
                 destinasjonLagre_1.DestinasjonLagre,
                 destinasjonerRediger_component_1.DestinasjonRediger,
                 lagreRute_1.LagreRute,
-                slettModal_1.Modal
+                slettModal_1.Modal,
+                lagreOrdre_1.LagreOrdre,
+                visOrdre_1.VisOrdre
             ],
             imports: [
                 platform_browser_1.BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
