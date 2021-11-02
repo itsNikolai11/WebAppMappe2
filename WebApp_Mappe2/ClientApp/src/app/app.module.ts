@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Modal } from './rute/liste/slettModal';
 import { LagreOrdre } from './ordre/lagre/lagreOrdre';
 import { VisOrdre } from './ordre/liste/visOrdre';
+import { EndreOrdre } from './ordre/endre/endreOrdre';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { VisOrdre } from './ordre/liste/visOrdre';
     LagreRute,
     Modal,
     LagreOrdre,
-    VisOrdre
+    VisOrdre,
+    EndreOrdre
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

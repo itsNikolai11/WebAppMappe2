@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="col-md-4">
+    <form [formGroup]="skjema" (ngSubmit)="onSubmit()">
+      <input class="form-control" formControlName="id" type="hidden" />
+      <div class="form-group">
+        <label>Rute</label>
+        <select class="form-group" formControlName="rute" required id="ruteNr" (change)="hentAvganger($event.target.value)">
+          <option *ngFor="let rute of ruter" value={{rute.id}}>{{rute.fraDestinasjon}} til {{rute.tilDestinasjon}}</option>
+        </select>
+      </div>
+      <p class="alert alert-warning" [hidden]="skjema.controls.rute.valid || skjema.controls.rute.pristine && !submitted">
+        Du må velge en rute
+      </p>
+      <div class="form-group">
+        <label>Avgang</label>
+        <select class="form-group" formControlName="avgang" required id="avgangNr">
+          <option *ngFor="let avgang of avganger" value={{avgang.id}}>{{avgang.avgangTid}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Antall barn</label>
+        <input class="form-control" type="number" formControlName="antallBarn" />
+      </div>
+      <p class="alert alert-warning" [hidden]="skjema.controls.antallBarn.valid || skjema.controls.antallBarn.pristine && !submitted">
+        Du må skrive inn en verdi!
+      </p>
+      <div class="form-group">
+        <label>Antall voksne</label>
+        <input class="form-control" type="number" formControlName="antallVoksne" />
+      </div>
+      <div class="form-group">
+        <label>Referanse-person</label>
+        <input class="form-control" type="text" formControlName="refPers" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn-primary">Lagre</button>
+      </div>
+    </form>
+  </div>
+</div>

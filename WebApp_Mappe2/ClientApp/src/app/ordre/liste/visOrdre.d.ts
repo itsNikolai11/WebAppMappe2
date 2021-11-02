@@ -8,5 +8,6 @@ export declare class VisOrdre {
     constructor(http: HttpClient, router: Router);
     ngOnInit(): void;
     lastOrdre(): void;
+    filtrerOrdre(ruteId: number): void;
     slettOrdre(id: number): void;
 }

@@ -3,6 +3,6 @@ export class ordre {
   ruteNr: number;
   avgangNr: number;
   antallBarn: number;
-  antallVoksne: number;
+  antallVoksen: number;
   refPers: string;
 }
