@@ -31,7 +31,7 @@ const appRoots: Routes = [
   { path: 'endreRute/:id', component: EndreRute },
   { path: 'endreOrdre/:id', component: EndreOrdre },
   { path: 'visOrdre', component: VisOrdre },
-  { path: 'avgangLagre', component: AvgangLagre }
+  { path: 'avgangLagre', component: AvgangLagre },
   { path: 'avgangRediger/:id', component: AvgangRediger }
 
   //Husk eks 'rediger/:id' send med f.eks id i rediger.
