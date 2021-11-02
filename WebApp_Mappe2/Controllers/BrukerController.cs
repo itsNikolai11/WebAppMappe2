@@ -42,6 +42,12 @@ namespace WebApp_Mappe2.Controllers
             return Ok();
 
         }
+        [HttpGet]
+        public async Task<ActionResult> LoggUt()
+        {
+            HttpContext.Session.SetString(_loggetInn, "");
+            return Ok();
+        }
 
     }
 }
