@@ -10,8 +10,8 @@ namespace WebApp_Mappe2.DAL
     {
         Task<List<Rute>> HentRuter(); //ID er id til fra-destinasjon
         Task<Rute> HentRute(int id);
-        Task<bool> LagreRute(Rute r);
+        Task<bool> LagreRute(Rute innRute);
         Task<bool> SlettRute(int id);
-        Task<bool> EndreRute(Rute r);
+        Task<bool> EndreRute(Rute endreRute);
     }
 }
