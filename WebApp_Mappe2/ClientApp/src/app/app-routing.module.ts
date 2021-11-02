@@ -11,6 +11,7 @@ import { LagreRute } from './rute/lagre/lagreRute';
 import { LagreOrdre } from './ordre/lagre/lagreOrdre';
 import { VisOrdre } from './ordre/liste/visOrdre';
 import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
+import { EndreRute } from './rute/endre/endreRute';
 import { EndreOrdre } from './ordre/endre/endreOrdre';
 
 
@@ -26,6 +27,8 @@ const appRoots: Routes = [
   { path: 'lagreRute', component: LagreRute },
   { path: 'nyOrdre', component: LagreOrdre },
   { path: 'visOrdre', component: VisOrdre },
+  { path: 'avgangLagre', component: AvgangLagre },
+  { path: 'endreRute/:id', component: EndreRute },
   { path: 'endreOrdre/:id', component: EndreOrdre },
   { path: 'visOrdre', component: VisOrdre },
   { path: 'avgangLagre', component: AvgangLagre }
