@@ -69,21 +69,28 @@ namespace WebApp_Mappe2.DAL
 
         public async Task<bool> lagreBillett(Billett b)
         {
-            var nyBillett = new Ordrer();
-            var sjekkRuteNr = await _db.Ruter.FindAsync(b.RuteNr);
-            var sjekkAvgang = await _db.Avganger.FindAsync(b.AvgangNr);
-
-            nyBillett.AntallBarn = b.AntallBarn;
-            nyBillett.AntallVoksen = b.AntallVoksen;
-            nyBillett.RefPers = b.RefPers;
-            nyBillett.AvgangNr = sjekkAvgang;
-            nyBillett.RuteNr = sjekkRuteNr;
-            if(sjekkRuteNr != null && sjekkAvgang != null)
+            try
             {
-                await _db.Ordrer.AddAsync(nyBillett);
+                var nyBillett = new Ordrer();
+                var sjekkRuteNr = await _db.Ruter.FindAsync(b.RuteNr);
+                var sjekkAvgang = await _db.Avganger.FindAsync(b.AvgangNr);
+
+                nyBillett.AntallBarn = b.AntallBarn;
+                nyBillett.AntallVoksen = b.AntallVoksen;
+                nyBillett.RefPers = b.RefPers;
+                nyBillett.AvgangNr = sjekkAvgang;
+                nyBillett.RuteNr = sjekkRuteNr;
+
+                _db.Ordrer.Add(nyBillett);
+                await _db.SaveChangesAsync();
+
                 return true;
             }
-            return false;
+            catch
+            {
+                return false;
+            }
+           
         }
 
         public async Task<bool> slettBillett(int id)

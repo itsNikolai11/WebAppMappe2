@@ -9,6 +9,7 @@ import { DestinasjonLagre } from './destinasjon/destinasjonLagre/destinasjonLagr
 import { DestinasjonRediger } from './destinasjon/destinasjonRediger/destinasjonerRediger.component';
 import { LagreRute } from './rute/lagre/lagreRute';
 import { LagreOrdre } from './ordre/lagre/lagreOrdre';
+import { VisOrdre } from './ordre/liste/visOrdre';
 
 
 const appRoots: Routes = [
@@ -21,7 +22,8 @@ const appRoots: Routes = [
   { path: 'destinasjonLagre', component: DestinasjonLagre },
   { path: 'destinasjonRediger/:id', component: DestinasjonRediger },
   { path: 'lagreRute', component: LagreRute },
-  { path: 'nyOrdre', component: LagreOrdre }
+  { path: 'nyOrdre', component: LagreOrdre },
+  { path: 'visOrdre', component: VisOrdre }
   //Husk eks 'rediger/:id' send med f.eks id i rediger.
 ]
 @NgModule({
