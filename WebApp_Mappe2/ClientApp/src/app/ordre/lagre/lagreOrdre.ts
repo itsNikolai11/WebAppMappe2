@@ -66,6 +66,7 @@ export class LagreOrdre {
     nyOrdre.avgangNr = this.skjema.value.avgang;
     nyOrdre.antallBarn = this.skjema.value.antallBarn;
     nyOrdre.antallVoksen = this.skjema.value.antallVoksne;
+    nyOrdre.refPers = this.skjema.value.refPers;
     this.http.post("api/ordre", nyOrdre).subscribe(retur => {
       this.router.navigate(["/visOrdre"]);
     }, error => {

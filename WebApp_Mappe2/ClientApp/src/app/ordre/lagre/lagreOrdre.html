@@ -8,7 +8,7 @@
         </select>
 
       </div>
-      <p class="alert alert-warning" [hidden]="skjema.controls.rute.valid || skjema.controls.rute.pristine && !submitted">
+      <p class="alert alert-warning" [hidden]="skjema.controls.rute.valid || (skjema.controls.rute.pristine && !submitted)">
         Du må velge en rute
       </p>
       <div class="form-group">
@@ -21,7 +21,7 @@
         <label>Antall barn</label>
         <input type="number" formControlName="antallBarn" />
       </div>
-      <p class="alert alert-warning" [hidden]="skjema.controls.antallBarn.valid || skjema.controls.antallBarn.pristine && !submitted">
+      <p class="alert alert-warning" [hidden]="skjema.controls.antallBarn.valid || (skjema.controls.antallBarn.pristine && !submitted)">
         Du må skrive inn en verdi!
       </p>
       <div class="form-group">
@@ -33,7 +33,7 @@
         <input type="text" formControlName="refPers" />
       </div>
       <div class="form-group">
-        <button type="submit" class="btn-primary">Lagre</button>
+        <button type="submit" [disabled]="!skjema.valid" class="btn-primary">Lagre</button>
       </div>
 
     </form>

@@ -24,6 +24,7 @@ export class VisOrdre {
   }
   slettOrdre(id: number) {
     this.http.delete('api/ordre/' + id).subscribe(data => {
+      this.lastOrdre();
       this.router.navigate(['/visOrdre']);
     }, error => {
       alert(error);
