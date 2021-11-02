@@ -19,4 +19,12 @@ export class VisOrdre {
       this.alleOrdre = data;
     })
   }
+  slettOrdre(id: number) {
+    this.http.delete('api/ordre/' + id).subscribe(data => {
+      this.router.navigate(["/visOrdre"]);
+    }, error => {
+      alert(error);
+    });
+    
+  }
 }

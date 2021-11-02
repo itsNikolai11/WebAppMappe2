@@ -24,7 +24,8 @@ var LagreOrdre = /** @class */ (function () {
             rute: [null, forms_1.Validators.compose([forms_1.Validators.required])],
             avgang: [null, forms_1.Validators.compose([forms_1.Validators.required])],
             antallBarn: [null, forms_1.Validators.compose([forms_1.Validators.required])],
-            antallVoksne: [null, forms_1.Validators.compose([forms_1.Validators.required])]
+            antallVoksne: [null, forms_1.Validators.compose([forms_1.Validators.required])],
+            refPers: [null, forms_1.Validators.compose([forms_1.Validators.required])]
         };
         this.skjema = fb.group(this.validering);
     }

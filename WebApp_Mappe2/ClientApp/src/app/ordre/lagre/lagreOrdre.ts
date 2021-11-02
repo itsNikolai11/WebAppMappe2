@@ -18,7 +18,8 @@ export class LagreOrdre {
     rute: [null, Validators.compose([Validators.required])],
     avgang: [null, Validators.compose([Validators.required])],
     antallBarn: [null, Validators.compose([Validators.required])],
-    antallVoksne: [null, Validators.compose([Validators.required])]
+    antallVoksne: [null, Validators.compose([Validators.required])],
+    refPers: [null, Validators.compose([Validators.required])]
   }
 
   constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {

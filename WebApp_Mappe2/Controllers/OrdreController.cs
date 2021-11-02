@@ -57,5 +57,20 @@ namespace WebApp_Mappe2.Controllers
             _log.LogInformation("Lagring av ordre ble gjennomført suksessfullt");
             return Ok();
         }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> SlettOrdre(int id)
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                _log.LogInformation("Login ikke gyldig!");
+                return Unauthorized();
+            }
+            bool slettOK = await _db.slettBillett(id);
+            if (slettOK)
+            {
+                return Ok();
+            }
+            return NotFound();
+        }
     }
 }
