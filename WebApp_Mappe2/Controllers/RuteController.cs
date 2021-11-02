@@ -30,9 +30,10 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
+
             //ID er id til fra-destinasjon
             List<Rute> alleRuter = await _db.HentRuter();
             _log.LogInformation("Henting av alle ruter ble gjennomført suksessfullt");
@@ -44,11 +45,12 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
+
             Rute rute = await _db.HentRute(id);
-            if (rute== null)
+            if (rute == null)
             {
                 _log.LogInformation("Fant ikke rute med id " + id);
                 return NotFound();
@@ -62,6 +64,7 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
 
@@ -81,6 +84,7 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
 
@@ -99,9 +103,10 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
+
             if (ModelState.IsValid)
             {
                 bool returOK = await _db.EndreRute(endreRute);
