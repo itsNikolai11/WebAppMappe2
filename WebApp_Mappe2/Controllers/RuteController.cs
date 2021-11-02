@@ -102,7 +102,18 @@ namespace WebApp_Mappe2.Controllers
 
                 return Unauthorized();
             }
-            return Ok();
+            if (ModelState.IsValid)
+            {
+                bool returOK = await _db.EndreRute(endreRute);
+                if (!returOK)
+                {
+                    _log.LogInformation("Endringen kunne ikke utføres");
+                    return NotFound();
+                }
+                return Ok();
+            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest();
         }
 
 
