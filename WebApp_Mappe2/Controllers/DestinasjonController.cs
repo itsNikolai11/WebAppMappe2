@@ -30,6 +30,7 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
 
@@ -50,6 +51,7 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
 
@@ -69,6 +71,7 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
 
@@ -86,6 +89,7 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
 
@@ -104,6 +108,7 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
+                _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
             if (ModelState.IsValid)
