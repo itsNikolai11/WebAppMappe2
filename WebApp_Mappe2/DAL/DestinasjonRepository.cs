@@ -75,7 +75,7 @@ namespace WebApp_Mappe2.DAL
         {
             try
             {
-                Destinasjoner enDestinasjon = await _db.Destinasjoner.FindAsync(id);
+                var enDestinasjon = _db.Destinasjoner.Find(id);
                 _db.Destinasjoner.Remove(enDestinasjon);
                 await _db.SaveChangesAsync();
                 return true;

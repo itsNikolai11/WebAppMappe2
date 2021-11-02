@@ -31,7 +31,7 @@ export class DestinasjonComponent {
   }
 
   slettDestinasjon(id: number){
-    this.http.delete("api/Destinasjon/" + id)
+    this.http.delete('api/Destinasjon/' + id)
       .subscribe(retur => {
         this.hentAlleDestinasjoner();
         this.router.navigate(['/destinasjonListe']);
