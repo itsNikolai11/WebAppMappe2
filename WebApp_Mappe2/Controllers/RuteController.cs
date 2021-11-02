@@ -58,14 +58,14 @@ namespace WebApp_Mappe2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> LagreRute([FromBody] Rute r)
+        public async Task<ActionResult> LagreRute(Rute innRute)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
 
                 return Unauthorized();
             }
-            bool returOK = await _db.LagreRute(r);
+            bool returOK = await _db.LagreRute(innRute);
             if (!returOK)
             {
                 _log.LogInformation("Ruten kunne ikke lagres!");
@@ -95,7 +95,7 @@ namespace WebApp_Mappe2.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> EndreRute(Rute r)
+        public async Task<ActionResult> EndreRute(Rute endreRute)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
