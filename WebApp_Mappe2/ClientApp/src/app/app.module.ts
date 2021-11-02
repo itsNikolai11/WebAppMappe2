@@ -15,6 +15,7 @@ import { DestinasjonRediger } from './destinasjon/destinasjonRediger/destinasjon
 import { LagreRute } from './rute/lagre/lagreRute';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Modal } from './rute/liste/slettModal';
+import { LagreOrdre } from './ordre/lagre/lagreOrdre';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { Modal } from './rute/liste/slettModal';
     DestinasjonLagre,
     DestinasjonRediger,
     LagreRute,
-    Modal
+    Modal,
+    LagreOrdre
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

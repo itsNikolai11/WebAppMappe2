@@ -36,20 +36,34 @@ namespace WebApp_Mappe2.DAL
         public byte[] Passord { get; set; }
         public byte[] Salt { get; set; }
     }
-    public class DBContext : DbContext
+    public class Ordrer
     {
-        public DBContext(DbContextOptions<DBContext> options)
-            : base(options)
+        public int Id { get; set; }
+        public int AntallBarn { get; set; }
+        public int AntallVoksen { get; set; }
+        public string RefPers { get; set; }
+
+        virtual public Avganger AvgangNr { get; set; }
+
+        virtual public Ruter RuteNr { get; set; }
+    }
+        public class DBContext : DbContext
         {
-            Database.EnsureCreated();
-        }
-        public DbSet<Ruter> Ruter { get; set; }
-        public DbSet<Avganger> Avganger { get; set; }
-        public DbSet<Destinasjoner> Destinasjoner { get; set; }
-        public DbSet<Brukere> Brukere { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseLazyLoadingProxies();
+            public DBContext(DbContextOptions<DBContext> options)
+                : base(options)
+            {
+                Database.EnsureCreated();
+            }
+            public DbSet<Ruter> Ruter { get; set; }
+            public DbSet<Avganger> Avganger { get; set; }
+            public DbSet<Destinasjoner> Destinasjoner { get; set; }
+            public DbSet<Ordrer> Ordrer { get; set; }
+
+            public DbSet<Brukere> Brukere { get; set; }
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            {
+                optionsBuilder.UseLazyLoadingProxies();
+            }
         }
     }
-}
+
