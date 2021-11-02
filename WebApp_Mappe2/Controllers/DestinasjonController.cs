@@ -39,7 +39,7 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Henting av alle destinasjoner fungerte ikke");
                 return NotFound("Henting av alle destinasjoner fungerte ikke");
             }
-            _log.LogInformation("Henting av alle destinasjoner ble gjennomført suksessfullt");
+            _log.LogInformation("Henting av alle Destinasjoner ble gjennomført suksessfullt");
             return Ok(alleDestinasjoner);
             
         }
@@ -57,9 +57,9 @@ namespace WebApp_Mappe2.Controllers
             if(destinasjon == null)
             {
                 _log.LogInformation("Fant ikke destinasjon med id " + id);
-                return NotFound("Fant ikke avgang med id " + id);
+                return NotFound();
             }
-            _log.LogInformation("Henting av destinasjon -> " + id + " ble gjennomført suksessfullt");
+            _log.LogInformation("Henting av Destinasjon -> " + id + " ble gjennomført suksessfullt");
             return Ok(destinasjon);
         }
 
@@ -78,7 +78,7 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Lagring av destinasjon.id -> " + d.Id + " ble ikke gjennomført");
                 return BadRequest();
             }
-            _log.LogInformation("Lagring av destinasjon ble gjennomført suksessfullt");
+            _log.LogInformation("Lagring av Destinasjon ble gjennomført suksessfullt");
             return Ok();
         }
         [HttpDelete("{id}")]
@@ -95,7 +95,7 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Sletting av destinasjon.id -> " + id + " ble ikke gjennomført");
                 return NotFound();
             }
-            _log.LogInformation("Slett Destinasjon ble gjennomført suksessfullt");
+            _log.LogInformation("Sletting av Destinasjon ble gjennomført suksessfullt");
             return Ok();
 
         }
@@ -106,15 +106,19 @@ namespace WebApp_Mappe2.Controllers
             {
                 return Unauthorized();
             }
-
-            bool returOK = await _db.EndreDestinasjon(d);
-            if (!returOK)
+            if (ModelState.IsValid)
             {
-                _log.LogInformation("Endringen ble ikke utført");
-                return NotFound();
+                bool returOK = await _db.EndreDestinasjon(d);
+                if (!returOK)
+                {
+                    _log.LogInformation("Endringen kunne ikke utføres");
+                    return NotFound();
+                }
+                _log.LogInformation("Endring av Destinasjon ble gjennomført suksessfullt");
+                return Ok();
             }
-            _log.LogInformation("Endre Destinasjon ble gjennomført suksessfullt");
-            return Ok();
+            _log.LogInformation("Feil i inputvalidering ved endring av Destinasjon");
+            return BadRequest();
         }
     }
 }

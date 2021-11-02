@@ -10,7 +10,6 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.Controllers
 {
-   
     [Route("api/[controller]")]
     [ApiController]
     public class RuteController : ControllerBase
@@ -20,7 +19,6 @@ namespace WebApp_Mappe2.Controllers
         private IRuteRepository _db;
 
         private ILogger<RuteController> _log;
-
         public RuteController(IRuteRepository db, ILogger<RuteController> log)
         {
             _db = db;
@@ -37,6 +35,7 @@ namespace WebApp_Mappe2.Controllers
             }
             //ID er id til fra-destinasjon
             List<Rute> alleRuter = await _db.HentRuter();
+            _log.LogInformation("Henting av alle ruter ble gjennomført suksessfullt");
             return Ok(alleRuter);
         }
 
@@ -54,6 +53,7 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Fant ikke rute med id " + id);
                 return NotFound();
             }
+            _log.LogInformation("Henting av rute -> " + id + " ble gjennomført suksessfullt");
             return Ok(rute);
         }
 
@@ -62,16 +62,16 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-
                 return Unauthorized();
             }
+
             bool returOK = await _db.LagreRute(innRute);
             if (!returOK)
             {
-                _log.LogInformation("Ruten kunne ikke lagres!");
+                _log.LogInformation("Lagring av innRute.id -> " + innRute.Id + " ble ikke gjennomført");
                 return BadRequest();
             }
-           
+            _log.LogInformation("Lagring av rute ble gjennomført suksessfullt");
             return Ok();
             
         }
@@ -81,16 +81,16 @@ namespace WebApp_Mappe2.Controllers
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
-
                 return Unauthorized();
             }
 
             bool returOK = await _db.SlettRute(id);
             if (!returOK)
             {
-                _log.LogInformation("Sletting av ruten ble ikke utført");
+                _log.LogInformation("Sletting av rute.id -> " + id + " ble ikke gjennomført");
                 return NotFound();
             }
+            _log.LogInformation("Sletting av Rute ble gjennomført suksessfullt");
             return Ok();
         }
 
@@ -110,12 +110,11 @@ namespace WebApp_Mappe2.Controllers
                     _log.LogInformation("Endringen kunne ikke utføres");
                     return NotFound();
                 }
+                _log.LogInformation("Endring av Rute ble gjennomført suksessfullt");
                 return Ok();
             }
-            _log.LogInformation("Feil i inputvalidering");
+            _log.LogInformation("Feil i inputvalidering ved endring av Rute");
             return BadRequest();
         }
-
-
     }
 }
