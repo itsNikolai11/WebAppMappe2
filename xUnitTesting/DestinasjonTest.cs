@@ -73,7 +73,7 @@ namespace xUnitTesting
         [Fact]
         public async Task HentAlleDestinasjonerLoggetInnOKFeilDB()
         {
-
+            //Arrange
             var destListe = new List<Destinasjon>();
 
             mockRep.Setup(d => d.HentAlleDestinasjoner()).ReturnsAsync(()=>null);
@@ -96,7 +96,6 @@ namespace xUnitTesting
         public async Task HentAlleDestinasjonerLoggetInnFeilOKDB()
         {
             //Arrange
-
             mockRep.Setup(d => d.HentAlleDestinasjoner()).ReturnsAsync(It.IsAny<List<Destinasjon>>());
 
             var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
@@ -188,7 +187,6 @@ namespace xUnitTesting
         public async Task LagreDestinasjonLoggetInnOK()
         {
             //Arrange
-
             mockRep.Setup(d => d.LagreDestinasjon(It.IsAny<Destinasjon>())).ReturnsAsync(true);
 
             var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
@@ -209,7 +207,6 @@ namespace xUnitTesting
         public async Task LagreDestinasjonLoggetInnOKDBFeil()
         {
             //Arrange
-
             mockRep.Setup(d => d.LagreDestinasjon(It.IsAny<Destinasjon>())).ReturnsAsync(false);
 
             var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
@@ -230,7 +227,6 @@ namespace xUnitTesting
         public async Task LagreDestinasjonIkkeLoggetInn()
         {
             //Arrange
-
             mockRep.Setup(d => d.HentAlleDestinasjoner()).ReturnsAsync(It.IsAny<List<Destinasjon>>());
 
             var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
@@ -253,7 +249,6 @@ namespace xUnitTesting
         public async Task SlettDestinasjonLoggetInnOK()
         {
             //Arrange
-
             mockRep.Setup(d => d.SlettDestinasjon(It.IsAny<int>())).ReturnsAsync(true);
 
             var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
@@ -274,7 +269,6 @@ namespace xUnitTesting
         public async Task SlettDestinasjonLoggetInnIkkeOK()
         {
             //Arrange
-
             mockRep.Setup(d => d.SlettDestinasjon(It.IsAny<int>())).ReturnsAsync(false);
 
             var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
@@ -295,7 +289,6 @@ namespace xUnitTesting
         public async Task SlettDestinasjonIkkeLoggetInn()
         {
             //Arrange
-
             mockRep.Setup(d => d.SlettDestinasjon(It.IsAny<int>())).ReturnsAsync(true);
 
             var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
@@ -310,6 +303,98 @@ namespace xUnitTesting
             //Assert
             Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
             Assert.Equal("Ikke logget inn", resultat.Value);
+        }
+
+        //EndreDestinasjon
+
+        [Fact]
+        public async Task EndreDestinasjonLoggetInnOK()
+        {
+            //Arrange
+            mockRep.Setup(d => d.EndreDestinasjon(It.IsAny<Destinasjon>())).ReturnsAsync(true);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.EndreDestinasjon(It.IsAny<Destinasjon>()) as OkObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
+            Assert.Equal("Destinasjon endret", resultat.Value);
+        }
+
+        [Fact]
+        public async Task EndreDestinasjonLoggetInnIkkeOK()
+        {
+            //Arrange
+            mockRep.Setup(d => d.EndreDestinasjon(It.IsAny<Destinasjon>())).ReturnsAsync(false);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.EndreDestinasjon(It.IsAny<Destinasjon>()) as NotFoundObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.NotFound, resultat.StatusCode);
+            Assert.Equal("Endringen kunne ikke utføres", resultat.Value);
+        }
+
+        [Fact]
+        public async Task EndreDestinasjonIkkeLoggetInn()
+        {
+            //Arrange
+            mockRep.Setup(d => d.EndreDestinasjon(It.IsAny<Destinasjon>())).ReturnsAsync(true);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _ikkeLoggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.EndreDestinasjon(It.IsAny<Destinasjon>()) as UnauthorizedObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
+            Assert.Equal("Ikke logget inn", resultat.Value);
+        }
+
+
+        [Fact]
+        public async Task EndreDestinasjonLoggetInnFeilInput()
+        {
+            //Arrange
+            var dest1 = new Destinasjon
+            {
+                Id = 1,
+                Sted = "",
+                Land = "Norge"
+            };
+
+            mockRep.Setup(d => d.EndreDestinasjon(dest1)).ReturnsAsync(true);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            destinasjonController.ModelState.AddModelError("Sted", "Feil i inputvalidering ved endring av Destinasjon");
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.EndreDestinasjon(dest1) as BadRequestObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Feil i inputvalidering ved endring av Destinasjon", resultat.Value);
         }
     }
 }
