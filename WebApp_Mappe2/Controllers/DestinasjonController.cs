@@ -77,8 +77,6 @@ namespace WebApp_Mappe2.Controllers
             }
             if (ModelState.IsValid)
             {
-
-
                 bool returOK = await _db.LagreDestinasjon(d);
                 if (!returOK)
                 {
