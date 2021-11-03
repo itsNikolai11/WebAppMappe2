@@ -35,11 +35,11 @@ namespace WebApp_Mappe2.Controllers
             {
                 HttpContext.Session.SetString(_loggetInn, "");
                 _log.LogInformation("Innlogging av bruker ikke godkjent!");
-                return Unauthorized();
+                return Unauthorized("Feil brukernavn eller passord");
             }
             HttpContext.Session.SetString(_loggetInn, "OK");
             _log.LogInformation("Innlogging av bruker godkjent");
-            return Ok();
+            return Ok(true);
 
         }
         [HttpGet]

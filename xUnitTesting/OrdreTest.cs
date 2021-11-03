@@ -43,7 +43,7 @@ namespace xUnitTesting
 
             /*--------Assert--------*/
             Assert.Equal((int) HttpStatusCode.OK, resultat.StatusCode);
-            Assert.Equal("Lagre ok", resultat.Value);
+            Assert.True((bool)resultat.Value);
         }
 
         [Fact]
@@ -111,7 +111,7 @@ namespace xUnitTesting
 
             /*--------Assert--------*/
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
-            Assert.Equal("Ordre endret", resultat.Value);
+            Assert.True((bool)resultat.Value);
 
         }
 
@@ -176,7 +176,7 @@ namespace xUnitTesting
             /*--------Assert--------*/
 
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
-            Assert.Equal("Slettet ordre", resultat.Value);
+            Assert.True((bool)resultat.Value);
         }
 
         [Fact]
@@ -381,6 +381,7 @@ namespace xUnitTesting
             var resultat = await ordreController.HentEnOrdre(It.IsAny<int>()) as UnauthorizedObjectResult;
 
             /*--------Assert--------*/
+
             Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
             Assert.Equal("Ingen tilgang", resultat.Value);
         }
