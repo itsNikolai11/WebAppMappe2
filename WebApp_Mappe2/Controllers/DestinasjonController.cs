@@ -52,14 +52,14 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
 
             Destinasjon destinasjon = await _db.HentDestinasjon(id);
             if(destinasjon == null)
             {
                 _log.LogInformation("Fant ikke destinasjon med id " + id);
-                return NotFound();
+                return NotFound("Fant ikke destinasjonen");
             }
             _log.LogInformation("Henting av Destinasjon -> " + id + " ble gjennomført suksessfullt");
             return Ok(destinasjon);
@@ -92,17 +92,17 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
 
             bool returOK = await _db.SlettDestinasjon(id);
             if (!returOK)
             {
                 _log.LogInformation("Sletting av destinasjon.id -> " + id + " ble ikke gjennomført");
-                return NotFound();
+                return NotFound("Sletting av destinasjon ble ikke utført");
             }
             _log.LogInformation("Sletting av Destinasjon ble gjennomført suksessfullt");
-            return Ok();
+            return Ok("Destinasjon slettet");
 
         }
         [HttpPut]

@@ -124,21 +124,7 @@ namespace xUnitTesting
                 Land = "Finland"
             };
 
-            var dest2 = new Destinasjon
-            {
-                Id = 2,
-                Sted = "Gøteborg",
-                Land = "Danmark"
-            };
-
-            var destListe = new List<Destinasjon>
-            {
-                dest1,
-                dest2
-            };
-
-
-            mockRep.Setup(d => d.HentAlleDestinasjoner()).ReturnsAsync(destListe);
+            mockRep.Setup(d => d.HentDestinasjon(It.IsAny<int>())).ReturnsAsync(dest1);
 
             var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
 
@@ -147,13 +133,52 @@ namespace xUnitTesting
             destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
 
             //Act
-            var resultat = await destinasjonController.HentAlleDestinasjoner() as OkObjectResult;
+            var resultat = await destinasjonController.HentDestinasjon(It.IsAny<int>()) as OkObjectResult;
 
             //Assert
             Assert.Equal((int)HttpStatusCode.OK,resultat.StatusCode);
-            Assert.Equal<List<Destinasjon>>((List<Destinasjon>)resultat.Value, destListe);
+            Assert.Equal<Destinasjon>(dest1,(Destinasjon)resultat.Value);
         }
 
+        [Fact]
+        public async Task HentEnDestinasjonLoggetInnIkkeOK()
+        {
+            //Arrange 
+            mockRep.Setup(d => d.HentDestinasjon(It.IsAny<int>())).ReturnsAsync( ()=> null);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.HentDestinasjon(It.IsAny<int>()) as NotFoundObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.NotFound, resultat.StatusCode);
+            Assert.Equal("Fant ikke destinasjonen", resultat.Value);
+        }
+
+        [Fact]
+        public async Task HentEnDestinasjonIkkeLoggetInnOK()
+        {
+            //Arrange 
+            mockRep.Setup(d => d.HentDestinasjon(It.IsAny<int>())).ReturnsAsync(() => null);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _ikkeLoggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.HentDestinasjon(It.IsAny<int>()) as UnauthorizedObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
+            Assert.Equal("Ikke logget inn", resultat.Value);
+        }
 
         //LagreDestinasjon
 
@@ -219,5 +244,28 @@ namespace xUnitTesting
             Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
             Assert.Equal("Ikke logget inn", resultat.Value);
         }
+
+
+        [Fact]
+        public async Task SlettDestinasjonLoggetInnOK()
+        {
+            //Arrange
+
+            mockRep.Setup(d => d.SlettDestinasjon(It.IsAny<int>())).ReturnsAsync(true);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.SlettDestinasjon(It.IsAny<int>()) as OkObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
+            Assert.Equal("Destinasjon slettet", resultat.Value);
+        }
+
     }
 }
