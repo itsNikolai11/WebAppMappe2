@@ -31,7 +31,7 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
 
             List<Destinasjon> alleDestinasjoner = await _db.HentAlleDestinasjoner();
@@ -72,18 +72,20 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
 
             bool returOK = await _db.LagreDestinasjon(d);
             if (!returOK)
             {
-                _log.LogInformation("Lagring av destinasjon.id -> " + d.Id + " ble ikke gjennomført");
-                return BadRequest();
+                _log.LogInformation("Lagring av destinasjon ble ikke gjennomført");
+                return BadRequest("Destinasjon kunne ikke lagres");
             }
             _log.LogInformation("Lagring av Destinasjon ble gjennomført suksessfullt");
-            return Ok();
+            return Ok("Destinasjon lagret");
         }
+
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettDestinasjon(int id)
         {
