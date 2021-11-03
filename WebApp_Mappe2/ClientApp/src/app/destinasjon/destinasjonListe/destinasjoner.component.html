@@ -5,7 +5,6 @@
     <table class="table table-bordered table-condensed">
       <thead>
         <tr>
-          <th>Id</th>
           <th>Sted</th>
           <th>Land</th>
           <th></th>
@@ -14,7 +13,6 @@
       </thead>
       <tbody *ngFor="let destinasjon of alleDestinasjoner">
         <tr>
-          <td>{{destinasjon.id}}</td>
           <td>{{destinasjon.sted}}</td>
           <td>{{destinasjon.land}}</td>
           <td><button class="btn-danger" (click)="slettDestinasjon(destinasjon.id)">Slett</button></td>
