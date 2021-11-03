@@ -111,10 +111,54 @@ namespace xUnitTesting
             Assert.Equal("Ikke logget inn", resultat.Value);
         }
 
-
+        //HentEnDestinasjon
 
         [Fact]
-        public async Task LagreDestinasjonLoggetInnOk()
+        public async Task HentEnDestinasjonLoggetInnOK()
+        {
+            //Arrange 
+            var dest1 = new Destinasjon
+            {
+                Id = 1,
+                Sted = "Helsinki",
+                Land = "Finland"
+            };
+
+            var dest2 = new Destinasjon
+            {
+                Id = 2,
+                Sted = "Gøteborg",
+                Land = "Danmark"
+            };
+
+            var destListe = new List<Destinasjon>
+            {
+                dest1,
+                dest2
+            };
+
+
+            mockRep.Setup(d => d.HentAlleDestinasjoner()).ReturnsAsync(destListe);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.HentAlleDestinasjoner() as OkObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.OK,resultat.StatusCode);
+            Assert.Equal<List<Destinasjon>>((List<Destinasjon>)resultat.Value, destListe);
+        }
+
+
+        //LagreDestinasjon
+
+        [Fact]
+        public async Task LagreDestinasjonLoggetInnOK()
         {
             //Arrange
 
@@ -132,6 +176,48 @@ namespace xUnitTesting
             //Assert
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
             Assert.Equal("Destinasjon lagret", resultat.Value);
+        }
+
+        [Fact]
+        public async Task LagreDestinasjonLoggetInnOKDBFeil()
+        {
+            //Arrange
+
+            mockRep.Setup(d => d.LagreDestinasjon(It.IsAny<Destinasjon>())).ReturnsAsync(false);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.LagreDestinasjon(It.IsAny<Destinasjon>()) as BadRequestObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Destinasjon kunne ikke lagres", resultat.Value);
+        }
+
+        [Fact]
+        public async Task LagreDestinasjonIkkeLoggetInn()
+        {
+            //Arrange
+
+            mockRep.Setup(d => d.HentAlleDestinasjoner()).ReturnsAsync(It.IsAny<List<Destinasjon>>());
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _ikkeLoggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.LagreDestinasjon(It.IsAny<Destinasjon>()) as UnauthorizedObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
+            Assert.Equal("Ikke logget inn", resultat.Value);
         }
     }
 }
