@@ -23,12 +23,12 @@ export class EndreRute {
         tilDestinasjon: [
             ""
         ],
-        prisBarn: [
-            null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}")])
+      prisBarn: [
+        null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}"), Validators.min(1)])
         ],
-        prisVoksen: [
-            null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}")])
-        ]
+      prisVoksen: [
+        null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}"), Validators.min(1)])
+      ]
     
   }
 
