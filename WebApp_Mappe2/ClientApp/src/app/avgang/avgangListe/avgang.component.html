@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col" style="padding:3%">
+    <tr class="col" style="padding:3%">
       <h2>   Avganger: </h2>
       <div *ngIf="laster">Laster avganger.....</div>
 
@@ -12,23 +12,23 @@
         <thead>
 
           <tr>
-            <th>Rute Id</th>
-            
+            <th>Rute</th>
             <th>Tid</th>
             <th>Slett</th>
             <th>Endre</th>
 
           </tr>
         </thead>
+
         <tbody *ngFor="let avgang of alleAvganger">
-          <tr>
-
-            <td>{{avgang.ruteNr}}</td>
+          <tr *ngFor="let rute of ruter">
             
-            <td>{{avgang.avgangTid}}</td>
-            <td><button class="btn btn-danger" (click)="sletteAvgang(avgang.id)">Slett</button></td>
-            <td><button class="btn btn-success" [routerLink]="['/avgangRediger', avgang.id]">Endre</button></td>
-
+              <td *ngIf="avgang.ruteNr === rute.id">{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</td>
+              <td *ngIf="avgang.ruteNr === rute.id">{{avgang.avgangTid}}</td>
+            
+              <td *ngIf="avgang.ruteNr === rute.id"><button class="btn btn-danger" (click)="sletteAvgang(avgang.id)">Slett</button></td>
+              <td *ngIf="avgang.ruteNr === rute.id"><button class="btn btn-success" [routerLink]="['/avgangRediger', avgang.id]">Endre</button></td>
+            
           </tr>
 
         </tbody>
@@ -43,4 +43,3 @@
 
     </div>
   </div>
-</div>
