@@ -287,7 +287,7 @@ namespace xUnitTesting
         public async Task SlettRuteLoggetInnOK()
         {
             //Arrange
-            mockRep.Setup(d => d.SlettRute(It.IsAny<int>())).ReturnsAsync(true);
+            mockRep.Setup(r => r.SlettRute(It.IsAny<int>())).ReturnsAsync(true);
 
             var ruteController = new RuteController(mockRep.Object, mockLog.Object);
 
@@ -307,7 +307,7 @@ namespace xUnitTesting
         public async Task SlettRuteLoggetInnIkkeOK()
         {
             //Arrange
-            mockRep.Setup(d => d.SlettRute(It.IsAny<int>())).ReturnsAsync(false);
+            mockRep.Setup(r => r.SlettRute(It.IsAny<int>())).ReturnsAsync(false);
 
             var ruteController = new RuteController(mockRep.Object, mockLog.Object);
 
@@ -327,7 +327,7 @@ namespace xUnitTesting
         public async Task SlettRutekkeLoggetInn()
         {
             //Arrange
-            mockRep.Setup(d => d.SlettRute(It.IsAny<int>())).ReturnsAsync(true);
+            mockRep.Setup(r => r.SlettRute(It.IsAny<int>())).ReturnsAsync(true);
 
             var ruteController = new RuteController(mockRep.Object, mockLog.Object);
 
@@ -345,11 +345,97 @@ namespace xUnitTesting
 
         //EndreRute
 
+        [Fact]
+        public async Task EndreRuteLoggetInnOK()
+        {
+            //Arrange
+            mockRep.Setup(r => r.EndreRute(It.IsAny<Rute>())).ReturnsAsync(true);
 
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
 
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
 
+            //Act
+            var resultat = await ruteController.EndreRute(It.IsAny<Rute>()) as OkObjectResult;
 
+            //Assert
+            Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
+            Assert.Equal("Rute endret", resultat.Value);
+        }
 
+        [Fact]
+        public async Task EndreRuteLoggetInnOKDBFeil()
+        {
+            //Arrange
+            mockRep.Setup(r => r.EndreRute(It.IsAny<Rute>())).ReturnsAsync(false);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.EndreRute(It.IsAny<Rute>()) as NotFoundObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.NotFound, resultat.StatusCode);
+            Assert.Equal("Ruten kunne ikke endres", resultat.Value);
+        }
+
+        [Fact]
+        public async Task EndreRuteIkkeLoggetInn()
+        {
+            //Arrange
+            mockRep.Setup(r => r.EndreRute(It.IsAny<Rute>())).ReturnsAsync(true);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _ikkeLoggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.EndreRute(It.IsAny<Rute>()) as UnauthorizedObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
+            Assert.Equal("Ikke logget inn", resultat.Value);
+        }
+
+        [Fact]
+        public async Task EndreRuteLoggetInnFeilInput()
+        {
+            //Arrange
+
+            var rute1 = new Rute
+            {
+                Id = 1,
+                FraDestinasjon = "",
+                TilDestinasjon = "København",
+                PrisBarn = 130,
+                PrisVoksen = 260
+            };
+
+            mockRep.Setup(r => r.EndreRute(rute1)).ReturnsAsync(true);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            ruteController.ModelState.AddModelError("FraDestinasjon", "Feil i inputvalidering ved endring av Destinasjon");
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.EndreRute(rute1) as BadRequestObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Feil i inputvalidering ved endring av Rute", resultat.Value);
+        }
 
     }
 

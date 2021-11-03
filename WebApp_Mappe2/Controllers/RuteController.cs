@@ -112,7 +112,7 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
 
             if (ModelState.IsValid)
@@ -121,13 +121,13 @@ namespace WebApp_Mappe2.Controllers
                 if (!returOK)
                 {
                     _log.LogInformation("Endringen kunne ikke utføres");
-                    return NotFound();
+                    return NotFound("Ruten kunne ikke endres");
                 }
                 _log.LogInformation("Endring av Rute ble gjennomført suksessfullt");
-                return Ok();
+                return Ok("Rute endret");
             }
             _log.LogInformation("Feil i inputvalidering ved endring av Rute");
-            return BadRequest();
+            return BadRequest("Feil i inputvalidering ved endring av Rute");
         }
     }
 }
