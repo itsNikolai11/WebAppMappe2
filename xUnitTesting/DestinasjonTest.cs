@@ -26,6 +26,8 @@ namespace xUnitTesting
         private readonly Mock<HttpContext> mockHttpContext = new();
         private readonly MockHttpSession mockSession = new();
 
+        //HentAlleDestinasjoner
+
         [Fact]
         public async Task HentAlleDestinasjonerLoggetInnOK()
         {
@@ -245,6 +247,7 @@ namespace xUnitTesting
             Assert.Equal("Ikke logget inn", resultat.Value);
         }
 
+        //SlettDestinasjon
 
         [Fact]
         public async Task SlettDestinasjonLoggetInnOK()
@@ -267,5 +270,46 @@ namespace xUnitTesting
             Assert.Equal("Destinasjon slettet", resultat.Value);
         }
 
+        [Fact]
+        public async Task SlettDestinasjonLoggetInnIkkeOK()
+        {
+            //Arrange
+
+            mockRep.Setup(d => d.SlettDestinasjon(It.IsAny<int>())).ReturnsAsync(false);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.SlettDestinasjon(It.IsAny<int>()) as NotFoundObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.NotFound, resultat.StatusCode);
+            Assert.Equal("Sletting av destinasjon ble ikke utført", resultat.Value);
+        }
+
+        [Fact]
+        public async Task SlettDestinasjonIkkeLoggetInn()
+        {
+            //Arrange
+
+            mockRep.Setup(d => d.SlettDestinasjon(It.IsAny<int>())).ReturnsAsync(true);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _ikkeLoggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.SlettDestinasjon(It.IsAny<int>()) as UnauthorizedObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
+            Assert.Equal("Ikke logget inn", resultat.Value);
+        }
     }
 }
