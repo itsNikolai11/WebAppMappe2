@@ -100,10 +100,10 @@ namespace WebApp_Mappe2.Controllers
             if (!returOK)
             {
                 _log.LogInformation("Sletting av rute.id -> " + id + " ble ikke gjennomført");
-                return NotFound();
+                return NotFound("Sletting av rute ble ikke utført");
             }
             _log.LogInformation("Sletting av Rute ble gjennomført suksessfullt");
-            return Ok();
+            return Ok("Rute slettet");
         }
 
         [HttpPut]

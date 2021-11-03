@@ -283,6 +283,65 @@ namespace xUnitTesting
 
         //SlettRute
 
+        [Fact]
+        public async Task SlettRuteLoggetInnOK()
+        {
+            //Arrange
+            mockRep.Setup(d => d.SlettRute(It.IsAny<int>())).ReturnsAsync(true);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.SlettRute(It.IsAny<int>()) as OkObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
+            Assert.Equal("Rute slettet", resultat.Value);
+        }
+
+        [Fact]
+        public async Task SlettRuteLoggetInnIkkeOK()
+        {
+            //Arrange
+            mockRep.Setup(d => d.SlettRute(It.IsAny<int>())).ReturnsAsync(false);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.SlettRute(It.IsAny<int>()) as NotFoundObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.NotFound, resultat.StatusCode);
+            Assert.Equal("Sletting av rute ble ikke utført", resultat.Value);
+        }
+
+        [Fact]
+        public async Task SlettRutekkeLoggetInn()
+        {
+            //Arrange
+            mockRep.Setup(d => d.SlettRute(It.IsAny<int>())).ReturnsAsync(true);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _ikkeLoggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.SlettRute(It.IsAny<int>()) as UnauthorizedObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
+            Assert.Equal("Ikke logget inn", resultat.Value);
+        }
 
         //EndreRute
 
