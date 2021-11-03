@@ -13,7 +13,8 @@ import { destinasjon } from "../../destinasjon";
 
 export class EndreRute {
     skjema: FormGroup;
-    destinasjoner: Array<destinasjon>;
+  destinasjoner: Array<destinasjon>;
+  feil: boolean;
 
     validering = {
         id: [""],
@@ -92,6 +93,7 @@ export class EndreRute {
                     error => console.log(error)
                 );
         }
+      this.feil = true;
         
     }
 }

@@ -31,7 +31,7 @@
                     PrisVoksen må fylles inn
                 </p>
             </div>
-
+            <div *ngIf="feil" style="color:red;">Fra og til kan ikke være samme destinasjon!</div>
             <div class="form-group">
                 <button type="submit" [disabled]="!skjema.valid" class="btn btn-primary">Endre</button>
                 <button class="btn btn-default" routerLink="/rute">Tilbake</button>

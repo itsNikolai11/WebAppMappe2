@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp_Mappe2.Models;
@@ -53,9 +54,16 @@ namespace WebApp_Mappe2.DAL
             //throw new NotImplementedException();
             try
             {
+
+                DateTime tidAvgang = new DateTime();
+                //tidAvgang = DateTime.ParseExact(r.AvgangTid, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+
+                tidAvgang = r.AvgangTid.ToLocalTime();
+
                 var sjekkId = await _db.Ruter.FindAsync(r.Id);
                 var nyAvgangRad = new Avganger();
-                nyAvgangRad.AvgangTid = r.AvgangTid;
+                //nyAvgangRad.AvgangTid = r.AvgangTid;
+                nyAvgangRad.AvgangTid = tidAvgang;
                 nyAvgangRad.RuteNr = sjekkId;
 
                 _db.Avganger.Add(nyAvgangRad);
