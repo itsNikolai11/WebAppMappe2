@@ -13,6 +13,7 @@ export class ListeRute {
   alleRuter: Array<rute>; 
   laster: boolean;
   ruteTilSletting: string;
+  
   //slettingOK: boolean;
 
     constructor(private http: HttpClient, private router: Router, private modalService: NgbModal) { }
@@ -20,13 +21,18 @@ export class ListeRute {
   ngOnInit() {
     this.laster = true;
     this.hentAlleRuter();
+    
   }
+
+  
 
   hentAlleRuter() {
     this.http.get<rute[]>("api/rute/")
       .subscribe(rutene => {
-        this.alleRuter = rutene;
+        
+        this.alleRuter = rutene; 
         this.laster = false;
+        
       },
         error => console.log(error)
       );

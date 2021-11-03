@@ -19,6 +19,7 @@ namespace WebApp_Mappe2.DAL
     {
         public int Id { get; set; }
         public DateTime AvgangTid { get; set; }
+        //public string AvgangTid { get; set; }
         virtual public Ruter RuteNr { get; set; }
         //virtual public Ruter FraDestinasjon { get; set; }
         //virtual public Ruter TilDestinasjon { get; set; }

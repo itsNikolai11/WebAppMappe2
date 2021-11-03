@@ -24,9 +24,9 @@ namespace WebApp_Mappe2.DAL
                 var rute1 = new Ruter { FraDestinasjon = dest1, TilDestinasjon = dest2, PrisBarn = 99, PrisVoksen = 199 };
                 var rute2 = new Ruter { FraDestinasjon = dest2, TilDestinasjon = dest1, PrisBarn = 99, PrisVoksen = 199 };
 
-                var avgang1 = new Avganger { RuteNr = rute1, AvgangTid = new DateTime(2021, 10, 10, 19, 00, 00) };
-                var avgang2 = new Avganger { RuteNr = rute2, AvgangTid = new DateTime(2021, 11, 10, 18, 30, 00) };
-                var avgang3 = new Avganger { RuteNr = rute2, AvgangTid = new DateTime(2021, 11, 12, 18, 30, 00) };
+                var avgang1 = new Avganger { RuteNr = rute1, AvgangTid = new DateTime(2021, 10, 10, 19, 00, 00) }; //"01/09/2023 12:12:00" };
+                var avgang2 = new Avganger { RuteNr = rute2, AvgangTid = new DateTime(2021, 11, 10, 18, 30, 00) };  //"11/01/2023 12:12:00"};
+                var avgang3 = new Avganger { RuteNr = rute2, AvgangTid = new DateTime(2021, 11, 12, 18, 30, 00) }; //"12/02/2023 12:12:00" };
                 var ordre1 = new Ordrer { RuteNr = rute1, AvgangNr = avgang1, AntallBarn = 1, AntallVoksen = 1, RefPers = "test" };
                 context.Destinasjoner.Add(dest1);
                 context.Destinasjoner.Add(dest2);

@@ -52,18 +52,19 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
 
             Destinasjon destinasjon = await _db.HentDestinasjon(id);
             if(destinasjon == null)
             {
                 _log.LogInformation("Fant ikke destinasjon med id " + id);
-                return NotFound();
+                return NotFound("Fant ikke destinasjonen");
             }
             _log.LogInformation("Henting av Destinasjon -> " + id + " ble gjennomført suksessfullt");
             return Ok(destinasjon);
         }
+
 
 
         [HttpPost]
@@ -74,17 +75,22 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized("Ikke logget inn");
             }
-
-            bool returOK = await _db.LagreDestinasjon(d);
-            if (!returOK)
+            if (ModelState.IsValid)
             {
-                _log.LogInformation("Lagring av destinasjon ble ikke gjennomført");
-                return BadRequest("Destinasjon kunne ikke lagres");
-            }
-            _log.LogInformation("Lagring av Destinasjon ble gjennomført suksessfullt");
-            return Ok("Destinasjon lagret");
-        }
 
+
+                bool returOK = await _db.LagreDestinasjon(d);
+                if (!returOK)
+                {
+                    _log.LogInformation("Lagring av destinasjon ble ikke gjennomført");
+                    return BadRequest("Destinasjon kunne ikke lagres");
+                }
+                _log.LogInformation("Lagring av Destinasjon ble gjennomført suksessfullt");
+                return Ok("Destinasjon lagret");
+            }
+            _log.LogInformation("Feil i inputvalidering ved lagring av destinasjon");
+            return BadRequest("Feil i inputvalidering ved lagring av destinasjon");
+        }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettDestinasjon(int id)
@@ -92,26 +98,27 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
 
             bool returOK = await _db.SlettDestinasjon(id);
             if (!returOK)
             {
                 _log.LogInformation("Sletting av destinasjon.id -> " + id + " ble ikke gjennomført");
-                return NotFound();
+                return NotFound("Sletting av destinasjon ble ikke utført");
             }
             _log.LogInformation("Sletting av Destinasjon ble gjennomført suksessfullt");
-            return Ok();
+            return Ok("Destinasjon slettet");
 
         }
+
         [HttpPut]
         public async Task<ActionResult> EndreDestinasjon(Destinasjon d)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
             if (ModelState.IsValid)
             {
@@ -119,13 +126,13 @@ namespace WebApp_Mappe2.Controllers
                 if (!returOK)
                 {
                     _log.LogInformation("Endringen kunne ikke utføres");
-                    return NotFound();
+                    return NotFound("Endringen kunne ikke utføres");
                 }
                 _log.LogInformation("Endring av Destinasjon ble gjennomført suksessfullt");
-                return Ok();
+                return Ok("Destinasjon endret");
             }
             _log.LogInformation("Feil i inputvalidering ved endring av Destinasjon");
-            return BadRequest();
+            return BadRequest("Feil i inputvalidering ved endring av Destinasjon");
         }
     }
 }

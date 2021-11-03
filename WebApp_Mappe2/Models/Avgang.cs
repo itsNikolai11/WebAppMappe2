@@ -11,6 +11,7 @@ namespace WebApp_Mappe2.Models
     {
         public int Id { get; set; }
         public DateTime AvgangTid { get; set; }
+        //public string AvgangTid { get; set; }
         public int RuteNr { get; set; }
         //public string FraDestinasjon { get; set; }
         //public string TilDestinasjon { get; set; }

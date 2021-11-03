@@ -10,9 +10,9 @@ import { destinasjon } from "../../destinasjon";
 })
 
 export class LagreRute {
-    skjema: FormGroup;
+  skjema: FormGroup;
   destinasjoner: Array<destinasjon>;
-  //ruter: Array<rute>;
+  feil: boolean;
 
     validering = {
         id: [""],
@@ -72,7 +72,7 @@ export class LagreRute {
                     error => console.log(error)
                 );
         }
-        return "test"; //må få ut tekst under skjemaet
+      this.feil = true; //må få ut tekst under skjemaet
 
         
     };
