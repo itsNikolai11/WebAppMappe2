@@ -31,11 +31,16 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
 
             //ID er id til fra-destinasjon
             List<Rute> alleRuter = await _db.HentRuter();
+            if(alleRuter == null)
+            {
+                _log.LogInformation("Henting av alle ruter fungerte ikke");
+                return NotFound("Henting av alle ruter fungerte ikke");
+            }
             _log.LogInformation("Henting av alle ruter ble gjennomført suksessfullt");
             return Ok(alleRuter);
         }
