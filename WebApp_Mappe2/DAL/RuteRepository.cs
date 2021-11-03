@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.DAL
 {
+    [ExcludeFromCodeCoverage]
     public class RuteRepository : IRuteRepository
     {
         private readonly DBContext _db;

@@ -2,11 +2,13 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebApp_Mappe2.DAL
 {
+    [ExcludeFromCodeCoverage]
     public class DBInit
     {
         public static void InitDB(IApplicationBuilder app)

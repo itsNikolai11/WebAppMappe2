@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-
+using System.Diagnostics.CodeAnalysis;
 
 namespace WebApp_Mappe2.DAL
 {
+    [ExcludeFromCodeCoverage]
     public class Ruter
     {
         public int Id { get; set; }

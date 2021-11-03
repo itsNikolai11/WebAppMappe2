@@ -13,6 +13,7 @@ namespace WebApp_Mappe2.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class OrdreController : ControllerBase
+
     {
         private readonly IOrdreRepository _db;
 

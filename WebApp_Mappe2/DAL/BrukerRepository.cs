@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.DAL
 {
+    [ExcludeFromCodeCoverage]
     public class BrukerRepository : IBrukerRepository
     {
         private readonly DBContext _db;
