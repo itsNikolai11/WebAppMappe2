@@ -31,7 +31,7 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ingen tilgang");
             }
 
             List<Billett> billetter = await _db.hentAlle();
@@ -44,14 +44,14 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ingen tilgang");
             }
             Billett billett = await _db.hentBillett(id);
             if(billett != null)
             {
                 return Ok(billett);
             }
-            return NotFound();
+            return NotFound("Ordre ikke funnet");
 
         }
 
@@ -79,14 +79,14 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ingen tilgang");
             }
             bool slettOK = await _db.slettBillett(id);
             if (slettOK)
             {
-                return Ok();
+                return Ok("Slettet ordre");
             }
-            return NotFound();
+            return NotFound("Ordre ikke funnet");
         }
         [HttpPut]
         public async Task<ActionResult> EndreOrdre(Billett b)
@@ -94,14 +94,14 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ingen tilgang");
             }
             bool endringOK = await _db.endreBillett(b);
             if (endringOK)
             {
-                return Ok();
+                return Ok("Ordre endret");
             }
-            return BadRequest();
+            return NotFound("Ordre ikke funnet");
         }
     }
 }
