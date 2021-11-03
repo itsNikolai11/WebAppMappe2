@@ -70,18 +70,21 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
-
-            bool returOK = await _db.LagreRute(innRute);
-            if (!returOK)
+            if (ModelState.IsValid)
             {
-                _log.LogInformation("Lagring av innRute.id -> " + innRute.Id + " ble ikke gjennomført");
-                return BadRequest();
+                bool returOK = await _db.LagreRute(innRute);
+                if (!returOK)
+                {
+                    _log.LogInformation("Lagring av ruten ble ikke gjennomført");
+                    return BadRequest("Ruten kunne ikke lagres");
+                }
+                _log.LogInformation("Lagring av rute ble gjennomført suksessfullt");
+                return Ok("Rute lagret");
             }
-            _log.LogInformation("Lagring av rute ble gjennomført suksessfullt");
-            return Ok();
-            
+            _log.LogInformation("Feil i inputvalidering ved lagring av rute");
+            return BadRequest("Feil i inputvalidering ved lagring av rute");
         }
         
         [HttpDelete("{id}")]
@@ -90,7 +93,7 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
 
             bool returOK = await _db.SlettRute(id);

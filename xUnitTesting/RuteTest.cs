@@ -189,6 +189,97 @@ namespace xUnitTesting
 
         //LagreRute
 
+        [Fact]
+        public async Task LagreRuteLoggetInnOK()
+        {
+            //Arrange
+            mockRep.Setup(d => d.LagreRute(It.IsAny<Rute>())).ReturnsAsync(true);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.LagreRute(It.IsAny<Rute>()) as OkObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
+            Assert.Equal("Rute lagret", resultat.Value);
+        }
+
+        [Fact]
+        public async Task LagreRuteLoggetInnOKDBFeil()
+        {
+            //Arrange
+            mockRep.Setup(d => d.LagreRute(It.IsAny<Rute>())).ReturnsAsync(false);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.LagreRute(It.IsAny<Rute>()) as BadRequestObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Ruten kunne ikke lagres", resultat.Value);
+        }
+
+        [Fact]
+        public async Task LagreRuteIkkeLoggetInn()
+        {
+            //Arrange
+            mockRep.Setup(d => d.HentRuter()).ReturnsAsync(It.IsAny<List<Rute>>());
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _ikkeLoggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.LagreRute(It.IsAny<Rute>()) as UnauthorizedObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
+            Assert.Equal("Ikke logget inn", resultat.Value);
+        }
+
+        [Fact]
+        public async Task LagreRuteLoggetInnFeilInput()
+        {
+            //Arrange
+            var rute1 = new Rute
+            {
+                Id = 1,
+                FraDestinasjon = "",
+                TilDestinasjon = "København",
+                PrisBarn = 130,
+                PrisVoksen = 260
+            };
+
+            mockRep.Setup(d => d.LagreRute(rute1)).ReturnsAsync(true);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            ruteController.ModelState.AddModelError("FraDestinasjon", "Feil i inputvalidering ved lagring av rute");
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.LagreRute(rute1) as BadRequestObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Feil i inputvalidering ved lagring av rute", resultat.Value);
+        }
+
 
         //SlettRute
 
