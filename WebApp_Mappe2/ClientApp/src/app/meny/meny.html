@@ -13,21 +13,23 @@
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
                  [ngClass]="{ show: isExpanded }">
-                <ul class="navbar-nav flex-grow">
+              <ul class="navbar-nav flex-grow">
 
-                    <!--kopiert fra nettet though-->
-                    <li class="nav-item dropdown ml-auto">
-                        <a class="nav-link dropdown-toggle text-dark" id="navbarDropdown" data-toggle="dropdown" (click)="show=!show">Endre</a>
-                        <div class="dropdown-menu " aria-labelledby="navbarDropdown" [ngClass]="{show: show === true}">
-                            <a class="dropdown-item" routerLink="/destinasjonListe">Destinasjon</a>
-                            <a class="dropdown-item" routerLink="/rute">Rute</a>
-                            <a class="dropdown-item" routerLink="/avgang">Avgang</a>
-                            <a class="dropdown-item" routerLink="/visOrdre">Ordre</a>
+                <!--kopiert fra nettet though-->
+                <li class="nav-item dropdown ml-auto">
+                  <a class="dropdown-item" routerLink="/destinasjonListe">Destinasjon</a>
+                </li>
+                <li class="nav-item dropdown ml-auto">
+                  <a class="dropdown-item" routerLink="/rute">Rute</a>
+                </li>
+                <li class="nav-item dropdown ml-auto">
+                  <a class="dropdown-item" routerLink="/avgang">Avgang</a>
+                </li>
+                <li class="nav-item dropdown ml-auto">
+                  <a class="dropdown-item" routerLink="/visOrdre">Ordre</a>
+                </li>
 
-                        </div>
-                    </li>
-
-                </ul>
+              </ul>
             </div>
             
         </div>

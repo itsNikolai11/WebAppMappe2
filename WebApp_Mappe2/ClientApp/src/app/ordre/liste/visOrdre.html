@@ -1,5 +1,6 @@
 <div class="container">
-  <div class="col-md-12">
+  <div class="table-container">
+    <h1>Ordre</h1>
     <table class="table-bordered table-condensed">
       <thead>
         <tr>
@@ -24,11 +25,11 @@
           <td><button class="btn-danger" (click)="slettOrdre(ordre.id)">Slett</button></td>
           <td><button class="btn-success" [routerLink]="['/endreOrdre', ordre.id]">Rediger</button></td>
         </tr>
-
       </tbody>
     </table>
+    <div>
+  <button class="btn btn-primary" routerLink="/nyOrdre">Ny Ordre</button>
+</div>
   </div>
-  <div>
-    <button class="btn btn-primary" routerLink="/nyOrdre">Ny Ordre</button>
-  </div>
+  
 </div>
