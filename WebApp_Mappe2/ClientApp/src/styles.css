@@ -78,6 +78,7 @@ code {
 }
 .table-bordered td, .table-bordered th {
   padding: 5px;
+  
 }
 .table-bordered thead td, .table-bordered thead th {
   background-color: #1b6ec2;
@@ -90,9 +91,11 @@ code {
     padding: 10px;
     width: 60%;
     margin-left: 20%;
+    
 }
 .table-container {
   width: 100%;
+  
 }
 @media only screen and (max-width: 850px)  {
   .container {
