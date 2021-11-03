@@ -19,9 +19,9 @@ import { LagreOrdre } from './ordre/lagre/lagreOrdre';
 import { VisOrdre } from './ordre/liste/visOrdre';
 import { EndreRute } from './rute/endre/endreRute';
 import { EndreOrdre } from './ordre/endre/endreOrdre';
-
 import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
 import { AvgangRediger } from './avgang/avgangRediger/avgangRediger';
+import { ModalAvgang } from './avgang/avgangListe/avgangSlett';
 
 
 @NgModule({
@@ -44,7 +44,8 @@ import { AvgangRediger } from './avgang/avgangRediger/avgangRediger';
     //Modal
     EndreOrdre,
     AvgangLagre,
-    AvgangRediger
+    AvgangRediger,
+    ModalAvgang
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -55,6 +56,6 @@ import { AvgangRediger } from './avgang/avgangRediger/avgangRediger';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [Modal]
+  entryComponents: [Modal, ModalAvgang]
 })
 export class AppModule { }

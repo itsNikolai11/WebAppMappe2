@@ -49,7 +49,15 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized();
             }
-            throw new NotImplementedException();
+
+            Avgang avgang = await _db.HentAvgang(id);
+            if (avgang == null)
+            {
+                _log.LogInformation("Fant ikke avgang med id " + id);
+                return NotFound();
+            }
+            _log.LogInformation("Henting av Avgang -> " + id + " ble gjennomført suksessfullt");
+            return Ok(avgang);
         }
         [HttpPost]
         public async Task<ActionResult> LagreAvgang(Avgang r)

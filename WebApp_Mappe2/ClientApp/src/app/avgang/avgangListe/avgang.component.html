@@ -26,21 +26,12 @@
             <td>{{avgang.ruteNr}}</td>
             <td></td>
             <td>{{avgang.avgangTid}}</td>
-            <td><button class="btn btn-danger" (click)="slettAvgang(avgang.id)">Slett</button></td>
+            <td><button class="btn btn-danger" (click)="sletteAvgang(avgang.id)">Slett</button></td>
             <td><button class="btn btn-success" [routerLink]="['/avgangRediger', avgang.id]">Endre</button></td>
 
           </tr>
 
         </tbody>
-
-        <!--<tbody *ngFor="let avgang of alleAvganger">
-          <tr *ngFor="let rute of ruter">
-            <div ng-if="{{avgang.ruteNr}}==={{rute.id}}"></div>
-            <td>{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</td>
-            <td>{{avgang.avgangTid}}</td>
-
-          </tr>
-        </tbody>-->
       
       </table>
       <div>
