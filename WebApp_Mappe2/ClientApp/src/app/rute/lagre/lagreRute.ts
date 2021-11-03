@@ -11,7 +11,8 @@ import { destinasjon } from "../../destinasjon";
 
 export class LagreRute {
     skjema: FormGroup;
-    destinasjoner: Array<destinasjon>;
+  destinasjoner: Array<destinasjon>;
+  //ruter: Array<rute>;
 
     validering = {
         id: [""],
@@ -19,13 +20,12 @@ export class LagreRute {
           ""
         ],
         tilDestinasjon: [
-          ""
-        ],
+          ""],
         prisBarn: [
-            null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}")])
+          null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}"), Validators.min(1)])
         ],
-        prisVoksen: [
-            null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}")])
+      prisVoksen: [
+        null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}"), Validators.min(1)])
         ]
         
     }
@@ -50,7 +50,8 @@ export class LagreRute {
     };
 
     vedSubmit() {
-        this.lagreRute();
+      this.lagreRute();
+      
     }
 
     lagreRute() {
