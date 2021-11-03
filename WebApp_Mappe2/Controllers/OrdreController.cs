@@ -61,17 +61,17 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ingen tilgang");
             }
 
             bool returOk = await _db.lagreBillett(b);
             if (!returOk)
             {
                 _log.LogInformation("Lagring av ordre.id -> " + b.Id + " ble ikke gjennomført");
-                return BadRequest();
+                return BadRequest("Lagring feilet");
             }
             _log.LogInformation("Lagring av ordre ble gjennomført suksessfullt");
-            return Ok();
+            return Ok("Lagre ok");
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettOrdre(int id)
