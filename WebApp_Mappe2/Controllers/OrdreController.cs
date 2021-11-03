@@ -13,6 +13,7 @@ namespace WebApp_Mappe2.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class OrdreController : ControllerBase
+
     {
         private readonly IOrdreRepository _db;
 
@@ -31,7 +32,7 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ingen tilgang");
             }
 
             List<Billett> billetter = await _db.hentAlle();
@@ -44,14 +45,14 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ingen tilgang");
             }
             Billett billett = await _db.hentBillett(id);
             if(billett != null)
             {
                 return Ok(billett);
             }
-            return NotFound();
+            return NotFound("Ordre ikke funnet");
 
         }
 
@@ -67,11 +68,11 @@ namespace WebApp_Mappe2.Controllers
             bool returOk = await _db.lagreBillett(b);
             if (!returOk)
             {
-                _log.LogInformation("Lagring av ordre.id -> " + b.Id + " ble ikke gjennomført");
+                _log.LogInformation("Lagring av ordre ble ikke gjennomført");
                 return BadRequest("Lagring feilet");
             }
             _log.LogInformation("Lagring av ordre ble gjennomført suksessfullt");
-            return Ok("Lagre ok");
+            return Ok(true);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettOrdre(int id)
@@ -79,14 +80,14 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ingen tilgang");
             }
             bool slettOK = await _db.slettBillett(id);
             if (slettOK)
             {
-                return Ok();
+                return Ok(true);
             }
-            return NotFound();
+            return NotFound("Ordre ikke funnet");
         }
         [HttpPut]
         public async Task<ActionResult> EndreOrdre(Billett b)
@@ -94,14 +95,14 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ingen tilgang");
             }
             bool endringOK = await _db.endreBillett(b);
             if (endringOK)
             {
-                return Ok();
+                return Ok(true);
             }
-            return BadRequest();
+            return NotFound("Ordre ikke funnet");
         }
     }
 }

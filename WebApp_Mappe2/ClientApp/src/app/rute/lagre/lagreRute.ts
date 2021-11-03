@@ -10,8 +10,9 @@ import { destinasjon } from "../../destinasjon";
 })
 
 export class LagreRute {
-    skjema: FormGroup;
-    destinasjoner: Array<destinasjon>;
+  skjema: FormGroup;
+  destinasjoner: Array<destinasjon>;
+  feil: boolean;
 
     validering = {
         id: [""],
@@ -19,13 +20,12 @@ export class LagreRute {
           ""
         ],
         tilDestinasjon: [
-          ""
-        ],
+          ""],
         prisBarn: [
-            null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}")])
+          null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}"), Validators.min(1)])
         ],
-        prisVoksen: [
-            null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}")])
+      prisVoksen: [
+        null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}"), Validators.min(1)])
         ]
         
     }
@@ -50,7 +50,8 @@ export class LagreRute {
     };
 
     vedSubmit() {
-        this.lagreRute();
+      this.lagreRute();
+      
     }
 
     lagreRute() {
@@ -71,7 +72,7 @@ export class LagreRute {
                     error => console.log(error)
                 );
         }
-        return "test"; //må få ut tekst under skjemaet
+      this.feil = true; //må få ut tekst under skjemaet
 
         
     };

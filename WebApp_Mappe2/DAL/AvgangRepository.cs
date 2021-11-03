@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.DAL
 {
+    [ExcludeFromCodeCoverage]
     public class AvgangRepository : IAvgangRepository
     {
         private readonly DBContext _db;

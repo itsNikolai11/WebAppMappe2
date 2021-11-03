@@ -13,7 +13,7 @@
 
           <tr>
             <th>Rute Id</th>
-            <th>Rute</th>
+            
             <th>Tid</th>
             <th>Slett</th>
             <th>Endre</th>
@@ -24,7 +24,7 @@
           <tr>
 
             <td>{{avgang.ruteNr}}</td>
-            <td></td>
+            
             <td>{{avgang.avgangTid}}</td>
             <td><button class="btn btn-danger" (click)="sletteAvgang(avgang.id)">Slett</button></td>
             <td><button class="btn btn-success" [routerLink]="['/avgangRediger', avgang.id]">Endre</button></td>

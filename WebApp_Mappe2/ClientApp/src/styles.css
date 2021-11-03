@@ -4,6 +4,16 @@
 body{
     background-color: lightgray;
 }
+table {
+    padding: 10px;
+    border-radius:5px;
+}
+th {
+  padding: 10px;
+}
+tr {
+    padding: 5px;
+}
 a {
   color: #0366d6;
 }
@@ -19,7 +29,7 @@ code {
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
-  margin-top: 10px;
+  margin: 5px;
   border: 0;
   padding: 5px 15px 5px 15px;
   border-radius: 6px;
@@ -27,7 +37,15 @@ code {
 .btn-danger {
   color: #fff;
   background-color: #ff0000;
-  margin-top: 10px;
+  margin: 5px;
+  border: 0;
+  padding: 5px 15px 5px 15px;
+  border-radius: 6px;
+}
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  margin: 5px;
   border: 0;
   padding: 5px 15px 5px 15px;
   border-radius: 6px;
@@ -51,3 +69,37 @@ code {
     min-width: 80%;
     min-height: 3em;
   }
+
+.table-bordered {
+  background-color: azure;
+  padding: 10px;
+  border: 0;
+  border-radius: 5px;
+}
+.table-bordered td, .table-bordered th {
+  padding: 5px;
+  
+}
+.table-bordered thead td, .table-bordered thead th {
+  background-color: #1b6ec2;
+  border: 0;
+  color: white;
+}
+.container {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    width: 60%;
+    margin-left: 20%;
+    
+}
+.table-container {
+  width: 100%;
+  
+}
+@media only screen and (max-width: 850px)  {
+  .container {
+      width: 100%;
+      margin-left: 0;
+  }
+ }
