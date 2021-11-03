@@ -62,7 +62,7 @@ export class AvgangLagre {
     
 
 
-    //console.log(nytid);
+    
 
     this.http.post("api/Avgang", lagretAvgang)
       .subscribe(retur => {
