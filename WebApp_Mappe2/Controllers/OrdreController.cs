@@ -67,7 +67,7 @@ namespace WebApp_Mappe2.Controllers
             bool returOk = await _db.lagreBillett(b);
             if (!returOk)
             {
-                _log.LogInformation("Lagring av ordre.id -> " + b.Id + " ble ikke gjennomført");
+                _log.LogInformation("Lagring av ordre ble ikke gjennomført");
                 return BadRequest("Lagring feilet");
             }
             _log.LogInformation("Lagring av ordre ble gjennomført suksessfullt");
