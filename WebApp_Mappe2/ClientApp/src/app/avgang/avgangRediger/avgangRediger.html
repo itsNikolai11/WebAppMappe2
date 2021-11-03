@@ -1,10 +1,26 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+<div class="container">
+  <div class="col-md-4">
+    <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+      <input class="form-control" formControlName="id" type="hidden" />
+      <div class="form-group">
+        <label>Rute Id</label>
+        <input type="datetime-local" class="form-control" formControlName="rute" />
+        <p class="alert alert-warning" [hidden]="skjema.controls.tid.valid || (skjema.controls.tid.pristine && !submitted)">
+          Tid er obligatorisk.
+        </p>
+      </div>
+      <div class="form-group">
+        <label>Tid</label>
+        <input type="datetime-local" class="form-control" formControlName="tid" />
+        <p class="alert alert-warning" [hidden]="skjema.controls.tid.valid || (skjema.controls.tid.pristine && !submitted)">
+          Tid er obligatorisk.
+        </p>
+      </div>
+      <div class="form-group">
+        <button type="submit" [disabled]="!skjema.valid" class="btn btn-primary">Lagre</button>
 
-</body>
-</html>
+      </div>
+    </form>
+    <button class="btn btn-primary" routerLink="/avgang">Tilbake</button>
+  </div>
+</div>

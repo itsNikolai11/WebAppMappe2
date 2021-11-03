@@ -24,14 +24,11 @@ export class DestinasjonRediger {
     ]
   }
 
- //TODO Konstruktør for http.
-
   constructor(private http: HttpClient, private fb: FormBuilder,
     private route: ActivatedRoute, private router: Router) {
     this.skjema = fb.group(this.validering);
   }
 
-  //TODO Onsubmit lagre knapp trykk kjør endre en 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.redigerDest(params.id);
@@ -54,10 +51,7 @@ export class DestinasjonRediger {
       );
   }
 
-
-  
   redigerEnDest() {
-
     const redigertDest = new destinasjon();
     redigertDest.id = this.skjema.value.id;
     redigertDest.sted = this.skjema.value.sted;

@@ -21,8 +21,8 @@ import { EndreRute } from './rute/endre/endreRute';
 import { EndreOrdre } from './ordre/endre/endreOrdre';
 
 import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import { Modal } from './rute/liste/slettModal';
+import { AvgangRediger } from './avgang/avgangRediger/avgangRediger';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
     EndreRute,
     //Modal
     EndreOrdre,
-    AvgangLagre
+    AvgangLagre,
+    AvgangRediger
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -13,7 +13,7 @@ import { VisOrdre } from './ordre/liste/visOrdre';
 import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
 import { EndreRute } from './rute/endre/endreRute';
 import { EndreOrdre } from './ordre/endre/endreOrdre';
-
+import { AvgangRediger } from './avgang/avgangRediger/avgangRediger';
 
 const appRoots: Routes = [
   { path: 'adminpage', component: AdminpageComponent },
@@ -31,7 +31,9 @@ const appRoots: Routes = [
   { path: 'endreRute/:id', component: EndreRute },
   { path: 'endreOrdre/:id', component: EndreOrdre },
   { path: 'visOrdre', component: VisOrdre },
-  { path: 'avgangLagre', component: AvgangLagre }
+  { path: 'avgangLagre', component: AvgangLagre },
+  { path: 'avgangRediger/:id', component: AvgangRediger }
+
   //Husk eks 'rediger/:id' send med f.eks id i rediger.
 ]
 @NgModule({
