@@ -55,17 +55,35 @@ export class AvgangLagre {
 
   lagreAvgang() {
     const lagretAvgang = new avgang();
-    
-    lagretAvgang.ruteNr = this.skjema.value.rute;
-    lagretAvgang.avgangTid = this.skjema.value.tid;
+
+   /*var date = new Date(this.skjema.value.tid);
+    var day = date.getDate();       // yields date
+    var month = date.getMonth() + 1;    // yields month (add one as '.getMonth()' is zero indexed)
+    var year = date.getFullYear();  // yields year
+    var hour = date.getHours();     // yields hours 
+    var minute = date.getMinutes(); // yields minutes
+
+    var time = day + "/" + month + "/" + year + " " + hour + ':' + minute + ':' + '00';*/
+
+    var ruteNr = parseInt(this.skjema.value.rute);
+    lagretAvgang.ruteNr = ruteNr;
+
+
+    //lagretAvgang.avgangTid = time; //this.skjema.value.tid;
+
+    var date = new Date(this.skjema.value.tid);
+    lagretAvgang.avgangTid = date.toJSON();
+
+    console.log(lagretAvgang.avgangTid);
+    console.log(lagretAvgang.ruteNr)
 
     console.log(lagretAvgang);
 
-    /*this.http.post("api/Avgang", lagretAvgang)
+    this.http.post("api/Avgang", lagretAvgang )
       .subscribe(retur => {
         this.router.navigate(['/avgang']);
       },
         error => console.log(error)
-      );*/
+      );
   };
 }
