@@ -118,6 +118,74 @@ namespace xUnitTesting
 
         //HentRute
 
+        [Fact]
+        public async Task HentEnRuteLoggetInnOK()
+        {
+            //Arrange 
+            var rute1 = new Rute
+            {
+                Id = 1,
+                FraDestinasjon = "Helsinki",
+                TilDestinasjon = "København",
+                PrisBarn = 130,
+                PrisVoksen = 260
+            };
+
+            mockRep.Setup(d => d.HentRute(It.IsAny<int>())).ReturnsAsync(rute1);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.HentRute(It.IsAny<int>()) as OkObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
+            Assert.Equal<Rute>(rute1, (Rute)resultat.Value);
+        }
+
+        [Fact]
+        public async Task HentEnRuteLoggetInnIkkeOK()
+        {
+            //Arrange 
+            mockRep.Setup(d => d.HentRute(It.IsAny<int>())).ReturnsAsync(() => null);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.HentRute(It.IsAny<int>()) as NotFoundObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.NotFound, resultat.StatusCode);
+            Assert.Equal("Fant ingen matchende rute", resultat.Value);
+        }
+
+        [Fact]
+        public async Task HentEnRuteIkkeLoggetInnOK()
+        {
+            //Arrange 
+            mockRep.Setup(d => d.HentRute(It.IsAny<int>())).ReturnsAsync(() => null);
+
+            var ruteController = new RuteController(mockRep.Object, mockLog.Object);
+
+            mockSession[_loggetInn] = _ikkeLoggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            ruteController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await ruteController.HentRute(It.IsAny<int>()) as UnauthorizedObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.Unauthorized, resultat.StatusCode);
+            Assert.Equal("Ikke logget inn", resultat.Value);
+        }
 
         //LagreRute
 

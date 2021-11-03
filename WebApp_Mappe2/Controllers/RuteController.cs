@@ -51,14 +51,14 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
 
             Rute rute = await _db.HentRute(id);
             if (rute == null)
             {
                 _log.LogInformation("Fant ikke rute med id " + id);
-                return NotFound();
+                return NotFound("Fant ingen matchende rute");
             }
             _log.LogInformation("Henting av rute -> " + id + " ble gjennomført suksessfullt");
             return Ok(rute);
