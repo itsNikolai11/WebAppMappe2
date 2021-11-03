@@ -2,11 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ordre } from '../../ordre';
+import { rute } from '../../rute';
 @Component({
   templateUrl: "visOrdre.html"
 })
 export class VisOrdre {
-  public alleOrdre: Array<ordre>
+  public alleOrdre: Array<ordre>;
+  public ruter: Array<rute>;
 
   constructor(private http: HttpClient, private router: Router) {
 
@@ -17,7 +19,13 @@ export class VisOrdre {
   lastOrdre() {
     this.http.get<ordre[]>("api/ordre").subscribe(data => {
       this.alleOrdre = data;
-    })
+    });
+    this.lastRuter();
+  }
+  lastRuter() {
+    this.http.get<rute[]>("api/rute").subscribe(data => {
+      this.ruter = data;
+    });
   }
   filtrerOrdre(ruteId: number) {
 

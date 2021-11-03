@@ -15,15 +15,15 @@
         </tr>
       </thead>
       <tbody *ngFor="let ordre of alleOrdre">
-        <tr>
-          <td>{{ordre.id}}</td>
-          <td>{{ordre.ruteNr}}</td>
-          <td>{{ordre.avgangNr}}</td>
-          <td>{{ordre.antallBarn}}</td>
-          <td>{{ordre.antallVoksen}}</td>
-          <td>{{ordre.refPers}}</td>
-          <td><button class="btn-danger" (click)="slettOrdre(ordre.id)">Slett</button></td>
-          <td><button class="btn-success" [routerLink]="['/endreOrdre', ordre.id]">Rediger</button></td>
+        <tr *ngFor="let rute of ruter">
+          <td *ngIf="ordre.ruteNr == rute.id">{{ordre.id}}</td>
+          <td *ngIf="ordre.ruteNr == rute.id">{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</td>
+          <td *ngIf="ordre.ruteNr == rute.id">{{ordre.avgangNr}}</td>
+          <td *ngIf="ordre.ruteNr == rute.id">{{ordre.antallBarn}}</td>
+          <td *ngIf="ordre.ruteNr == rute.id">{{ordre.antallVoksen}}</td>
+          <td *ngIf="ordre.ruteNr == rute.id">{{ordre.refPers}}</td>
+          <td *ngIf="ordre.ruteNr == rute.id"><button class="btn-danger" (click)="slettOrdre(ordre.id)">Slett</button></td>
+          <td *ngIf="ordre.ruteNr == rute.id"><button class="btn-success" [routerLink]="['/endreOrdre', ordre.id]">Rediger</button></td>
         </tr>
       </tbody>
     </table>
