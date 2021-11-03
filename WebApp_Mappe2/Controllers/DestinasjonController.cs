@@ -75,17 +75,22 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized("Ikke logget inn");
             }
-
-            bool returOK = await _db.LagreDestinasjon(d);
-            if (!returOK)
+            if (ModelState.IsValid)
             {
-                _log.LogInformation("Lagring av destinasjon ble ikke gjennomført");
-                return BadRequest("Destinasjon kunne ikke lagres");
+
+
+                bool returOK = await _db.LagreDestinasjon(d);
+                if (!returOK)
+                {
+                    _log.LogInformation("Lagring av destinasjon ble ikke gjennomført");
+                    return BadRequest("Destinasjon kunne ikke lagres");
+                }
+                _log.LogInformation("Lagring av Destinasjon ble gjennomført suksessfullt");
+                return Ok("Destinasjon lagret");
             }
-            _log.LogInformation("Lagring av Destinasjon ble gjennomført suksessfullt");
-            return Ok("Destinasjon lagret");
+            _log.LogInformation("Feil i inputvalidering ved lagring av destinasjon");
+            return BadRequest("Feil i inputvalidering ved lagring av destinasjon");
         }
-        //LAgre mangler sjekk for inputvalidering
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettDestinasjon(int id)

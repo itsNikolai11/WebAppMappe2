@@ -243,6 +243,35 @@ namespace xUnitTesting
             Assert.Equal("Ikke logget inn", resultat.Value);
         }
 
+        [Fact]
+        public async Task LagreDestinasjonLoggetInnFeilInput()
+        {
+            //Arrange
+            var dest1 = new Destinasjon
+            {
+                Id = 1,
+                Sted = "",
+                Land = "Norge"
+            };
+
+            mockRep.Setup(d => d.LagreDestinasjon(dest1)).ReturnsAsync(true);
+
+            var destinasjonController = new DestinasjonController(mockRep.Object, mockLog.Object);
+
+            destinasjonController.ModelState.AddModelError("Sted", "Feil i inputvalidering ved endring av destinasjon");
+
+            mockSession[_loggetInn] = _loggetInn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            destinasjonController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var resultat = await destinasjonController.LagreDestinasjon(dest1) as BadRequestObjectResult;
+
+            //Assert
+            Assert.Equal((int)HttpStatusCode.BadRequest, resultat.StatusCode);
+            Assert.Equal("Feil i inputvalidering ved lagring av destinasjon", resultat.Value);
+        }
+
         //SlettDestinasjon
 
         [Fact]
