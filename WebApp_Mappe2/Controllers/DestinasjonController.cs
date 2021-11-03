@@ -66,6 +66,7 @@ namespace WebApp_Mappe2.Controllers
         }
 
 
+
         [HttpPost]
         public async Task<ActionResult> LagreDestinasjon(Destinasjon d)
         {
@@ -74,17 +75,22 @@ namespace WebApp_Mappe2.Controllers
                 _log.LogInformation("Login ikke gyldig!");
                 return Unauthorized("Ikke logget inn");
             }
-
-            bool returOK = await _db.LagreDestinasjon(d);
-            if (!returOK)
+            if (ModelState.IsValid)
             {
-                _log.LogInformation("Lagring av destinasjon ble ikke gjennomført");
-                return BadRequest("Destinasjon kunne ikke lagres");
-            }
-            _log.LogInformation("Lagring av Destinasjon ble gjennomført suksessfullt");
-            return Ok("Destinasjon lagret");
-        }
 
+
+                bool returOK = await _db.LagreDestinasjon(d);
+                if (!returOK)
+                {
+                    _log.LogInformation("Lagring av destinasjon ble ikke gjennomført");
+                    return BadRequest("Destinasjon kunne ikke lagres");
+                }
+                _log.LogInformation("Lagring av Destinasjon ble gjennomført suksessfullt");
+                return Ok("Destinasjon lagret");
+            }
+            _log.LogInformation("Feil i inputvalidering ved lagring av destinasjon");
+            return BadRequest("Feil i inputvalidering ved lagring av destinasjon");
+        }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettDestinasjon(int id)
@@ -105,13 +111,14 @@ namespace WebApp_Mappe2.Controllers
             return Ok("Destinasjon slettet");
 
         }
+
         [HttpPut]
         public async Task<ActionResult> EndreDestinasjon(Destinasjon d)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Ikke logget inn");
             }
             if (ModelState.IsValid)
             {
@@ -119,13 +126,13 @@ namespace WebApp_Mappe2.Controllers
                 if (!returOK)
                 {
                     _log.LogInformation("Endringen kunne ikke utføres");
-                    return NotFound();
+                    return NotFound("Endringen kunne ikke utføres");
                 }
                 _log.LogInformation("Endring av Destinasjon ble gjennomført suksessfullt");
-                return Ok();
+                return Ok("Destinasjon endret");
             }
             _log.LogInformation("Feil i inputvalidering ved endring av Destinasjon");
-            return BadRequest();
+            return BadRequest("Feil i inputvalidering ved endring av Destinasjon");
         }
     }
 }

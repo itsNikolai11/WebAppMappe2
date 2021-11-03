@@ -31,7 +31,7 @@ namespace WebApp_Mappe2.Controllers
             {
                 _log.LogInformation("Login ikke gyldig!");
 
-                return Unauthorized();
+                return Unauthorized("Login ikke gyldig!");
             }
             List<Avgang> alleAvganger = await _db.HentAvganger();
             if (alleAvganger == null)
@@ -47,14 +47,14 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Login ikke gyldig!");
             }
 
             Avgang avgang = await _db.HentAvgang(id);
             if (avgang == null)
             {
                 _log.LogInformation("Fant ikke avgang med id " + id);
-                return NotFound();
+                return NotFound("Fant ikke avgang");
             }
             _log.LogInformation("Henting av Avgang -> " + id + " ble gjennomført suksessfullt");
             return Ok(avgang);
@@ -65,15 +65,15 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Login ikke gyldig!");
             }
             bool returOK = await _db.LagreAvgang(r);
             if (!returOK)
             {
                 _log.LogInformation("Destinasjonen kunne ikke lagres!");
-                return BadRequest();
+                return BadRequest("Lagring feilet");
             }
-            return Ok();
+            return Ok(true);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> SlettAvgang(int id)
@@ -81,16 +81,16 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Login ikke gyldig!");
             }
             bool returOK = await _db.SlettAvgang(id);
             if (!returOK)
             {
                 _log.LogInformation("Sletting av Avgang ble ikke utført");
-                return NotFound();
+                return NotFound(false);
             }
             _log.LogInformation("Sletting av Avgang ble gjennomført suksessfullt");
-            return Ok();
+            return Ok(true);
         }
         [HttpPut]
         public async Task<ActionResult> EndreAvgang(Avgang r)
@@ -98,7 +98,7 @@ namespace WebApp_Mappe2.Controllers
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {
                 _log.LogInformation("Login ikke gyldig!");
-                return Unauthorized();
+                return Unauthorized("Login ikke gyldig!");
             }
             if (ModelState.IsValid)
             {
@@ -106,13 +106,13 @@ namespace WebApp_Mappe2.Controllers
                 if (!returOK)
                 {
                     _log.LogInformation("Endringen kunne ikke utføres");
-                    return NotFound();
+                    return NotFound(false);
                 }
                 _log.LogInformation("Endring av Avgang ble gjennomført suksessfullt");
-                return Ok();
+                return Ok(true);
             }
             _log.LogInformation("Feil i inputvalidering ved endring av Avgang");
-            return BadRequest();
+            return BadRequest("Feil i inputvalidering ved endring av Avgang");
         }
     }
 }
