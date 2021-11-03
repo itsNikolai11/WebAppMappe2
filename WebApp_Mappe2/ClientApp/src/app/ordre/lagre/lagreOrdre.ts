@@ -67,6 +67,9 @@ export class LagreOrdre {
     nyOrdre.antallBarn = this.skjema.value.antallBarn;
     nyOrdre.antallVoksen = this.skjema.value.antallVoksne;
     nyOrdre.refPers = this.skjema.value.refPers;
+    if (nyOrdre.antallBarn + nyOrdre.antallVoksen < 1) {
+      console.log("Ugyldig antall billetter");
+    }
     this.http.post("api/ordre", nyOrdre).subscribe(retur => {
       this.router.navigate(["/visOrdre"]);
     }, error => {
