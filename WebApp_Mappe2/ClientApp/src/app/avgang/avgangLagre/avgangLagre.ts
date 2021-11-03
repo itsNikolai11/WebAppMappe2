@@ -10,7 +10,7 @@ import { rute } from '../../rute';
 })
 export class AvgangLagre {
   skjema: FormGroup;
-  public alleAvganger: Array<avgang>;
+  //public alleAvganger: Array<avgang>;
   public ruter: Array<rute>;
 
   validering = {
@@ -25,7 +25,7 @@ export class AvgangLagre {
 
   ngOnInit() {
     this.hentRuter()
-    this.hentAvganger();
+    //this.hentAvganger();
   }
 
   hentRuter() {
@@ -39,14 +39,14 @@ export class AvgangLagre {
       );
   }
 
-  hentAvganger() {
+  /*hentAvganger() {
     this.http.get<avgang[]>("api/Avgang/")
       .subscribe(avgang => {
         this.alleAvganger = avgang;
       },
         error => console.log(error)
       );
-  };
+  };*/
 
 
   vedSubmit() {
@@ -55,17 +55,22 @@ export class AvgangLagre {
 
   lagreAvgang() {
     const lagretAvgang = new avgang();
+
     
     lagretAvgang.ruteNr = this.skjema.value.rute;
     lagretAvgang.avgangTid = this.skjema.value.tid;
+    
 
-    console.log(lagretAvgang);
 
-    /*this.http.post("api/Avgang", lagretAvgang)
+    //console.log(nytid);
+
+    this.http.post("api/Avgang", lagretAvgang)
       .subscribe(retur => {
+        console.log(lagretAvgang);
         this.router.navigate(['/avgang']);
+        
       },
         error => console.log(error)
-      );*/
+      );
   };
 }
