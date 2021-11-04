@@ -34,6 +34,7 @@ var DestinasjonComponent = /** @class */ (function () {
         this.http.delete('api/Destinasjon/' + id)
             .subscribe(function (retur) {
         }, function (error) { return console.log(error); }, function () { return console.log("Sletting av id:  " + id + " gjennomført."); });
+        this.hentAlleDestinasjoner();
         this.router.navigate(['/destinasjonListe']);
     };
     DestinasjonComponent = __decorate([

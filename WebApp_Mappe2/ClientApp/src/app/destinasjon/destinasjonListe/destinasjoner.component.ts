@@ -38,6 +38,7 @@ export class DestinasjonComponent {
         error => console.log(error),
         () => console.log("Sletting av id:  " + id + " gjennomført.")
     );
+    this.hentAlleDestinasjoner();
     this.router.navigate(['/destinasjonListe']);
   }
 }
