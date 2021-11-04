@@ -14,9 +14,10 @@ export class LagreOrdre {
   skjema: FormGroup;
   ruter: Array<rute>;
   avganger: Array<avgang>;
+
   validering = {
     rute: [null, Validators.compose([Validators.required])],
-    avgang: [null, Validators.compose([Validators.required])],
+    avgangNr: [null, Validators.compose([Validators.required])],
     antallBarn: [null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}"), Validators.min(1)])],
     antallVoksne: [null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}"), Validators.min(1)])],
     refPers: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])]
@@ -40,12 +41,13 @@ export class LagreOrdre {
   }
   filtrerAvganger(avganger: Array<avgang>, id: number) {
     const filtrerteAvganger = new Array<avgang>();
-    for (let a of avganger) {
-      if (a.id == id) {
-        filtrerteAvganger.push(a);
+    for (let avgang of avganger) {
+      if (avgang.ruteNr == id) {
+        filtrerteAvganger.push(avgang);
       }
     }
     this.avganger = filtrerteAvganger;
+    console.log(this.avganger);
 
   }
   hentRuter() {
@@ -63,7 +65,7 @@ export class LagreOrdre {
   lagreOrdre() {
     const nyOrdre = new ordre();
     nyOrdre.ruteNr = this.skjema.value.rute;
-    nyOrdre.avgangNr = this.skjema.value.avgang;
+    nyOrdre.avgangNr = this.skjema.value.avgangNr;
     nyOrdre.antallBarn = this.skjema.value.antallBarn;
     nyOrdre.antallVoksen = this.skjema.value.antallVoksne;
     nyOrdre.refPers = this.skjema.value.refPers;

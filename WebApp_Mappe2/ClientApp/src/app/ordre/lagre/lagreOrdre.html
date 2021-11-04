@@ -14,7 +14,7 @@
 
       <div class="form-group">
         <label>Avgang</label> <br>
-        <select class="form-control" formControlName="avgang" required id="avgangNr">
+        <select class="form-control" formControlName="avgangNr" required id="avgangNr">
           <option *ngFor="let avgang of avganger" value={{avgang.id}}>{{avgang.avgangTid}}</option>
         </select>
       </div>
