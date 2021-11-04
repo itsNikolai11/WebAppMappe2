@@ -61,7 +61,12 @@ export class AvgangComponent {
     // først hent navnet på kunden
     this.http.get<avgang>("api/Avgang/" + id)
       .subscribe(data => {
-        this.avgangTilSletting = data.id + ", " + data.avgangTid;
+        for (var rute of this.ruter) {
+          if (rute.id === data.ruteNr) {
+            this.avgangTilSletting = rute.fraDestinasjon + " - " + rute.tilDestinasjon + " , kl: " + data.avgangTid;
+          }
+        }
+        //this.avgangTilSletting = data.id + ", " + data.avgangTid;
 
         // så vis modalen og evt. kall til slett
         this.visModalOgSlett(id);
