@@ -31,12 +31,10 @@ var DestinasjonComponent = /** @class */ (function () {
         }, function (error) { return alert(error); }, function () { return console.log("Alle destinasjoner har blitt hentet."); });
     };
     DestinasjonComponent.prototype.slettDestinasjon = function (id) {
-        var _this = this;
-        this.http.delete("api/Destinasjon/" + id)
+        this.http.delete('api/Destinasjon/' + id)
             .subscribe(function (retur) {
-            _this.hentAlleDestinasjoner();
-            _this.router.navigate(['/destinasjonListe']);
         }, function (error) { return console.log(error); }, function () { return console.log("Sletting av id:  " + id + " gjennomført."); });
+        this.router.navigate(['/destinasjonListe']);
     };
     DestinasjonComponent = __decorate([
         (0, core_1.Component)({

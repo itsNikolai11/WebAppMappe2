@@ -26,10 +26,11 @@ var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var slettModal_1 = require("./rute/liste/slettModal");
 var lagreOrdre_1 = require("./ordre/lagre/lagreOrdre");
 var visOrdre_1 = require("./ordre/liste/visOrdre");
-var avgangLagre_1 = require("./avgang/avgangLagre/avgangLagre");
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import { Modal } from './rute/liste/slettModal';
+var endreRute_1 = require("./rute/endre/endreRute");
 var endreOrdre_1 = require("./ordre/endre/endreOrdre");
+var avgangLagre_1 = require("./avgang/avgangLagre/avgangLagre");
+var avgangRediger_1 = require("./avgang/avgangRediger/avgangRediger");
+var avgangSlett_1 = require("./avgang/avgangListe/avgangSlett");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -49,10 +50,13 @@ var AppModule = /** @class */ (function () {
                 slettModal_1.Modal,
                 lagreOrdre_1.LagreOrdre,
                 visOrdre_1.VisOrdre,
-                avgangLagre_1.AvgangLagre
+                avgangLagre_1.AvgangLagre,
+                endreRute_1.EndreRute,
                 //Modal
-                visOrdre_1.VisOrdre,
-                endreOrdre_1.EndreOrdre
+                endreOrdre_1.EndreOrdre,
+                avgangLagre_1.AvgangLagre,
+                avgangRediger_1.AvgangRediger,
+                avgangSlett_1.ModalAvgang
             ],
             imports: [
                 platform_browser_1.BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -63,7 +67,7 @@ var AppModule = /** @class */ (function () {
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent],
-            entryComponents: [slettModal_1.Modal]
+            entryComponents: [slettModal_1.Modal, avgangSlett_1.ModalAvgang]
         })
     ], AppModule);
     return AppModule;

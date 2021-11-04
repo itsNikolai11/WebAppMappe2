@@ -39,11 +39,12 @@ export class DestinasjonLagre {
 
     this.http.post("api/destinasjon", lagretDestinasjon)
       .subscribe(retur => {
-        this.router.navigate(['/destinasjonListe']);
+        
       },
         error => console.log(error),
         () => console.log("Lagring av " + " " + lagretDestinasjon.sted
           + " " + lagretDestinasjon.land + " gjennomført")
-      );
+    );
+    this.router.navigate(['/destinasjonListe']);
   };
 }
