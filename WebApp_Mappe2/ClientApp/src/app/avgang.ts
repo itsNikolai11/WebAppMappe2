@@ -3,6 +3,4 @@ export class avgang {
   //avgangTid: Date = new Date();
   avgangTid: string;
   ruteNr: number;
-  //fraDestinasjon: string;
-  //tilDestinasjon: string;
 }

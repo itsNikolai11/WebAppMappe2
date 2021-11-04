@@ -10,6 +10,7 @@ using WebApp_Mappe2.Models;
 
 namespace WebApp_Mappe2.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
     public class AvgangController : ControllerBase
     {

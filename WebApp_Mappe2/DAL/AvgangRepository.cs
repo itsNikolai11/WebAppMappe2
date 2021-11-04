@@ -84,9 +84,11 @@ namespace WebApp_Mappe2.DAL
             try
             {
                 var endreAvgang = await _db.Avganger.FindAsync(r.Id);
+                var sjekkId = await _db.Ruter.FindAsync(r.RuteNr);
 
                 endreAvgang.AvgangTid = r.AvgangTid;
-                endreAvgang.RuteNr.Id = r.RuteNr;
+                //endreAvgang.RuteNr.Id = r.RuteNr;
+                endreAvgang.RuteNr = sjekkId;
                 await _db.SaveChangesAsync();
             }
             catch

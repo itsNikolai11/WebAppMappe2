@@ -45,7 +45,7 @@ export class AvgangRediger {
   };
 
   redigerAvgang(id: number) {
-    this.http.get<avgang>("api/Avgang" + id).subscribe(avgang => {
+    this.http.get<avgang>("api/Avgang/" + id).subscribe(avgang => {
       this.skjema.patchValue({ id: avgang.id });
       this.skjema.patchValue({ rute: avgang.ruteNr });
       this.skjema.patchValue({ tid: avgang.avgangTid });
@@ -65,7 +65,7 @@ export class AvgangRediger {
 
     console.log(endretAvgang);
 
-    this.http.put("api/Avgang", endretAvgang)
+    this.http.put("api/Avgang/", endretAvgang)
       .subscribe(
         retur => {
           this.router.navigate(['/avgang']);
