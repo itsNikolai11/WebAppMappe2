@@ -41,9 +41,6 @@ export class LagreRute {
   ngOnInit() {
     this.hentDestinasjoner();
     this.hentAlleRuter();
-
-
-
   }
   hentDestinasjoner() {
 
@@ -76,27 +73,16 @@ export class LagreRute {
 
   }
 
-
-
-  //sjekke om den eksisterer
-  //hvis fradestinasjon = fradestinasjon og tildestinasjon == tildestinasjon, så eksisterer den fra før.
-
   lagreRute() {
 
     const lagretRute = new rute();
-    //console.log(this.ruter);
-
-
-    //console.log(this.destinasjoner);
+        
     lagretRute.fraDestinasjon = this.skjema.value.fraDestinasjon;
     lagretRute.tilDestinasjon = this.skjema.value.tilDestinasjon;
     lagretRute.prisBarn = this.skjema.value.prisBarn;
     lagretRute.prisVoksen = this.skjema.value.prisVoksen;
 
     for (let rute of this.ruter) {
-
-
-
       if (rute.fraDestinasjon === lagretRute.fraDestinasjon && rute.tilDestinasjon === lagretRute.tilDestinasjon) {
 
         this.feilEksisterer = true;
@@ -113,14 +99,11 @@ export class LagreRute {
         },
           error => console.log(error)
         );
-        this.router.navigate(['/rute']);
-
     }
     else {
       this.feilLik = true;
       this.feilEksisterer = false;
     }
-
-
+    this.router.navigate(['/rute']);
   };
 }
