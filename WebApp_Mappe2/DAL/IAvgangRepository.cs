@@ -9,7 +9,7 @@ namespace WebApp_Mappe2.DAL
 {
     public interface IAvgangRepository
     {
-        Task<List<Avgang>> HentAvganger(/*int RuteId, DateTime Tid*/);
+        Task<List<Avgang>> HentAvganger();
         Task<Avgang> HentAvgang(int id);
         Task<bool> LagreAvgang(Avgang r);
         Task<bool> SlettAvgang(int id);

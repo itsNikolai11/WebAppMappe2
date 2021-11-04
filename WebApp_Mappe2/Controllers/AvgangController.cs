@@ -26,7 +26,7 @@ namespace WebApp_Mappe2.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> HentAvganger(/*int RuteId, DateTime Tid*/)
+        public async Task<ActionResult> HentAvganger()
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
             {

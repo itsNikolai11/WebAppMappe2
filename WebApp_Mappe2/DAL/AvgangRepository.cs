@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp_Mappe2.Models;
@@ -17,7 +16,7 @@ namespace WebApp_Mappe2.DAL
         {
             _db = db;
         }
-        public async Task<List<Avgang>> HentAvganger(/*int RuteId, DateTime Tid*/) //Inkludere senere hvis nødvendig
+        public async Task<List<Avgang>> HentAvganger()
         {
             try
             {
@@ -87,7 +86,6 @@ namespace WebApp_Mappe2.DAL
                 var sjekkId = await _db.Ruter.FindAsync(r.RuteNr);
 
                 endreAvgang.AvgangTid = r.AvgangTid;
-                //endreAvgang.RuteNr.Id = r.RuteNr;
                 endreAvgang.RuteNr = sjekkId;
                 await _db.SaveChangesAsync();
             }

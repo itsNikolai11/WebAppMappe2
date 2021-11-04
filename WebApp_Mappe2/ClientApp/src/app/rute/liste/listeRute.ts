@@ -13,8 +13,6 @@ export class ListeRute {
   alleRuter: Array<rute>; 
   laster: boolean;
   ruteTilSletting: string;
-  
-  //slettingOK: boolean;
 
     constructor(private http: HttpClient, private router: Router, private modalService: NgbModal) { }
 
@@ -63,12 +61,11 @@ export class ListeRute {
 
                 this.http.delete('api/rute/' + id)
                     .subscribe(retur => {
-                        //this.hentAlleRuter();
+                        this.hentAlleRuter();
                     },
                         error => console.log(error)
                     );
             }
-            this.hentAlleRuter();
             this.router.navigate(['/rute']);
             
         });

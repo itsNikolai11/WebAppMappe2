@@ -54,7 +54,6 @@ export class VisOrdre {
       console.log('Lukket med:' + retur);
       if (retur == "Slett") {
 
-        // kall til server for sletting
         this.http.delete("api/ordre/" + id)
           .subscribe(retur => {
             this.lastOrdre();
