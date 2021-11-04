@@ -90,11 +90,4 @@ export class AvgangComponent {
       this.router.navigate(['/avgang']);
     });
   }
-
-  onChangeEvent(event: any) {
-
-    console.log(event.target.value);
-    this.onChangeValue = event.target.value;
-
-  }
 }
