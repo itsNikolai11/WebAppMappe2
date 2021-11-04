@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
-body{
-    background-color: lightgray;
+body {
+  background-image: url(../../wwwroot/Storbat.jpg);
+  background-color: lightgray;
+  background-position: center;
+  height: 100%;
 }
 table {
     padding: 10px;
