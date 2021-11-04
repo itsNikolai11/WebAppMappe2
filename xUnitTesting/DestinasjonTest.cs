@@ -93,7 +93,7 @@ namespace xUnitTesting
         }
 
         [Fact]
-        public async Task HentAlleDestinasjonerLoggetInnFeilOKDB()
+        public async Task HentAlleDestinasjonerIkkeLoggetInn()
         {
             //Arrange
             mockRep.Setup(d => d.HentAlleDestinasjoner()).ReturnsAsync(It.IsAny<List<Destinasjon>>());

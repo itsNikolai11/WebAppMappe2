@@ -28,10 +28,16 @@
         <label>Antall voksne</label>
         <input type="number" formControlName="antallVoksne" />
       </div>
+      <p class="alert alert-warning" [hidden]="skjema.controls.antallVoksne.valid || (skjema.controls.antallVoksne.pristine && !submitted)">
+        Du må skrive inn en verdi!
+      </p>
       <div class="form-group">
         <label>Referanse-person</label>
         <input type="text" formControlName="refPers" />
       </div>
+      <p class="alert alert-warning" [hidden]="skjema.controls.refPers.valid || (skjema.controls.refPers.pristine && !submitted)">
+        Du må skrive inn en verdi!
+      </p>
       <div class="form-group">
         <button type="submit" [disabled]="!skjema.valid" class="btn-primary">Lagre</button>
       </div>
