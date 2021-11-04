@@ -57,8 +57,6 @@ export class AvgangComponent {
   }
 
   sletteAvgang(id: number) {
-
-    // først hent navnet på kunden
     this.http.get<avgang>("api/Avgang/" + id)
       .subscribe(data => {
         for (var rute of this.ruter) {
@@ -66,9 +64,6 @@ export class AvgangComponent {
             this.avgangTilSletting = rute.fraDestinasjon + " - " + rute.tilDestinasjon + " , kl: " + data.avgangTid;
           }
         }
-        //this.avgangTilSletting = data.id + ", " + data.avgangTid;
-
-        // så vis modalen og evt. kall til slett
         this.visModalOgSlett(id);
       },
         error => console.log(error)
@@ -83,8 +78,6 @@ export class AvgangComponent {
     modalRef.result.then(retur => {
       console.log('Lukket med:' + retur);
       if (retur == "Slett") {
-
-        // kall til server for sletting
         this.http.delete("api/Avgang/" + id)
           .subscribe(retur => {
             this.hentAvganger();

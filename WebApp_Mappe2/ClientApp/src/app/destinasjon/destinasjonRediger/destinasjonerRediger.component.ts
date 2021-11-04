@@ -13,7 +13,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class DestinasjonRediger {
   skjema: FormGroup;
 
-  //TODO Validering av input med RegEx
   validering = {
     id: [""],
     sted: [
