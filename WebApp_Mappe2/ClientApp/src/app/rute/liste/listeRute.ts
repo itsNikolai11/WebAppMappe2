@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Modal } from './slettModal';
+import { Modal } from '../../slettModal';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { rute } from "../../rute";
@@ -55,7 +55,7 @@ export class ListeRute {
     modalSlett(id: number) {
         const modalRef = this.modalService.open(Modal);
 
-        modalRef.componentInstance.rute = this.ruteTilSletting;
+        modalRef.componentInstance.navn = this.ruteTilSletting;
 
         modalRef.result.then(retur => {
             console.log('Lukket med:' + retur);

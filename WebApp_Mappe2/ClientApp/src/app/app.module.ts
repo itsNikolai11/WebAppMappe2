@@ -14,14 +14,13 @@ import { DestinasjonLagre } from './destinasjon/destinasjonLagre/destinasjonLagr
 import { DestinasjonRediger } from './destinasjon/destinasjonRediger/destinasjonerRediger.component';
 import { LagreRute } from './rute/lagre/lagreRute';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Modal } from './rute/liste/slettModal';
+import { Modal } from './slettModal';
 import { LagreOrdre } from './ordre/lagre/lagreOrdre';
 import { VisOrdre } from './ordre/liste/visOrdre';
 import { EndreRute } from './rute/endre/endreRute';
 import { EndreOrdre } from './ordre/endre/endreOrdre';
 import { AvgangLagre } from './avgang/avgangLagre/avgangLagre';
 import { AvgangRediger } from './avgang/avgangRediger/avgangRediger';
-import { ModalAvgang } from './avgang/avgangListe/avgangSlett';
 
 
 @NgModule({
@@ -41,11 +40,9 @@ import { ModalAvgang } from './avgang/avgangListe/avgangSlett';
     VisOrdre,
     AvgangLagre,
     EndreRute,
-    //Modal
     EndreOrdre,
     AvgangLagre,
-    AvgangRediger,
-    ModalAvgang
+    AvgangRediger
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -56,6 +53,6 @@ import { ModalAvgang } from './avgang/avgangListe/avgangSlett';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [Modal, ModalAvgang]
+  entryComponents: [Modal]
 })
 export class AppModule { }

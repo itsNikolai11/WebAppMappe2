@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { avgang } from "../../avgang";
 import { rute } from "../../rute";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalAvgang } from "./avgangSlett";
+import { Modal } from '../../slettModal';
 
 @Component({
   selector: 'app-root',
@@ -71,9 +71,9 @@ export class AvgangComponent {
   }
 
   visModalOgSlett(id: number) {
-    const modalRef = this.modalService.open(ModalAvgang);
+    const modalRef = this.modalService.open(Modal);
 
-    modalRef.componentInstance.avgang = this.avgangTilSletting;
+    modalRef.componentInstance.navn = this.avgangTilSletting;
 
     modalRef.result.then(retur => {
       console.log('Lukket med:' + retur);
