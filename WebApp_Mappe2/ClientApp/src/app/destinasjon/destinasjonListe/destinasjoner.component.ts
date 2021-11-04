@@ -33,11 +33,13 @@ export class DestinasjonComponent {
   slettDestinasjon(id: number){
     this.http.delete('api/Destinasjon/' + id)
       .subscribe(retur => {
-        this.hentAlleDestinasjoner();
+        
       },
         error => console.log(error),
-          () => console.log("Sletting av id:  " + id + " gjennomført.")
-      );
+        () => console.log("Sletting av id:  " + id + " gjennomført.")
+    );
+    this.hentAlleDestinasjoner();
+    this.router.navigate(['/destinasjonListe']);
   }
 }
 

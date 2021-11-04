@@ -60,10 +60,12 @@ export class DestinasjonRediger {
 
     this.http.put<destinasjon[]>("api/Destinasjon/", redigertDest)
       .subscribe(retur => {
-        this.router.navigate(['/destinasjonListe'])
+        
       },
         error => console.log(error),
         () => console.log("Redigert en destinasjon")
-      );
+    );
+    
+    this.router.navigate(['/destinasjonListe']);
   }
 }

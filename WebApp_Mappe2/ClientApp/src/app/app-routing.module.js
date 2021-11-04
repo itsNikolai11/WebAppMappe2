@@ -20,7 +20,9 @@ var lagreRute_1 = require("./rute/lagre/lagreRute");
 var lagreOrdre_1 = require("./ordre/lagre/lagreOrdre");
 var visOrdre_1 = require("./ordre/liste/visOrdre");
 var avgangLagre_1 = require("./avgang/avgangLagre/avgangLagre");
+var endreRute_1 = require("./rute/endre/endreRute");
 var endreOrdre_1 = require("./ordre/endre/endreOrdre");
+var avgangRediger_1 = require("./avgang/avgangRediger/avgangRediger");
 var appRoots = [
     { path: 'adminpage', component: adminpage_component_1.AdminpageComponent },
     { path: 'login', component: login_component_1.LoginComponent },
@@ -30,13 +32,15 @@ var appRoots = [
     { path: 'destinasjonListe', component: destinasjoner_component_1.DestinasjonComponent },
     { path: 'destinasjonLagre', component: destinasjonLagre_1.DestinasjonLagre },
     { path: 'destinasjonRediger/:id', component: destinasjonerRediger_component_1.DestinasjonRediger },
-    { path: 'nyOrdre', component: lagreOrdre_1.LagreOrdre },
-    { path: 'visOrdre', component: visOrdre_1.VisOrdre },
     { path: 'lagreRute', component: lagreRute_1.LagreRute },
-    { path: 'avgangLagre', component: avgangLagre_1.AvgangLagre }
     { path: 'nyOrdre', component: lagreOrdre_1.LagreOrdre },
     { path: 'visOrdre', component: visOrdre_1.VisOrdre },
-    { path: 'endreOrdre/:id', component: endreOrdre_1.EndreOrdre }
+    { path: 'avgangLagre', component: avgangLagre_1.AvgangLagre },
+    { path: 'endreRute/:id', component: endreRute_1.EndreRute },
+    { path: 'endreOrdre/:id', component: endreOrdre_1.EndreOrdre },
+    { path: 'visOrdre', component: visOrdre_1.VisOrdre },
+    { path: 'avgangLagre', component: avgangLagre_1.AvgangLagre },
+    { path: 'avgangRediger/:id', component: avgangRediger_1.AvgangRediger }
     //Husk eks 'rediger/:id' send med f.eks id i rediger.
 ];
 var AppRoutingModule = /** @class */ (function () {

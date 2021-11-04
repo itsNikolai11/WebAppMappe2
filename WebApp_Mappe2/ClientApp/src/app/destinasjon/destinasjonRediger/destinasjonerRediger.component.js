@@ -16,7 +16,6 @@ var destinasjon_1 = require("../../destinasjon");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var DestinasjonRediger = /** @class */ (function () {
-    //TODO Konstruktør for http.
     function DestinasjonRediger(http, fb, route, router) {
         this.http = http;
         this.fb = fb;
@@ -34,7 +33,6 @@ var DestinasjonRediger = /** @class */ (function () {
         };
         this.skjema = fb.group(this.validering);
     }
-    //TODO Onsubmit lagre knapp trykk kjør endre en 
     DestinasjonRediger.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
@@ -54,15 +52,14 @@ var DestinasjonRediger = /** @class */ (function () {
         }, function (error) { return console.log(error); });
     };
     DestinasjonRediger.prototype.redigerEnDest = function () {
-        var _this = this;
         var redigertDest = new destinasjon_1.destinasjon();
         redigertDest.id = this.skjema.value.id;
         redigertDest.sted = this.skjema.value.sted;
         redigertDest.land = this.skjema.value.land;
         this.http.put("api/Destinasjon/", redigertDest)
             .subscribe(function (retur) {
-            _this.router.navigate(['/destinasjonListe']);
         }, function (error) { return console.log(error); }, function () { return console.log("Redigert en destinasjon"); });
+        this.router.navigate(['/destinasjonListe']);
     };
     DestinasjonRediger = __decorate([
         (0, core_1.Component)({
