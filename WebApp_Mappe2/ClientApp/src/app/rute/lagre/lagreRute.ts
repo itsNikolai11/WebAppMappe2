@@ -109,10 +109,11 @@ export class LagreRute {
       this.http.post("api/rute/", lagretRute)
         .subscribe(retur => {
 
-          this.router.navigate(['/rute']);
+          
         },
           error => console.log(error)
         );
+        this.router.navigate(['/rute']);
 
     }
     else {

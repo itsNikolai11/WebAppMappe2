@@ -63,12 +63,14 @@ export class ListeRute {
 
                 this.http.delete('api/rute/' + id)
                     .subscribe(retur => {
-                        this.hentAlleRuter();
+                        //this.hentAlleRuter();
                     },
                         error => console.log(error)
                     );
             }
+            this.hentAlleRuter();
             this.router.navigate(['/rute']);
+            
         });
     } 
 
