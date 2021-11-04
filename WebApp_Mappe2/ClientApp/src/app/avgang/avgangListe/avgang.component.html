@@ -27,7 +27,7 @@
               <td *ngIf="avgang.ruteNr === rute.id">{{avgang.avgangTid}}</td>
             
               <td *ngIf="avgang.ruteNr === rute.id"><button class="btn btn-danger" (click)="sletteAvgang(avgang.id)">Slett</button></td>
-              <td *ngIf="avgang.ruteNr === rute.id"><button class="btn btn-success" [routerLink]="['/avgangRediger', avgang.id]">Endre</button></td>
+              <td *ngIf="avgang.ruteNr === rute.id"><button class="btn btn-success" [routerLink]="['/avgangRediger', avgang.id]">Rediger</button></td>
             
           </tr>
 
