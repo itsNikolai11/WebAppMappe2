@@ -56,14 +56,21 @@ export class AvgangLagre {
   lagreAvgang() {
     const lagretAvgang = new avgang();
 
-    var rute = parseInt(this.skjema.value.rute);
     
-    //lagretAvgang.ruteNr = rute;
     lagretAvgang.ruteNr = this.skjema.value.rute;
     lagretAvgang.avgangTid = this.skjema.value.tid;
 
-    console.log(lagretAvgang);
+    for (let avgang of this.alleAvganger) {
 
+      console.log(avgang.avgangTid.toString());
+      var tid = avgang.avgangTid.toString();
+      var tid1 = lagretAvgang.avgangTid.toString() + ":00";
+      console.log(tid1);
+      if (tid === tid1 && avgang.ruteNr === lagretAvgang.ruteNr) {
+        console.log("feil");
+        return;
+      }
+    }
     this.http.post("api/Avgang/", lagretAvgang)
       .subscribe(retur => {
         console.log(lagretAvgang);

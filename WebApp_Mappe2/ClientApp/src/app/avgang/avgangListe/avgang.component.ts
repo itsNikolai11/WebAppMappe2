@@ -18,6 +18,7 @@ export class AvgangComponent {
   public id: number;
   avgangTilSletting: string;
   slettingOK: boolean;
+  public onChangeValue: number;
 
   constructor(private http: HttpClient, private router: Router, private modalService: NgbModal) { }
 
@@ -88,5 +89,12 @@ export class AvgangComponent {
       }
       this.router.navigate(['/avgang']);
     });
+  }
+
+  onChangeEvent(event: any) {
+
+    console.log(event.target.value);
+    this.onChangeValue = event.target.value;
+
   }
 }
