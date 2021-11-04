@@ -86,8 +86,8 @@ code {
   }
 
   .mainContainerLogin .btn-primary {
-    min-width: 80%;
-    max-width: 60px;
+    
+    max-width: 600px;
     min-height: 3em;
   }
 

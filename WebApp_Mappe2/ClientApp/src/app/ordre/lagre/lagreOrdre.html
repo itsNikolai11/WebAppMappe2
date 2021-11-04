@@ -1,47 +1,54 @@
 <div class="container">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <form [formGroup]="skjema" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label>Rute</label>
-        <select class="form-group" formControlName="rute" required id="ruteNr" (change)="hentAvganger($event.target.value)">
+        <label>Rute</label> <br>
+        <select class="form-group"  formControlName="rute" required id="ruteNr" (change)="hentAvganger($event.target.value)">
           <option *ngFor="let rute of ruter" value={{rute.id}}>{{rute.fraDestinasjon}} til {{rute.tilDestinasjon}}</option>
         </select>
-
       </div>
+
       <p class="alert alert-warning" [hidden]="skjema.controls.rute.valid || (skjema.controls.rute.pristine && !submitted)">
         Du må velge en rute
       </p>
+
       <div class="form-group">
-        <label>Avgang</label>
+        <label>Avgang</label> <br>
         <select class="form-group" formControlName="avgang" required id="avgangNr">
           <option *ngFor="let avgang of avganger" value={{avgang.id}}>{{avgang.avgangTid}}</option>
         </select>
       </div>
+
       <div class="form-group">
-        <label>Antall barn</label>
+        <label>Antall barn</label><br>
         <input type="number" formControlName="antallBarn" />
       </div>
+
       <p class="alert alert-warning" [hidden]="skjema.controls.antallBarn.valid || (skjema.controls.antallBarn.pristine && !submitted)">
         Du må skrive inn en verdi!
       </p>
+
       <div class="form-group">
-        <label>Antall voksne</label>
+        <label>Antall voksne</label> <br>
         <input type="number" formControlName="antallVoksne" />
       </div>
+
       <p class="alert alert-warning" [hidden]="skjema.controls.antallVoksne.valid || (skjema.controls.antallVoksne.pristine && !submitted)">
         Du må skrive inn en verdi!
       </p>
+
       <div class="form-group">
-        <label>Referanse-person</label>
+        <label>Referanse-person</label> <br>
         <input type="text" formControlName="refPers" />
       </div>
+
       <p class="alert alert-warning" [hidden]="skjema.controls.refPers.valid || (skjema.controls.refPers.pristine && !submitted)">
         Du må skrive inn en verdi!
       </p>
+
       <div class="form-group">
         <button type="submit" [disabled]="!skjema.valid" class="btn-primary">Lagre</button>
       </div>
-
     </form>
   </div>
 </div>
