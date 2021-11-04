@@ -16,8 +16,9 @@ namespace WebApp_Mappe2.DAL
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<DBContext>();
-                context.Database.EnsureDeleted();
+                //context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
+                /*
                 var dest1 = new Destinasjoner { Land = "Norge", Sted = "Oslo" };
                 var dest2 = new Destinasjoner { Land = "Danmark", Sted = "Fredrikshavn" };
 
@@ -36,6 +37,7 @@ namespace WebApp_Mappe2.DAL
                 context.Avganger.Add(avgang2);
                 context.Avganger.Add(avgang3);
                 context.Ordrer.Add(ordre1);
+                */
 
                 var bruker = new Brukere();
                 bruker.Brukernavn = "admin";
