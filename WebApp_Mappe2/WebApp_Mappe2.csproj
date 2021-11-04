@@ -46,6 +46,7 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\bruker.ts" />
     <None Remove="ClientApp\src\app\login\login.component.ts" />
+    <None Remove="Rute.db-shm" />
   </ItemGroup>
 
   <ItemGroup>
