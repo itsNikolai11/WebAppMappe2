@@ -56,7 +56,7 @@ export class EndreOrdre {
   filtrerAvganger(avganger: Array<avgang>, id: number) {
     const filtrerteAvganger = new Array<avgang>();
     for (let a of avganger) {
-      if (a.id == id) {
+      if (a.ruteNr == id) {
         filtrerteAvganger.push(a);
       }
     }
