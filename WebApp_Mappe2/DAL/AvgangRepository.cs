@@ -19,7 +19,6 @@ namespace WebApp_Mappe2.DAL
         }
         public async Task<List<Avgang>> HentAvganger(/*int RuteId, DateTime Tid*/) //Inkludere senere hvis nødvendig
         {
-            //throw new NotImplementedException();
             try
             {
                 List<Avgang> alleAvganger = await _db.Avganger.Select(a => new Avgang
@@ -27,8 +26,6 @@ namespace WebApp_Mappe2.DAL
                     Id = a.Id,
                     AvgangTid = a.AvgangTid,
                     RuteNr = a.RuteNr.Id, 
-                    //FraDestinasjon = a.RuteNr.FraDestinasjon.Sted,
-                    //TilDestinasjon = a.RuteNr.TilDestinasjon.Sted
                 }).ToListAsync();
                 return alleAvganger;
             }
@@ -39,7 +36,6 @@ namespace WebApp_Mappe2.DAL
         }
         public async Task<Avgang> HentAvgang(int id)
         {
-            //throw new NotImplementedException();
             Avganger enAvgang = await _db.Avganger.FindAsync(id);
             var hentetAvgang = new Avgang()
             {
@@ -51,19 +47,13 @@ namespace WebApp_Mappe2.DAL
         }
         public async Task<bool> LagreAvgang(Avgang r)
         {
-            //throw new NotImplementedException();
             try
             {
-
-                DateTime tidAvgang = new DateTime();
-                //tidAvgang = DateTime.ParseExact(r.AvgangTid, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-
-                tidAvgang = r.AvgangTid.ToLocalTime();
-
-                var sjekkId = await _db.Ruter.FindAsync(r.Id);
+                var sjekkId = await _db.Ruter.FindAsync(r.RuteNr);
+                
                 var nyAvgangRad = new Avganger();
-                //nyAvgangRad.AvgangTid = r.AvgangTid;
-                nyAvgangRad.AvgangTid = tidAvgang;
+                
+                nyAvgangRad.AvgangTid = r.AvgangTid;
                 nyAvgangRad.RuteNr = sjekkId;
 
                 _db.Avganger.Add(nyAvgangRad);
@@ -77,7 +67,6 @@ namespace WebApp_Mappe2.DAL
         }
         public async Task<bool> SlettAvgang(int id)
         {
-            //throw new NotImplementedException();
             try
             {
                 Avganger enAvgang = await _db.Avganger.FindAsync(id);
@@ -92,7 +81,6 @@ namespace WebApp_Mappe2.DAL
         }
         public async Task<bool> EndreAvgang(Avgang r)
         {
-            //throw new NotImplementedException();
             try
             {
                 var endreAvgang = await _db.Avganger.FindAsync(r.Id);
