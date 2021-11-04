@@ -1,35 +1,40 @@
 <div class="container">
-  <div class="table-container">
-    <h1>Ordre</h1>
-    <table class="table-bordered table-condensed">
-      <thead>
-        <tr>
-          <th>OrdreNr</th>
-          <th>Rute</th>
-          <th>Avgang</th>
-          <th>Antall Barn</th>
-          <th>Antall voksne</th>
-          <th>Referanse Person</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let ordre of alleOrdre">
-        <tr *ngFor="let rute of ruter">
-          <td *ngIf="ordre.ruteNr == rute.id">{{ordre.id}}</td>
-          <td *ngIf="ordre.ruteNr == rute.id">{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</td>
-          <td *ngIf="ordre.ruteNr == rute.id">{{ordre.avgangNr}}</td>
-          <td *ngIf="ordre.ruteNr == rute.id">{{ordre.antallBarn}}</td>
-          <td *ngIf="ordre.ruteNr == rute.id">{{ordre.antallVoksen}}</td>
-          <td *ngIf="ordre.ruteNr == rute.id">{{ordre.refPers}}</td>
-          <td *ngIf="ordre.ruteNr == rute.id"><button class="btn-danger" (click)="slettOrdre(ordre.id)">Slett</button></td>
-          <td *ngIf="ordre.ruteNr == rute.id"><button class="btn-success" [routerLink]="['/endreOrdre', ordre.id]">Rediger</button></td>
-        </tr>
-      </tbody>
-    </table>
-    <div>
-  <button class="btn btn-primary" routerLink="/nyOrdre">Ny Ordre</button>
-</div>
+  <div class="row">
+    <tr class="col style=padding: 3%">
+      <h1>Ordre: </h1>
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>OrdreNr</th>
+            <th>Rute</th>
+            <th>Avgang</th>
+            <th>Antall Barn</th>
+            <th>Antall voksne</th>
+            <th>Referanse Person</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let ordre of alleOrdre">
+          <tr *ngFor="let rute of ruter">
+            <td *ngIf="ordre.ruteNr == rute.id">{{ordre.id}}</td>
+            <td *ngIf="ordre.ruteNr == rute.id">{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</td>
+            <td *ngIf="ordre.ruteNr == rute.id">{{ordre.avgangNr}}</td>
+            <td *ngIf="ordre.ruteNr == rute.id">{{ordre.antallBarn}}</td>
+            <td *ngIf="ordre.ruteNr == rute.id">{{ordre.antallVoksen}}</td>
+            <td *ngIf="ordre.ruteNr == rute.id">{{ordre.refPers}}</td>
+            <td *ngIf="ordre.ruteNr == rute.id"><button class="btn-danger" (click)="slettOrdre(ordre.id)">Slett</button></td>
+            <td *ngIf="ordre.ruteNr == rute.id"><button class="btn-success" [routerLink]="['/endreOrdre', ordre.id]">Rediger</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <button class="btn btn-primary" routerLink="/nyOrdre">Ny Ordre</button>
+      </div>
+      <div>
+        <button class="btn btn-primary" [routerLink]="['/adminpage']">Tilbake</button>
+      </div>
+    </tr>
   </div>
   
 </div>
