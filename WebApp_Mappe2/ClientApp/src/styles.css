@@ -73,6 +73,24 @@ code {
     min-height: 3em;
   }
 
+.mainContainerLogin {
+  margin-top: 5em;
+  background-color: white;
+  padding: 25px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+  .mainContainerLogin .btn-danger {
+    min-width: 80%;
+  }
+
+  .mainContainerLogin .btn-primary {
+    min-width: 80%;
+    max-width: 60px;
+    min-height: 3em;
+  }
+
 .table-bordered {
   background-color: azure;
   padding: 10px;
