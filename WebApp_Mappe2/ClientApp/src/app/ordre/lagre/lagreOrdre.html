@@ -3,7 +3,7 @@
     <form [formGroup]="skjema" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label>Rute</label> <br>
-        <select class="form-group"  formControlName="rute" required id="ruteNr" (change)="hentAvganger($event.target.value)">
+        <select class="form-group" formControlName="rute" required id="ruteNr" (change)="hentAvganger($event.target.value)">
           <option *ngFor="let rute of ruter" value={{rute.id}}>{{rute.fraDestinasjon}} til {{rute.tilDestinasjon}}</option>
         </select>
       </div>
@@ -50,5 +50,6 @@
         <button type="submit" [disabled]="!skjema.valid" class="btn-primary">Lagre</button>
       </div>
     </form>
+    <button class="btn btn-primary" routerLink="/visOrdre">Tilbake</button>
   </div>
 </div>
