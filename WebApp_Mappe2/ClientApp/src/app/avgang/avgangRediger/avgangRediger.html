@@ -3,15 +3,14 @@
     <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
       <input class="form-control" formControlName="id" type="hidden" />
       <div class="form-group">
-        <label>Rute Id</label>
-        <input class="form-control" formControlName="rute" required/>
-        <p class="alert alert-warning" [hidden]="skjema.controls.tid.valid || (skjema.controls.tid.pristine && !submitted)">
-          Tid er obligatorisk.
-        </p>
+        <label>Rute</label>
+        <select class="form-control" formControlName="rute" required id="rute">
+          <option *ngFor="let rute of ruter" value={{rute.id}}>{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</option>
+        </select>
       </div>
       <div class="form-group">
         <label>Tid</label>
-        <input type="datetime-local" class="form-control" formControlName="tid" required />
+        <input class="form-control" formControlName="tid" required />
         <p class="alert alert-warning" [hidden]="skjema.controls.tid.valid || (skjema.controls.tid.pristine && !submitted)">
           Tid er obligatorisk.
         </p>

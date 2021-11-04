@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { avgang } from "../../avgang";
+import { rute } from "../../rute";
 
 @Component({
   templateUrl: "avgangRediger.html"
@@ -11,6 +12,7 @@ import { avgang } from "../../avgang";
 
 export class AvgangRediger {
   skjema: FormGroup;
+  public ruter: Array<rute>;
 
   validering = {
     id: [""],
@@ -23,8 +25,24 @@ export class AvgangRediger {
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.redigerAvgang(params.id);
+    });
+    this.hentRuter();
+  }
+
+  vedSubmit() {
     this.redigerEnAvgang();
   }
+
+  hentRuter() {
+    this.http.get<rute[]>("api/rute/")
+      .subscribe(data => {
+        this.ruter = data;
+      },
+        error => console.log(error)
+      );
+  };
 
   redigerAvgang(id: number) {
     this.http.get<avgang>("api/Avgang" + id).subscribe(avgang => {
@@ -37,10 +55,15 @@ export class AvgangRediger {
   }
 
   redigerEnAvgang() {
-    const endretAvgang = new avgang()
+    const endretAvgang = new avgang();
+
+    var ruteNr = parseInt(this.skjema.value.rute);
+
     endretAvgang.id = this.skjema.value.id;
-    endretAvgang.ruteNr = this.skjema.value.rute;
+    endretAvgang.ruteNr = ruteNr;
     endretAvgang.avgangTid = this.skjema.value.tid;
+
+    console.log(endretAvgang);
 
     this.http.put("api/Avgang", endretAvgang)
       .subscribe(

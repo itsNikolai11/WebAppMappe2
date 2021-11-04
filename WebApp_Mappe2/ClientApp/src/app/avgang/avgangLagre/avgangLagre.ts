@@ -56,13 +56,14 @@ export class AvgangLagre {
   lagreAvgang() {
     const lagretAvgang = new avgang();
 
+    var rute = parseInt(this.skjema.value.rute);
     
-    lagretAvgang.ruteNr = this.skjema.value.rute;
-    lagretAvgang.avgangTid = this.skjema.value.tid;
-    
+    lagretAvgang.ruteNr = rute;
+    //lagretAvgang.avgangTid = this.skjema.value.tid;
 
+    lagretAvgang.avgangTid = "test123";
 
-    
+    console.log(lagretAvgang);
 
     this.http.post("api/Avgang", lagretAvgang)
       .subscribe(retur => {
