@@ -16,9 +16,9 @@ export class EndreOrdre {
     id: [""],
     rute: [null, Validators.compose([Validators.required])],
     avgang: [null, Validators.compose([Validators.required])],
-    antallBarn: [null, Validators.compose([Validators.required])],
-    antallVoksne: [null, Validators.compose([Validators.required])],
-    refPers: [null, Validators.compose([Validators.required])]
+    antallBarn: [null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}"), Validators.min(1)])],
+    antallVoksne: [null, Validators.compose([Validators.required, Validators.pattern("[0-9]{1,5}"), Validators.min(1)])],
+    refPers: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])]
   }
   constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.skjema = fb.group(this.validering);

@@ -18,14 +18,14 @@
         </select>
       </div>
       <p class="alert alert-warning" [hidden]="skjema.controls.avgang.valid || skjema.controls.rute.pristine && !submitted">
-        Du må velge en avgang!
+        Ugyldig tall!
       </p>
       <div class="form-group">
         <label>Antall barn</label>
         <input class="form-control" type="number" formControlName="antallBarn" />
       </div>
       <p class="alert alert-warning" [hidden]="skjema.controls.antallBarn.valid || skjema.controls.antallBarn.pristine && !submitted">
-        Du må skrive inn en verdi!
+        Ugyldig tall!
       </p>
       <div class="form-group">
         <label>Antall voksne</label>
@@ -36,11 +36,12 @@
         <input class="form-control" type="text" formControlName="refPers" />
       </div>
       <p class="alert alert-warning" [hidden]="skjema.controls.refPers.valid || skjema.controls.refPers.pristine && !submitted">
-        Du må skrive inn en referanse-person!
+        Du kan ikke skrive inn tall eller tegn!
       </p>
       <div class="form-group">
         <button type="submit" [disabled]="!skjema.valid" class="btn-primary">Lagre</button>
       </div>
     </form>
+    <button class="btn btn-primary" routerLink="/visOrdre">Tilbake</button>
   </div>
 </div>

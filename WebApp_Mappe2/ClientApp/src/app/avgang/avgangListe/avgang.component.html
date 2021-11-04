@@ -5,9 +5,9 @@
       <div *ngIf="laster">Laster avganger.....</div>
 
       <!--<label>For Rute: </label>
-      <select class="form-comtrol" formControlName="rute" required id="rute" [ngModel]="selectedDevice" (ngModelChange)="onChange($event)">
-        <option *ngFor="let rute of ruter" value={{rute.id}}>{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</option>
-      </select>-->
+  <select class="form-comtrol" formControlName="rute" required id="rute" [ngModel]="selectedDevice" (ngModelChange)="onChange($event)">
+    <option *ngFor="let rute of ruter" value={{rute.id}}>{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</option>
+  </select>-->
       <table class="table table-bordered table-condensed">
         <thead>
 
@@ -22,24 +22,21 @@
 
         <tbody *ngFor="let avgang of alleAvganger">
           <tr *ngFor="let rute of ruter">
-            
-              <td *ngIf="avgang.ruteNr === rute.id">{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</td>
-              <td *ngIf="avgang.ruteNr === rute.id">{{avgang.avgangTid}}</td>
-            
-              <td *ngIf="avgang.ruteNr === rute.id"><button class="btn btn-danger" (click)="sletteAvgang(avgang.id)">Slett</button></td>
-              <td *ngIf="avgang.ruteNr === rute.id"><button class="btn btn-success" [routerLink]="['/avgangRediger', avgang.id]">Rediger</button></td>
-            
+
+            <td *ngIf="avgang.ruteNr === rute.id">{{rute.fraDestinasjon}} - {{rute.tilDestinasjon}}</td>
+            <td *ngIf="avgang.ruteNr === rute.id">{{avgang.avgangTid}}</td>
+
+            <td *ngIf="avgang.ruteNr === rute.id"><button class="btn btn-danger" (click)="sletteAvgang(avgang.id)">Slett</button></td>
+            <td *ngIf="avgang.ruteNr === rute.id"><button class="btn btn-success" [routerLink]="['/avgangRediger', avgang.id]">Rediger</button></td>
+
           </tr>
 
         </tbody>
-      
-      </table>
-      <div>
-        <button class="btn btn-success" [routerLink]="['/avgangLagre']">Lagre ny avgang</button>
-      </div>
-      <div>
-        <button class="btn btn-primary" [routerLink]="['/adminpage']">Tilbake</button>
-      </div>
 
-    </div>
+      </table>
+
+      <button class="btn btn-primary" [routerLink]="['/avgangLagre']">Opprett ny avgang</button>
+      <button class="btn btn-default" routerLink="/adminpage">Tilbake</button>
+
+</div>
   </div>
