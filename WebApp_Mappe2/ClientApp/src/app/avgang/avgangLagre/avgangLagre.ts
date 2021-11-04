@@ -60,7 +60,7 @@ export class AvgangLagre {
     lagretAvgang.ruteNr = this.skjema.value.rute;
     lagretAvgang.avgangTid = this.skjema.value.tid;
 
-    for (let avgang of this.alleAvganger) {
+    /*for (let avgang of this.alleAvganger) {
 
       console.log(avgang.avgangTid.toString());
       var tid = avgang.avgangTid.toString();
@@ -70,7 +70,7 @@ export class AvgangLagre {
         console.log("feil");
         return;
       }
-    }
+    }*/
     this.http.post("api/Avgang/", lagretAvgang)
       .subscribe(retur => {
         console.log(lagretAvgang);

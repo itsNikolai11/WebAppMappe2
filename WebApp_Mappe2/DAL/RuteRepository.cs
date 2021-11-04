@@ -120,11 +120,11 @@ namespace WebApp_Mappe2.DAL
             try
             {
                 var endre = await _db.Ruter.FindAsync(endreRute.Id);
-                var sjekkFraDest = await _db.Destinasjoner.FirstOrDefaultAsync(r => r.Sted == endreRute.FraDestinasjon);
-                var sjekkTilDest = await _db.Destinasjoner.FirstOrDefaultAsync(r => r.Sted == endreRute.TilDestinasjon);
+                //var sjekkFraDest = await _db.Destinasjoner.FirstOrDefaultAsync(r => r.Sted == endreRute.FraDestinasjon);
+                //var sjekkTilDest = await _db.Destinasjoner.FirstOrDefaultAsync(r => r.Sted == endreRute.TilDestinasjon);
                 
-                endre.FraDestinasjon = sjekkFraDest;
-                endre.TilDestinasjon = sjekkTilDest;
+                //endre.FraDestinasjon = sjekkFraDest;
+                //endre.TilDestinasjon = sjekkTilDest;
                 endre.PrisBarn = endreRute.PrisBarn;
                 endre.PrisVoksen = endreRute.PrisVoksen;
 

@@ -1,4 +1,4 @@
-﻿<div class="container">
+<div class="container">
     <div class="col-md-4">
         <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
             
@@ -31,7 +31,8 @@
                     PrisVoksen må fylles inn
                 </p>
             </div>
-            <div *ngIf="feil" style="color:red;">Fra og til kan ikke være samme destinasjon!</div>
+            <div *ngIf="feilLik" style="color:red;">Fra og til kan ikke være samme destinasjon!</div>
+            <div *ngIf="feilEksisterer" style="color:red;">Denne ruten eksiterer fra før</div>
             <div class="form-group">
                 <button type="submit" [disabled]="!skjema.valid" class="btn btn-primary">Lagre</button>
                 <button class="btn btn-default" routerLink="/rute">Tilbake</button>

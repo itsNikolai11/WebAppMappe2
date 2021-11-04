@@ -1,10 +1,9 @@
-﻿import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router'; 
 import { rute} from "../../rute";
-import { destinasjon } from "../../destinasjon";
 
 @Component({
     templateUrl: "endreRute.html"
@@ -12,9 +11,7 @@ import { destinasjon } from "../../destinasjon";
 })
 
 export class EndreRute {
-    skjema: FormGroup;
-  destinasjoner: Array<destinasjon>;
-  feil: boolean;
+  skjema: FormGroup;
 
     validering = {
         id: [""],
@@ -43,18 +40,7 @@ export class EndreRute {
         this.route.params.subscribe(params => {
             this.endreRute(params.id);
         });
-        this.hentDestinasjoner();
     }
-
-    hentDestinasjoner() {
-        this.http.get<destinasjon[]>("api/destinasjon/")
-            .subscribe(dest => {
-                this.destinasjoner = dest;
-
-            },
-                error => console.log(error)
-            );
-    };
 
     vedSubmit() {
         this.endreEnRute(); 
@@ -78,22 +64,18 @@ export class EndreRute {
     endreEnRute() {
         const endretRute = new rute();
         endretRute.id = this.skjema.value.id;
-        endretRute.fraDestinasjon = this.skjema.value.fraDestinasjon;
-        endretRute.tilDestinasjon = this.skjema.value.tilDestinasjon;
         endretRute.prisBarn = this.skjema.value.prisBarn;
         endretRute.prisVoksen = this.skjema.value.prisVoksen;
 
-        if (endretRute.fraDestinasjon != endretRute.tilDestinasjon)
-        {
-            this.http.put("api/rute/", endretRute)
-                .subscribe(
-                    retur => {
-                        this.router.navigate(['/rute']);
-                    },
-                    error => console.log(error)
-                );
-        }
-      this.feil = true;
+        this.http.put("api/rute/", endretRute)
+          .subscribe(
+            retur => {
+              this.router.navigate(['/rute']);
+            },
+            error => console.log(error)
+          );
+      
+      
         
     }
 }
