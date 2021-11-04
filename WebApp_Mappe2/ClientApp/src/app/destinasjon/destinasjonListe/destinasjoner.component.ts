@@ -30,7 +30,8 @@ export class DestinasjonComponent {
       },
         error => alert(error),
         () => console.log("Alle destinasjoner har blitt hentet.")
-      );
+    );
+    this.router.navigate(['/destinasjonListe']);
   }
 
   slettDestinasjon(id: number) {
@@ -56,8 +57,8 @@ export class DestinasjonComponent {
 
         this.http.delete('api/Destinasjon/' + id)
           .subscribe(retur => {
-            this.hentAlleDestinasjoner();
-            this.router.navigate(['/destinasjonListe']);
+
+
           },
             error => console.log(error),
             () => console.log("Sletting av id:  " + id + " gjennomført.")
@@ -66,5 +67,6 @@ export class DestinasjonComponent {
       this.hentAlleDestinasjoner();
       this.router.navigate(['/destinasjonListe']);
     });
+
   }
 }
