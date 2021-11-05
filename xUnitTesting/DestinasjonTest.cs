@@ -200,7 +200,7 @@ namespace xUnitTesting
 
             //Assert
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
-            Assert.Equal("Destinasjon lagret", resultat.Value);
+            Assert.True((bool) resultat.Value);
         }
 
         [Fact]
@@ -291,7 +291,7 @@ namespace xUnitTesting
 
             //Assert
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
-            Assert.Equal("Destinasjon slettet", resultat.Value);
+            Assert.True((bool) resultat.Value);
         }
 
         [Fact]
@@ -353,7 +353,7 @@ namespace xUnitTesting
 
             //Assert
             Assert.Equal((int)HttpStatusCode.OK, resultat.StatusCode);
-            Assert.Equal("Destinasjon endret", resultat.Value);
+            Assert.True((bool) resultat.Value);
         }
 
         [Fact]

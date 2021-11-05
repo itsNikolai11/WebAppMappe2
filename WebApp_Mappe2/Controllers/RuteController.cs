@@ -81,7 +81,7 @@ namespace WebApp_Mappe2.Controllers
                     return BadRequest("Ruten kunne ikke lagres");
                 }
                 _log.LogInformation("Lagring av rute ble gjennomført suksessfullt");
-                return Ok("Rute lagret");
+                return Ok(true);
             }
             _log.LogInformation("Feil i inputvalidering ved lagring av rute");
             return BadRequest("Feil i inputvalidering ved lagring av rute");
@@ -103,7 +103,7 @@ namespace WebApp_Mappe2.Controllers
                 return NotFound("Sletting av rute ble ikke utført");
             }
             _log.LogInformation("Sletting av Rute ble gjennomført suksessfullt");
-            return Ok("Rute slettet");
+            return Ok(true);
         }
 
         [HttpPut]
@@ -124,7 +124,7 @@ namespace WebApp_Mappe2.Controllers
                     return NotFound("Ruten kunne ikke endres");
                 }
                 _log.LogInformation("Endring av Rute ble gjennomført suksessfullt");
-                return Ok("Rute endret");
+                return Ok(true);
             }
             _log.LogInformation("Feil i inputvalidering ved endring av Rute");
             return BadRequest("Feil i inputvalidering ved endring av Rute");

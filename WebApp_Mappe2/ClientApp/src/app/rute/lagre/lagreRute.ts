@@ -94,7 +94,7 @@ export class LagreRute {
     if (lagretRute.fraDestinasjon != lagretRute.tilDestinasjon) {
       this.http.post("api/rute/", lagretRute)
         .subscribe(retur => {
-
+          this.router.navigate(['/rute']);
           
         },
           error => console.log(error)
@@ -104,6 +104,6 @@ export class LagreRute {
       this.feilLik = true;
       this.feilEksisterer = false;
     }
-    this.router.navigate(['/rute']);
+    //this.router.navigate(['/rute']);
   };
 }

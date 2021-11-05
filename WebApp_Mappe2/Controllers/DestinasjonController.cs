@@ -84,7 +84,7 @@ namespace WebApp_Mappe2.Controllers
                     return BadRequest("Destinasjon kunne ikke lagres");
                 }
                 _log.LogInformation("Lagring av Destinasjon ble gjennomført suksessfullt");
-                return Ok("Destinasjon lagret");
+                return Ok(true);
             }
             _log.LogInformation("Feil i inputvalidering ved lagring av destinasjon");
             return BadRequest("Feil i inputvalidering ved lagring av destinasjon");
@@ -106,7 +106,7 @@ namespace WebApp_Mappe2.Controllers
                 return NotFound("Sletting av destinasjon ble ikke utført");
             }
             _log.LogInformation("Sletting av Destinasjon ble gjennomført suksessfullt");
-            return Ok("Destinasjon slettet");
+            return Ok(true);
 
         }
 
@@ -127,7 +127,7 @@ namespace WebApp_Mappe2.Controllers
                     return NotFound("Endringen kunne ikke utføres");
                 }
                 _log.LogInformation("Endring av Destinasjon ble gjennomført suksessfullt");
-                return Ok("Destinasjon endret");
+                return Ok(true);
             }
             _log.LogInformation("Feil i inputvalidering ved endring av Destinasjon");
             return BadRequest("Feil i inputvalidering ved endring av Destinasjon");

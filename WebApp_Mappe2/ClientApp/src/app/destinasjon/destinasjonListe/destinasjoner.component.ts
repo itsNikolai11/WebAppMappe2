@@ -58,13 +58,13 @@ export class DestinasjonComponent {
         this.http.delete('api/Destinasjon/' + id)
           .subscribe(retur => {
 
-
+            this.hentAlleDestinasjoner();
           },
             error => console.log(error),
             () => console.log("Sletting av id:  " + id + " gjennomført.")
           );
       }
-      this.hentAlleDestinasjoner();
+      
       this.router.navigate(['/destinasjonListe']);
     });
 
